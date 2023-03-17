@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-import logo from "../../logo.svg";
 import signInImg from "../../assets/google-sign-in.png";
+import logo from "../../logo.svg";
 import "./Welcome.css";
 
-function App() {
-  const [user, setUser] = useState(false);
-
+function Welcome() {
+  
   const googleSignIn = () => {
-    setUser(true);
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
   };
 
-  const signOut = () => {
-    setUser(false);
-  };
   return (
-    <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p className="Welcome-text">Welcome to React-Chat!</p>
+    <div className="Welcome">
+      <img src={logo} className="Welcome-logo" alt="logo" />
+      <p className="Welcome-text">Welcome to React Chat!</p>
       <p className="Sign-text">
         Sign in with Google to chat with your friends.
       </p>
@@ -30,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default Welcome;

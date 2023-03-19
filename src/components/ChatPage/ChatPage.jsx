@@ -1,5 +1,5 @@
 import React from "react";
-import SendMessage from "../SendMessage/SendMessage";
+import SendMessage from "../SendMessageForm/SendMessageForm";
 import "./ChatPage.css";
 
 function ChatPage () {

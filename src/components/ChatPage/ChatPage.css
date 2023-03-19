@@ -1,0 +1,23 @@
+.ChatPage {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34;
+}
+.ChatPage .SendMessageForm {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #61dafb;
+}
+.ChatPage .SendMessageForm .SendMessageInput {
+  border: none;
+  width: 100%;
+  padding: 15px 10px;
+}
+.ChatPage .SendMessageForm .SendMessageInput:focus {
+  outline: none;
+}/*# sourceMappingURL=ChatPage.css.map */

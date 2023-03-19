@@ -8,18 +8,27 @@
   background-color: #282c34;
 
   .SendMessageForm {
+    display: flex;
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: #61dafb;
+    background-color: #333333;
 
     .SendMessageInput {
       border: none;
       width: 100%;
-      padding: 15px 10px;
+      padding: 20px;
+      background-color: transparent;
       &:focus {
         outline: none;
       }
+    }
+
+    .SendMessageButton {
+      margin-right: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
   }
 }

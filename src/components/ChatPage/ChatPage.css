@@ -8,16 +8,24 @@
   background-color: #282c34;
 }
 .ChatPage .SendMessageForm {
+  display: flex;
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: #61dafb;
+  background-color: #333333;
 }
 .ChatPage .SendMessageForm .SendMessageInput {
   border: none;
   width: 100%;
-  padding: 15px 10px;
+  padding: 20px;
+  background-color: transparent;
 }
 .ChatPage .SendMessageForm .SendMessageInput:focus {
   outline: none;
+}
+.ChatPage .SendMessageForm .SendMessageButton {
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }/*# sourceMappingURL=ChatPage.css.map */

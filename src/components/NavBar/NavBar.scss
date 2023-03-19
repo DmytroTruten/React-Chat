@@ -6,10 +6,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #61dafb;
+  background-color: #333333;
 
   p {
-    color: #282c34;
+    color: #61dafb;
     font-weight: 700;
     margin-left: 50px;
   }
@@ -17,9 +17,11 @@
   button {
     margin-right: 50px;
     cursor: pointer;
-    background-color: #282c34;
+    background-color: #333333;
     color: #61dafb;
+    font-weight: 700;
     border-radius: 5px;
+    border: 1px solid #61dafb;
     padding: 5px;
   }
 }

@@ -1,6 +1,4 @@
-import React from "react";
-import SendMessageForm from "../SendMessageForm/SendMessageForm";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   query,
   collection,
@@ -9,10 +7,11 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import "./ChatPage.css";
 import Message from "../Message/Message";
+import SendMessageForm from "../SendMessageForm/SendMessageForm";
+import "./ChatPage.css";
 
-function ChatPage() {
+const ChatPage = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -30,14 +29,14 @@ function ChatPage() {
     });
     return () => unsubscribe;
   }, []);
+
   return (
     <div className="ChatPage">
-      {messages?.map((message) => {
-        <Message key={message.id} message={message} />;
-      })}
+      {messages?.map((message) => (
+        <Message key={message.id} message={message} />
+      ))}
       <SendMessageForm />
     </div>
   );
-}
-
+};
 export default ChatPage;

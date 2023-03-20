@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { auth, db } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import sendIcon from "../../assets/send-icon.svg";
+import "./SendMessageForm.css"
 
 function SendMessageForm() {
   const [message, setMessage] = useState("");

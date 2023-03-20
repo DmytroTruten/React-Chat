@@ -1,0 +1,26 @@
+.SendMessageForm {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333333;
+  height: 50px;
+
+  .SendMessageInput {
+    border: none;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    color: #fff;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .SendMessageButton {
+    margin-right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

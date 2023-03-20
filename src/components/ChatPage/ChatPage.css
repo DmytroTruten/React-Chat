@@ -1,32 +1,13 @@
 .ChatPage {
   min-height: 100vh;
   width: 100%;
+  padding: 50px 0px;
   display: flex;
+  align-items: end;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   background-color: #282c34;
 }
-.ChatPage .SendMessageForm {
-  display: flex;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background-color: #333333;
-}
-.ChatPage .SendMessageForm .SendMessageInput {
-  border: none;
-  width: 100%;
-  padding: 20px;
-  background-color: transparent;
-  color: #fff;
-}
-.ChatPage .SendMessageForm .SendMessageInput:focus {
-  outline: none;
-}
-.ChatPage .SendMessageForm .SendMessageButton {
-  margin-right: 20px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.ChatPage .ChatBubble.right {
+  justify-self: right;
 }/*# sourceMappingURL=ChatPage.css.map */

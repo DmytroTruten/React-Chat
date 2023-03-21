@@ -1,16 +1,22 @@
 .ChatBubble {
   display: flex;
-  align-items: center;
   overflow-wrap: anywhere;
   max-width: 500px;
   background-color: #61dafb;
-  margin: 10px 0px;
   padding: 10px;
   
   &.right {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 5px;
+  }
+
+  &.left {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 20px;
   }
 
   .UserAvatar {

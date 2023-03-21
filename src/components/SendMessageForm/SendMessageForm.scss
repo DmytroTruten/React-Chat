@@ -5,6 +5,7 @@
   width: 100%;
   background-color: #333333;
   height: 50px;
+  z-index: 1;
 
   .SendMessageInput {
     border: none;
@@ -22,5 +23,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+
+    img {
+      height: 100%;
+    }
   }
 }

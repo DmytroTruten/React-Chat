@@ -7,7 +7,7 @@ function Message({message}) {
   const [user] = useAuthState(auth);
 
   return (
-    <div className={`ChatBubble ${message.uid === user.uid ? "right" : ""}`}>
+    <div className={`ChatBubble ${message.uid === user.uid ? "right" : "left"}`}>
       <img
         className="UserAvatar"
         src={message.avatar}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   query,
   collection,
@@ -13,6 +13,7 @@ import "./ChatPage.css";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
+  const scroll = useRef();
 
   useEffect(() => {
     const q = query(
@@ -35,7 +36,8 @@ const ChatPage = () => {
       {messages?.map((message) => (
         <Message key={message.id} message={message} />
       ))}
-      <SendMessageForm />
+      <span ref={scroll}></span>
+      <SendMessageForm scroll={scroll} />
     </div>
   );
 };

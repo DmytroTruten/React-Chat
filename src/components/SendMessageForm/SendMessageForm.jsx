@@ -4,7 +4,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import sendIcon from "../../assets/send-icon.svg";
 import "./SendMessageForm.css"
 
-function SendMessageForm() {
+function SendMessageForm({scroll}) {
   const [message, setMessage] = useState("");
 
   const sendMessage = async (event) => {
@@ -22,6 +22,7 @@ function SendMessageForm() {
       uid,
     });
     setMessage("");
+    scroll.current.scrollIntoView({behavior: "smooth"})
   };
 
   return (

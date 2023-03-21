@@ -7,4 +7,7 @@
 }
 .ChatPage .ChatBubble.right {
   margin: 2px 50px 2px auto;
+}
+.ChatPage .ChatBubble.left {
+  margin: 2px auto 2px 50px;
 }/*# sourceMappingURL=ChatPage.css.map */

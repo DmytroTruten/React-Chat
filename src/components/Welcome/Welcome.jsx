@@ -1,7 +1,7 @@
 import React from "react";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-import signInImg from "../../assets/google-sign-in.png";
+import signInImg from "../../assets/google-sign-in.svg";
 import logo from "../../logo.svg";
 import "./Welcome.css";
 
@@ -21,6 +21,7 @@ function Welcome() {
       </p>
       <button className="Sign-button" onClick={googleSignIn}>
         <img src={signInImg} alt="" />
+        Sign in with Google
       </button>
     </div>
   );

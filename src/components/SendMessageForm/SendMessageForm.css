@@ -5,6 +5,7 @@
   width: 100%;
   background-color: #333333;
   height: 50px;
+  z-index: 1;
 }
 .SendMessageForm .SendMessageInput {
   border: none;
@@ -21,4 +22,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+.SendMessageForm .SendMessageButton img {
+  height: 100%;
 }/*# sourceMappingURL=SendMessageForm.css.map */

@@ -1,1 +1,1 @@
-{"version":3,"sources":["ChatPage.scss","ChatPage.css"],"names":[],"mappings":"AAAA;EACE,iBAAA;EACA,WAAA;EACA,iBAAA;EACA,aAAA;EACA,gBAAA;EACA,sBAAA;EACA,uBAAA;EACA,yBAAA;ACCF;ADEI;EACE,mBAAA;ACAN","file":"ChatPage.css"}
+{"version":3,"sources":["ChatPage.scss","ChatPage.css"],"names":[],"mappings":"AAAA;EACE,iBAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,yBAAA;ACCF;ADEI;EACE,yBAAA;ACAN","file":"ChatPage.css"}

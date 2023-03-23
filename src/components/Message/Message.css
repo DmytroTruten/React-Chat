@@ -1,25 +1,38 @@
-.ChatBubble {
+.UserMessageContainer {
+  display: flex;
+  align-items: end;
+}
+.UserMessageContainer .UserAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.UserMessageContainer .UserAvatar.current {
+  display: none;
+}
+.UserMessageContainer .ChatBubble {
   display: flex;
   overflow-wrap: anywhere;
   max-width: 500px;
   background-color: #61dafb;
   padding: 10px;
 }
-.ChatBubble.right {
+.UserMessageContainer .ChatBubble.right {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 5px;
 }
-.ChatBubble.left {
+.UserMessageContainer .ChatBubble.left {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 20px;
 }
-.ChatBubble .UserAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
+.UserMessageContainer .ChatBubble .UserName {
+  font-weight: 700;
+}
+.UserMessageContainer .ChatBubble .UserMessageDatetime {
+  text-align: end;
 }/*# sourceMappingURL=Message.css.map */

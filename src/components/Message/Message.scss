@@ -55,7 +55,7 @@
 
 @media (min-width: 0px) and (max-width: 576px) {
   .UserMessageContainer {
-    &.right {
+    &.right, &.left {
       .ChatBubble {
         max-width: 70%;
       }

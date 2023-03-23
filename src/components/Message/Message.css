@@ -44,7 +44,7 @@
 }
 
 @media (min-width: 0px) and (max-width: 576px) {
-  .UserMessageContainer.right .ChatBubble {
+  .UserMessageContainer.right .ChatBubble, .UserMessageContainer.left .ChatBubble {
     max-width: 70%;
   }
 }/*# sourceMappingURL=Message.css.map */

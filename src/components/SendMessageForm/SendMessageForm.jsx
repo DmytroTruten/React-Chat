@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { auth, db } from "../../firebase";
+import { auth, db, storage } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import sendIcon from "../../assets/send-icon.svg";
-import "./SendMessageForm.css"
+import "./SendMessageForm.css";
+import { ref, uploadBytes } from "firebase/storage";
 
-function SendMessageForm({scroll}) {
+function SendMessageForm({ scroll }) {
   const [message, setMessage] = useState("");
+  const [image, setImage] = useState(null);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -22,7 +24,16 @@ function SendMessageForm({scroll}) {
       uid,
     });
     setMessage("");
-    scroll.current.scrollIntoView({behavior: "smooth"})
+    scroll.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleImageUpload = () => {
+    if(image === null) return;
+
+    const imageRef = ref(storage, `images/${image.name}`)
+    uploadBytes(imageRef, image).then(() => {
+      alert("Img uploaded")
+    })
   };
 
   return (
@@ -41,9 +52,19 @@ function SendMessageForm({scroll}) {
           setMessage(e.target.value);
         }}
       />
+      <input
+        type="file"
+        onChange={(event) => {
+          setImage(event.target.files[0]);
+        }}
+      />
+      <button type="button" onClick={handleImageUpload}>
+        Upload
+      </button>
       <button className="SendMessageButton" type="submit">
         <img src={sendIcon} alt="" />
       </button>
+      {image ? image.name : null}
     </form>
   );
 }

@@ -3,15 +3,7 @@
   display: flex;
   flex-direction: column;
   background-color: #282c34;
-  padding: 50px 0;
+  padding: 60px 0;
   overflow-y: auto;
-
-  .ChatBubble {
-    &.right {
-      margin: 2px 10px 2px auto;
-    }
-    &.left {
-      margin: 2px auto 2px 50px;
-    }
-  }
+  overflow-x: hidden;
 }

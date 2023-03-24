@@ -22,10 +22,23 @@
     margin-right: 20px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+  }
 
-    img {
-      height: 100%;
-    }
+  .ImageName {
+    color: #8c8c8c;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  img {
+    height: 100%;
+    cursor: pointer;
   }
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { auth, db, storage } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import sendIcon from "../../assets/send-icon.svg";
+import attachIcon from "../../assets/attach-icon.svg";
 import "./SendMessageForm.css";
 import { ref, uploadBytes } from "firebase/storage";
 
@@ -28,12 +29,12 @@ function SendMessageForm({ scroll }) {
   };
 
   const handleImageUpload = () => {
-    if(image === null) return;
+    if (image === null) return;
 
-    const imageRef = ref(storage, `images/${image.name}`)
+    const imageRef = ref(storage, `images/${image.name}`);
     uploadBytes(imageRef, image).then(() => {
-      alert("Img uploaded")
-    })
+      setImage(null)
+    });
   };
 
   return (
@@ -52,8 +53,12 @@ function SendMessageForm({ scroll }) {
           setMessage(e.target.value);
         }}
       />
+      <label htmlFor="FileUpload">
+        <img src={attachIcon} alt="" />
+      </label>
       <input
         type="file"
+        id="FileUpload"
         onChange={(event) => {
           setImage(event.target.files[0]);
         }}
@@ -64,7 +69,7 @@ function SendMessageForm({ scroll }) {
       <button className="SendMessageButton" type="submit">
         <img src={sendIcon} alt="" />
       </button>
-      {image ? image.name : null}
+      <p className="ImageName">{image ? image.name : null}</p>
     </form>
   );
 }

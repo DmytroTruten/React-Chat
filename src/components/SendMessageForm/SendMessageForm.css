@@ -21,8 +21,19 @@
   margin-right: 20px;
   background-color: transparent;
   border: none;
-  cursor: pointer;
 }
-.SendMessageForm .SendMessageButton img {
+.SendMessageForm .ImageName {
+  color: #8c8c8c;
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.SendMessageForm input[type=file] {
+  display: none;
+}
+.SendMessageForm img {
   height: 100%;
+  cursor: pointer;
 }/*# sourceMappingURL=SendMessageForm.css.map */

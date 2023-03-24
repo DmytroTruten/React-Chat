@@ -1,9 +1,10 @@
 .ChatPage {
-  min-height: 100vh;
-  margin: 50px 0px;
+  height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
   background-color: #282c34;
+  padding: 50px 0;
+  overflow-y: auto;
 }
 .ChatPage .ChatBubble.right {
   margin: 2px 10px 2px auto;

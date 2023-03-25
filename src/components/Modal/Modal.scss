@@ -1,12 +1,12 @@
 .Modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
   background-color: rgba($color: #000000, $alpha: 0.5);
 
@@ -16,5 +16,43 @@
 
   .ImageName {
     color: #8c8c8c;
+  }
+
+  .FileUploadContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    height: 40%;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #282e33;
+  }
+
+  .ModalButtonsContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .UploadButton, .CancelButton {
+    width: 30%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: #61dafb;
+    font-size: 16px;
+    align-self: end;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #313b43;
+    }
+
+    &:active {
+      background-color: #3c474f;
+    }
   }
 }

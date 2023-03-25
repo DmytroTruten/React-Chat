@@ -50,8 +50,22 @@ const ChatPage = () => {
       ))}
       <span ref={scroll}></span>
       <SendMessageForm scroll={scroll} setImage={setImage} />
-      {image === null && <Modal image={image} visibility={"hidden"} />}
-      {image !== null && <Modal image={image} visibility={""} />}
+      {image === null && (
+        <Modal
+          image={image}
+          onImageUpload={handleImageUpload}
+          onImageCancel={() => {setImage(null)}}
+          visibility={"hidden"}
+        />
+      )}
+      {image !== null && (
+        <Modal
+          image={image}
+          onImageUpload={handleImageUpload}
+          onImageCancel={() => {setImage(null)}}
+          visibility={""}
+        />
+      )}
     </div>
   );
 };

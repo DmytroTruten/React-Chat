@@ -22,14 +22,6 @@
   background-color: transparent;
   border: none;
 }
-.SendMessageForm .ImageName {
-  color: #8c8c8c;
-  position: absolute;
-  top: -30px;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
 .SendMessageForm input[type=file] {
   display: none;
 }

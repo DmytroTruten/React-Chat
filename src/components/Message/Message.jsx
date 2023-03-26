@@ -1,12 +1,18 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import moment from "moment";
 import "./Message.css";
 
-function Message({ message }) {
+function Message({ message, imageList }) {
   const [user] = useAuthState(auth);
 
+  const handleImagesRendering = () => {
+    return imageList.map((imageUrl, index) => (
+      <img key={index} src={imageUrl} alt="" />
+    ));
+  };
+  
   return (
     <div
       className={`UserMessageContainer ${
@@ -24,11 +30,12 @@ function Message({ message }) {
           </p>
         </div>
       </div>
+      <div className="ImageContainer">
+        {handleImagesRendering()}
+      </div>
       <div className="UserAvatarContainer">
         <img
-          className={`UserAvatar ${
-            message.uid === user.uid ? "current" : ""
-          }`}
+          className={`UserAvatar ${message.uid === user.uid ? "current" : ""}`}
           src={message.avatar}
           alt="UserAvatar"
         />

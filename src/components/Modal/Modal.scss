@@ -37,13 +37,13 @@
   }
 
   .UploadButton, .CancelButton {
-    width: 30%;
     height: 40px;
     background-color: transparent;
     border: none;
     border-radius: 5px;
     color: #61dafb;
     font-size: 16px;
+    padding: 5px 15px;
     align-self: end;
     cursor: pointer;
 
@@ -56,3 +56,21 @@
     }
   }
 }
+
+
+@media (min-width: 0px) and (max-width: 576px) {
+  .Modal {
+    .FileUploadContainer {
+      width: 70%;
+    }
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .Modal {
+    .FileUploadContainer {
+      width: 45%;
+    }
+  }
+}
+

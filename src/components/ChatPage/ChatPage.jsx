@@ -6,8 +6,9 @@ import {
   onSnapshot,
   limit,
 } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../firebase";
+import { v4 } from "uuid";
 import Message from "../Message/Message";
 import SendMessageForm from "../SendMessageForm/SendMessageForm";
 import Modal from "../Modal/Modal";
@@ -15,8 +16,10 @@ import "./ChatPage.css";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
+  const [imageList, setImageList] = useState([]);
   const [image, setImage] = useState(null);
   const scroll = useRef();
+  const imageListRef = ref(storage, "/images");
 
   useEffect(() => {
     const q = query(
@@ -34,11 +37,27 @@ const ChatPage = () => {
     return () => unsubscribe;
   }, []);
 
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item)
+          .then((url) => {
+            setImageList((prev) => [...prev, url]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    });
+  }, []);
+
   const handleImageUpload = () => {
     if (image === null) return;
-
-    const imageRef = ref(storage, `images/${image.name}`);
-    uploadBytes(imageRef, image).then(() => {
+    const imageRef = ref(storage, `images/${image.name + v4()}`);
+    uploadBytes(imageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((prev) => [...prev, url]);
+      });
       setImage(null);
     });
   };
@@ -46,26 +65,18 @@ const ChatPage = () => {
   return (
     <div className="ChatPage">
       {messages?.map((message) => (
-        <Message key={message.id} message={message} />
+        <Message key={message.id} message={message} imageList={imageList} />
       ))}
       <span ref={scroll}></span>
       <SendMessageForm scroll={scroll} setImage={setImage} />
-      {image === null && (
-        <Modal
-          image={image}
-          onImageUpload={handleImageUpload}
-          onImageCancel={() => {setImage(null)}}
-          visibility={"hidden"}
-        />
-      )}
-      {image !== null && (
-        <Modal
-          image={image}
-          onImageUpload={handleImageUpload}
-          onImageCancel={() => {setImage(null)}}
-          visibility={""}
-        />
-      )}
+      <Modal
+        image={image}
+        onImageUpload={handleImageUpload}
+        onImageCancel={() => {
+          setImage(null);
+        }}
+        visibility={image === null ? "hidden" : ""}
+      />
     </div>
   );
 };

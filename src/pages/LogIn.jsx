@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import "../styles/LogIn/LogIn.css";
 
 const LogIn = () => {
@@ -21,7 +21,13 @@ const LogIn = () => {
             placeholder="Password"
           ></Form.Control>
         </Form.Group>
-        <Button className="mt-3" type="submit">Sign in</Button>
+        <Button className="my-3" type="submit">
+          Sign in
+        </Button>
+        <div className="d-flex justify-content-center w-100">
+          <p className="mb-0 me-2">You don't have an account? </p>
+          <a href="#">Sign Up</a>
+        </div>
       </Form>
     </div>
   );

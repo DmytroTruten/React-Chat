@@ -4,6 +4,7 @@
 
 .LogInForm {
   background-color: #282e33;
+  border-radius: 20px;
 }
 .LogInForm .LogInSubheader {
   color: #8c8c8c;

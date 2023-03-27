@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/SignUp/SignUp.css"
@@ -31,7 +32,7 @@ const SignUp = () => {
         </Button>
         <div className="d-flex justify-content-center w-100">
           <p className="mb-0 me-2">You already have an account? </p>
-          <a href="#">Log in</a>
+          <Link to="/">Log in</Link>
         </div>
       </Form>
     </div>

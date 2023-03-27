@@ -1,0 +1,26 @@
+@import "../variables";
+
+.SignUpContainer {
+  background-color: $main-background-color;
+}
+
+.SignUpForm {
+  background-color: $secondary-background-color;
+  border-radius: 20px;
+
+  .SignUpSubheader {
+    color: #8c8c8c;
+  }
+
+  .SignUpDisplayNameControl, .SignUpEmailControl, .SignUpPasswordControl {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    border-radius: 0;  
+    border-bottom: 1px solid $main-lightblue;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

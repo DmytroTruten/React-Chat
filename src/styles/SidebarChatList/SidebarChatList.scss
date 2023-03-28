@@ -1,3 +1,25 @@
+.SidebarChatList {
+  overflow-y: auto;
+
+  &:hover {
+    &::-webkit-scrollbar-track {
+      background-color: #3e4348;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #7d8084;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: transparent;
+  }
+}
+
 .SidebarChat {
   padding: 10px;
   cursor: pointer;
@@ -19,7 +41,7 @@
   font-weight: bold;
 }
 
-.SidebarChatTime{
+.SidebarChatTime {
   font-size: 12px;
 }
 

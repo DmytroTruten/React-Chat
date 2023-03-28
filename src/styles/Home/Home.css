@@ -7,9 +7,13 @@
   background-color: #282e33;
 }
 
+.SidebarHeader {
+  padding: 12px 16px;
+}
+
 .SidebarSearchControl {
   width: 80%;
-  height: 30px;
+  height: 32px;
   background-color: #3d444b;
   color: #fff;
   border: none;

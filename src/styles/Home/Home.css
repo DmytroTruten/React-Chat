@@ -1,0 +1,38 @@
+.ChatContainer {
+  height: 80%;
+}
+
+.Sidebar {
+  width: 30%;
+  background-color: #282e33;
+}
+
+.SidebarSearchControl {
+  width: 80%;
+  height: 30px;
+  background-color: #3a4047;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+}
+.SidebarSearchControl::-moz-placeholder {
+  color: #7e7e7e;
+}
+.SidebarSearchControl::placeholder {
+  color: #7e7e7e;
+}
+
+.Settings {
+  width: 20%;
+}
+.Settings span {
+  display: block;
+  width: 35%;
+  height: 2px;
+  background-color: #757676;
+}
+
+.Chat {
+  width: 70%;
+  background-color: #18191d;
+}/*# sourceMappingURL=Home.css.map */

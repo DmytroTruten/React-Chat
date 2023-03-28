@@ -22,9 +22,9 @@ const LogIn = () => {
             placeholder="Password"
           ></Form.Control>
         </Form.Group>
-        <Button className="my-3" type="submit">
-          Sign in
-        </Button>
+        <Link to="/Home">
+          <Button className="my-3" type="submit">Sign In</Button>
+        </Link>
         <div className="d-flex justify-content-center w-100">
           <p className="mb-0 me-2">You don't have an account? </p>
           <Link to="/SignUp">Sign Up</Link>

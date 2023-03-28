@@ -1,0 +1,38 @@
+@import "../variables";
+
+.ChatContainer {
+  height: 80%;
+}
+
+.Sidebar {
+  width: 30%;
+  background-color: $secondary-background-color;
+}
+
+.SidebarSearchControl {
+  width: 80%;
+  height: 30px;
+  background-color: #3a4047;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+
+  &::placeholder {
+    color: #7e7e7e;
+  }
+}
+
+.Settings {
+  width: 20%;
+  span {
+    display: block;
+    width: 35%;
+    height: 2px;
+    background-color: #757676;
+  }
+}
+
+.Chat {
+  width: 70%;
+  background-color: $main-background-color;
+}

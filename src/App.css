@@ -12,6 +12,10 @@ html, body {
   height: 100%;
 }
 
+p {
+  margin: 0;
+}
+
 p, label, h1 {
   color: #61dbfb;
 }

@@ -1,0 +1,28 @@
+.SidebarChat {
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #353c43;
+  }
+}
+
+.SidebarChatImgContainer {
+  height: 43px;
+  min-width: 43px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.SidebarChatUsername {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.SidebarChatTime{
+  font-size: 12px;
+}
+
+.SidebarChatLastMsg {
+  font-size: 14px;
+}

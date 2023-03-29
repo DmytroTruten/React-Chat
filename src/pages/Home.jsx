@@ -2,6 +2,8 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import "../styles/Home/Home.css";
+import Messages from "../components/Messages";
+import Input from "../components/Input";
 
 const Home = () => {
   return (
@@ -9,7 +11,9 @@ const Home = () => {
       <div className="ChatContainer col-8 d-flex px-0">
         <Sidebar />
         <div className="Chat">
-        <Navbar />
+          <Navbar />
+          <Messages />
+          <Input />
         </div>
       </div>
     </div>

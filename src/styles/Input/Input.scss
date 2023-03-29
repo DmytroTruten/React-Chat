@@ -1,0 +1,37 @@
+@import "../variables";
+
+.Input {
+  height: 45px;
+  padding: 8px 16px 8px 0px;
+  border-radius: 0;
+  background-color: $secondary-background-color;
+  border: none;
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+
+  &::placeholder {
+    font-weight: 400;
+  }
+
+  &:focus {
+    background-color: $secondary-background-color;
+    box-shadow: none;
+    caret-color: #fff;
+    color: #fff;
+    font-weight: 300;
+  }
+}
+
+.AttachButton {
+  width: 55px;
+  height: 45px;
+  cursor: pointer;
+  background-color: $secondary-background-color;
+  border: none;
+  border-left: 1px solid #242a2f;
+}
+
+.AttachIcon {
+  width: 30px;
+}

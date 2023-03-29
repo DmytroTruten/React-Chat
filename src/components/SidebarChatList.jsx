@@ -6,7 +6,7 @@ const SidebarChatList = () => {
   return (
     <div className="SidebarChatList">
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -18,7 +18,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -30,7 +30,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -42,7 +42,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -54,7 +54,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -66,7 +66,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -78,7 +78,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -90,7 +90,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -102,7 +102,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">
@@ -114,7 +114,7 @@ const SidebarChatList = () => {
         </div>
       </div>
       <div className="SidebarChat d-flex">
-        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center me-2">
+        <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
           <img src={logo} alt="" />
         </div>
         <div className="SidebarChatInfo d-flex flex-column w-100">

@@ -5,7 +5,7 @@ const Navbar = () => {
   return(
     <div className='Navbar d-flex flex-column'>
       <p className='NavbarUsername'>Username Example</p>
-      <p className='NavbarUserLastAppearance'>online</p>
+      <p className='NavbarUserLastSeen'>online</p>
     </div>
   )
 }

@@ -34,6 +34,15 @@
   border-left: 1px solid #242a2f;
 }
 
-.AttachIcon {
-  width: 30px;
+.SendButton {
+  width: 55px;
+  height: 45px;
+  cursor: pointer;
+  background-color: #282e33;
+  border: none;
+}
+
+.AttachIcon,
+.SendIcon {
+  width: 32px;
 }/*# sourceMappingURL=Input.css.map */

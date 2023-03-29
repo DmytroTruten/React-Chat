@@ -1,0 +1,10 @@
+@mixin input-button($button) {
+  width: 55px;
+  height: 45px;
+  cursor: pointer;
+  background-color: $secondary-background-color;
+  border: none;
+  @if $button == attach {
+    border-left: 1px solid #242a2f;
+  }
+}

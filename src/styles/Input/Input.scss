@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../mixins";
 
 .Input {
   height: 45px;
@@ -24,14 +25,14 @@
 }
 
 .AttachButton {
-  width: 55px;
-  height: 45px;
-  cursor: pointer;
-  background-color: $secondary-background-color;
-  border: none;
-  border-left: 1px solid #242a2f;
+  @include input-button(attach);
 }
 
-.AttachIcon {
-  width: 30px;
+.SendButton {
+  @include input-button(send);
+}
+
+.AttachIcon,
+.SendIcon {
+  width: 32px;
 }

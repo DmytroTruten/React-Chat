@@ -1,0 +1,35 @@
+.MessageContainer {
+  max-width: 70%;
+  color: #fff;
+  font-size: 14px;
+  background-color: #2a2f33;
+  padding: 3px 15px;
+  margin: 1px 0px;
+  border-radius: 20px 20px 0px 20px;
+  position: relative;
+}
+.MessageContainer::before {
+  content: "";
+  background-color: transparent;
+  position: absolute;
+  right: -20px;
+  bottom: 0px;
+  height: 10px;
+  width: 20px;
+  border-radius: 0px 0px 0px 15px;
+  box-shadow: -10px 0px 0px #282e33;
+}
+
+.Message {
+  margin: 3px 0px;
+  overflow-wrap: anywhere;
+}
+
+.MessageTime {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 0px 10px 0px 15px;
+  font-size: 12px;
+  align-self: end;
+}/*# sourceMappingURL=Message.css.map */

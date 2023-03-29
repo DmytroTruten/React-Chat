@@ -1,3 +1,16 @@
 .Messages {
-  height: calc(100% - 101px);
+  height: calc(100% - 102px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 9px;
+}
+.Messages:hover::-webkit-scrollbar-thumb {
+  background-color: #7d8084;
+}
+.Messages::-webkit-scrollbar {
+  width: 7px;
+}
+.Messages::-webkit-scrollbar-track, .Messages::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
 }/*# sourceMappingURL=Messages.css.map */

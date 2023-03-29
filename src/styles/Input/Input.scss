@@ -1,8 +1,12 @@
 @import "../variables";
 @import "../mixins";
 
+.InputContainer {
+  height: 46px;
+}
+
 .Input {
-  height: 45px;
+  height: 100%;
   padding: 8px 16px 8px 0px;
   border-radius: 0;
   background-color: $secondary-background-color;

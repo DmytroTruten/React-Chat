@@ -1,6 +1,6 @@
 @mixin input-button($button) {
   width: 55px;
-  height: 45px;
+  height: 100%;
   cursor: pointer;
   background-color: $secondary-background-color;
   border: none;

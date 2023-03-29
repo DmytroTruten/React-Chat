@@ -1,5 +1,9 @@
+.InputContainer {
+  height: 46px;
+}
+
 .Input {
-  height: 45px;
+  height: 100%;
   padding: 8px 16px 8px 0px;
   border-radius: 0;
   background-color: #282e33;
@@ -27,7 +31,7 @@
 
 .AttachButton {
   width: 55px;
-  height: 45px;
+  height: 100%;
   cursor: pointer;
   background-color: #282e33;
   border: none;
@@ -36,7 +40,7 @@
 
 .SendButton {
   width: 55px;
-  height: 45px;
+  height: 100%;
   cursor: pointer;
   background-color: #282e33;
   border: none;

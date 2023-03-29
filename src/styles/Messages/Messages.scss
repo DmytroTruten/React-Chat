@@ -1,3 +1,24 @@
+@import "../variables";
+
 .Messages {
-  height: calc(100% - 101px);
+  height: calc(100% - 102px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 9px;
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: #7d8084;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: transparent;
+  }
 }

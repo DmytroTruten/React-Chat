@@ -4,7 +4,19 @@ import "../styles/Messages/Messages.css"
 
 const Messages = () => {
   return (
-    <div className="Messages d-flex flex-column ">
+    <div className="Messages d-flex flex-column align-items-end">
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
+      <Message/>
       <Message/>
       <Message/>
       <Message/>

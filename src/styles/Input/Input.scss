@@ -30,6 +30,12 @@
 
 .AttachButton {
   @include input-button(attach);
+  &:hover {
+    .AttachIcon {
+      filter: brightness(0) saturate(100%) invert(78%) sepia(6%)
+        hue-rotate(101deg) contrast(93%);
+    }
+  }
 }
 
 .SendButton {

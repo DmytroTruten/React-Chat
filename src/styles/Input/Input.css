@@ -37,6 +37,9 @@
   border: none;
   border-left: 1px solid #242a2f;
 }
+.AttachButton:hover .AttachIcon {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(6%) hue-rotate(101deg) contrast(93%);
+}
 
 .SendButton {
   width: 55px;

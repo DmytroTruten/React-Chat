@@ -1,13 +1,36 @@
 import React from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "../styles/SignUp/SignUp.css"
+import "../styles/SignUp/SignUp.css";
 
 const SignUp = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const displayName = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
+
   return (
     <div className="SignUpContainer row justify-content-center align-items-center h-100 mx-0 my-0">
-      <Form className="SignUpForm col-4 d-flex flex-column align-items-center py-5">
+      <Form
+        className="SignUpForm col-4 d-flex flex-column align-items-center py-5"
+        onSubmit={handleSubmit}
+      >
         <h1 className="SignUpHeader">React Chat</h1>
         <h5 className="SignUpSubheader">Sign Up</h5>
         <Form.Group>
@@ -36,7 +59,7 @@ const SignUp = () => {
         </div>
       </Form>
     </div>
-  )
-}
+  );
+};
 
 export default SignUp;

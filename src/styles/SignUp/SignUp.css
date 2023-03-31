@@ -9,13 +9,21 @@
 .SignUpForm .SignUpSubheader {
   color: #8c8c8c;
 }
-.SignUpForm .SignUpDisplayNameControl, .SignUpForm .SignUpEmailControl, .SignUpForm .SignUpPasswordControl {
+.SignUpForm .SignUpDisplayNameControl,
+.SignUpForm .SignUpEmailControl,
+.SignUpForm .SignUpPasswordControl {
   background-color: transparent;
   color: #fff;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #61dbfb;
 }
-.SignUpForm .SignUpDisplayNameControl:focus, .SignUpForm .SignUpEmailControl:focus, .SignUpForm .SignUpPasswordControl:focus {
+.SignUpForm .SignUpDisplayNameControl:focus,
+.SignUpForm .SignUpEmailControl:focus,
+.SignUpForm .SignUpPasswordControl:focus {
   box-shadow: none;
+}
+
+.ErrorMsg {
+  color: red;
 }/*# sourceMappingURL=SignUp.css.map */

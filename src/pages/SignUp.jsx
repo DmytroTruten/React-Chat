@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/SignUp/SignUp.css";
 
 const SignUp = () => {
-  const handleSubmit = (e) => {
+  const [error, setError] = useState(false)
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await setDoc(doc(db, "users", response.user.uid), {
+        uid: response.user.uid,
+        displayName,
+        email,
+        password,
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    } catch (error) {
+      setError(error);
+      console.log(error);
+    }
   };
 
   return (
@@ -50,6 +59,7 @@ const SignUp = () => {
             placeholder="Password"
           ></Form.Control>
         </Form.Group>
+        {error && <p className="ErrorMsg">Something went wrong...</p>}
         <Button className="my-3" type="submit">
           Sign up
         </Button>

@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/SignUp/SignUp.css";
 
 const SignUp = () => {
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -27,7 +28,8 @@ const SignUp = () => {
         displayName,
         email,
         password,
-      })
+      });
+      navigate("/Home");
     } catch (error) {
       setError(error);
       console.log(error);

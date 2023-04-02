@@ -29,6 +29,9 @@ const SignUp = () => {
         email,
         password,
       });
+      await updateProfile(response.user, {
+        displayName,
+      });
       navigate("/Home");
     } catch (error) {
       setError(error);

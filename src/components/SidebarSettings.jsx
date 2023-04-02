@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from "react-bootstrap/Button";
 
-const SidebarSettings = (props) => {
+const SidebarSettings = ({state}) => {
   return (
-    <div className={`SidebarSettings ${props.state}`}>
+    <div className={`SidebarSettings ${state}`}>
       <Button className='LogoutButton' size='sm'>
         Logout
       </Button>

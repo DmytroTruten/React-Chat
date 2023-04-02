@@ -6,6 +6,7 @@
   min-width: 400px;
   resize: both;
   overflow: auto;
+  position: relative;
 }
 
 .Sidebar {
@@ -91,4 +92,22 @@
 .Chat {
   width: 100%;
   background-color: $main-background-color;
+  position: relative;
+}
+
+.Overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

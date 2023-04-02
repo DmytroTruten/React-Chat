@@ -11,9 +11,25 @@
 .Sidebar {
   width: 30%;
   min-width: 260px;
-  background-color: $secondary-background-color;
+  position: relative;
   resize: horizontal;
   overflow: auto;
+  background-color: $secondary-background-color;
+}
+
+.SidebarSettings {
+  height: 100%;
+  position: absolute;
+  overflow-x: hidden;
+  transition: width 0.2s ease-in-out;
+  background-color: $secondary-background-color;
+  z-index: 1;
+  &.closed {
+    width: 0;
+  }
+  &.opened {
+    width: 100%;
+  }
 }
 
 .SidebarHeader {

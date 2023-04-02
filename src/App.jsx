@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Home from "./pages/Home";
@@ -8,14 +8,26 @@ import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to={"/"} />;
+    }
+    return children;
+  };
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LogIn />} />
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/Home" element={<Home />} />
+        <Route
+          path="/Home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

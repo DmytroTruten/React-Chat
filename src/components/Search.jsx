@@ -13,7 +13,6 @@ const Search = (props) => {
   };
 
   const handleUserSearch = async () => {
-    console.log("enter");
     const q = query(
       collection(db, "users"),
       where("displayName", "==", username)

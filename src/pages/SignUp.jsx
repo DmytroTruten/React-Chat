@@ -29,6 +29,8 @@ const SignUp = () => {
         email,
         password,
       });
+      await setDoc(doc(db, "usersChats", response.user.uid), {});
+
       await updateProfile(response.user, {
         displayName,
       });

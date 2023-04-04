@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { ref, uploadBytes } from "firebase/storage";
-import { signOut } from "firebase/auth";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { signOut, updateProfile } from "firebase/auth";
 import { auth, storage } from "../firebase";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import logo from "../assets/react.svg";
 
 const SidebarSettings = ({ state }) => {
   const { currentUser } = useContext(AuthContext);
@@ -13,9 +12,15 @@ const SidebarSettings = ({ state }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const file = e.target[0].files[0];
-    const storageRef = ref(storage, 'images/' + file.name);
+    const storageRef = ref(storage, "images/" + file.name);
     uploadBytes(storageRef, file).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
+      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        await updateProfile(currentUser, {
+          photoURL: downloadURL,
+        });
+        console.log("Image uploaded");
+        window.location.reload()
+      });
     });
   };
 
@@ -27,23 +32,25 @@ const SidebarSettings = ({ state }) => {
       >
         <Form.Control className="ImagePicker" type="file" id="file" />
         <label htmlFor="file">
-          <div className="UserAvatarContainer my-2">
-            <img src={logo} alt="" />
+          <div className="UserAvatarContainer mt-2">
+            <img className="UserAvatar" src={currentUser.photoURL} alt="" />
           </div>
         </label>
-        <p>{currentUser.displayName}</p>
-        <Button type="submit" size="sm">
-          Upload
-        </Button>
-        <Button
-          className="LogoutButton my-2"
-          size="sm"
-          onClick={() => {
-            signOut(auth);
-          }}
-        >
-          Logout
-        </Button>
+        <p className="my-2">{currentUser.displayName}</p>
+        <div className="d-flex flex-column">
+          <Button type="submit" size="sm">
+            Upload Image
+          </Button>
+          <Button
+            className="LogoutButton my-2"
+            size="sm"
+            onClick={() => {
+              signOut(auth);
+            }}
+          >
+            Logout
+          </Button>
+        </div>
       </form>
     </div>
   );

@@ -24,16 +24,17 @@ const SignUp = () => {
         email,
         password
       );
-
-      await setDoc(doc(db, "users", response.user.uid), {
-        uid: response.user.uid,
-        displayName,
-        email,
-        password,
-      });
       await setDoc(doc(db, "usersChats", response.user.uid), {});
 
       getDownloadURL(storageRef).then(async (downloadURL) => {
+        await setDoc(doc(db, "users", response.user.uid), {
+          uid: response.user.uid,
+          displayName,
+          email,
+          password,
+          photoURL: downloadURL,
+        });
+        
         await updateProfile(response.user, {
           displayName,
           photoURL: downloadURL,

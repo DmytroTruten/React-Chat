@@ -31,7 +31,6 @@
   min-width: 43px;
   margin-right: 12px;
   border-radius: 50%;
-  background-color: #fff;
 }
 
 .SidebarChatUsername {
@@ -45,4 +44,10 @@
 
 .SidebarChatLastMsg {
   font-size: 14px;
+}
+
+.UserAvatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }

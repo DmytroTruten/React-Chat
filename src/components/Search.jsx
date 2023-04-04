@@ -38,17 +38,31 @@ const Search = (props) => {
         <span></span>
         <span></span>
       </div>
-      <Form.Control
-        className="SidebarSearchControl"
-        type="text"
-        placeholder="Search"
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-        onKeyDown={handleKeyDown}
-      />
-      {error && <p>User not found...</p>}
-      {user && <p>{user.displayName}</p>}
+      <div className="d-flex flex-column">
+        <Form.Control
+          className="SidebarSearchControl"
+          type="text"
+          placeholder="Search"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          onKeyDown={handleKeyDown}
+        />
+        {error && <p>User not found...</p>}
+        {user && (
+          <div className="SidebarChat d-flex">
+            <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
+              <img className="UserAvatar" src={user.photoURL} alt="" />
+            </div>
+            <div className="SidebarChatInfo d-flex flex-column w-100">
+              <div className="SidebarChatUsernameContainer d-flex justify-content-between">
+                <p className="SidebarChatUsername">{user.displayName}</p>
+              </div>
+              <p className="SidebarChatLastMsg">Last Message Example</p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

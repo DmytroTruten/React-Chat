@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { signOut, updateProfile } from "firebase/auth";
-import { auth, storage } from "../firebase";
+import { auth, storage, db } from "../firebase";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -19,9 +20,14 @@ const SidebarSettings = ({ state }) => {
     e.preventDefault();
     const file = e.target[0].files[0];
     const storageRef = ref(storage, "images/" + file.name);
+    const photoRef = doc(db, "users", currentUser.uid);
+
     try {
       uploadBytes(storageRef, file).then((snapshot) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+          await updateDoc(photoRef, {
+            photoURL: downloadURL,
+          })
           await updateProfile(currentUser, {
             photoURL: downloadURL,
           });

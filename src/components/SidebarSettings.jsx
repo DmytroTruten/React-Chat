@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { signOut, updateProfile } from "firebase/auth";
@@ -7,7 +7,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const SidebarSettings = ({ state }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
   const { currentUser } = useContext(AuthContext);
+
+  const handleInputFile = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +24,7 @@ const SidebarSettings = ({ state }) => {
           photoURL: downloadURL,
         });
         console.log("Image uploaded");
-        window.location.reload()
+        window.location.reload();
       });
     });
   };
@@ -30,7 +35,12 @@ const SidebarSettings = ({ state }) => {
         className="SidebarSettingsInnerContainer p-3"
         onSubmit={handleSubmit}
       >
-        <Form.Control className="ImagePicker" type="file" id="file" />
+        <Form.Control
+          className="ImagePicker"
+          type="file"
+          id="file"
+          onChange={handleInputFile}
+        />
         <label htmlFor="file">
           <div className="UserAvatarContainer mt-2">
             <img className="UserAvatar" src={currentUser.photoURL} alt="" />
@@ -38,9 +48,11 @@ const SidebarSettings = ({ state }) => {
         </label>
         <p className="my-2">{currentUser.displayName}</p>
         <div className="d-flex flex-column">
-          <Button type="submit" size="sm">
-            Upload Image
-          </Button>
+          {selectedFile && (
+            <Button type="submit" size="sm">
+              Upload Image
+            </Button>
+          )}
           <Button
             className="LogoutButton my-2"
             size="sm"

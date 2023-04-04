@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { getDownloadURL, ref } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -15,6 +16,7 @@ const SignUp = () => {
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
+    const storageRef = ref(storage, "images/default-avatar.jpg");
 
     try {
       const response = await createUserWithEmailAndPassword(
@@ -31,12 +33,15 @@ const SignUp = () => {
       });
       await setDoc(doc(db, "usersChats", response.user.uid), {});
 
-      await updateProfile(response.user, {
-        displayName,
+      getDownloadURL(storageRef).then(async (downloadURL) => {
+        await updateProfile(response.user, {
+          displayName,
+          photoURL: downloadURL,
+        });
       });
       navigate("/Home");
     } catch (error) {
-      setError(error);
+      setError(true);
       console.log(error);
     }
   };

@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form";
 
 const SidebarSettings = ({ state }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [error, setError] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
   const handleInputFile = (e) => {
@@ -18,15 +19,20 @@ const SidebarSettings = ({ state }) => {
     e.preventDefault();
     const file = e.target[0].files[0];
     const storageRef = ref(storage, "images/" + file.name);
-    uploadBytes(storageRef, file).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-        await updateProfile(currentUser, {
-          photoURL: downloadURL,
+    try {
+      uploadBytes(storageRef, file).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+          await updateProfile(currentUser, {
+            photoURL: downloadURL,
+          });
+          console.log("Image uploaded");
+          window.location.reload();
         });
-        console.log("Image uploaded");
-        window.location.reload();
       });
-    });
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
   };
 
   return (
@@ -46,6 +52,7 @@ const SidebarSettings = ({ state }) => {
             <img className="UserAvatar" src={currentUser.photoURL} alt="" />
           </div>
         </label>
+        {error && (<p className="ErrorMsg">Something went wrong...</p>)}
         <p className="my-2">{currentUser.displayName}</p>
         <div className="d-flex flex-column">
           {selectedFile && (

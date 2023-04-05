@@ -1,1 +1,1 @@
-{"version":3,"sources":["Messages.scss","Messages.css"],"names":[],"mappings":"AAEA;EACE,0BAAA;EACA,gBAAA;EACA,kBAAA;EACA,YAAA;ACDF;ADII;EACE,yBAAA;ACFN;ADME;EACE,UAAA;ACJJ;ADOE;EAEE,mBAAA;EACA,6BAAA;ACNJ","file":"Messages.css"}
+{"version":3,"sources":["Messages.scss","Messages.css","../_variables.scss"],"names":[],"mappings":"AAEA;EACE,0BAAA;EACA,gBAAA;EACA,kBAAA;EACA,YAAA;ACDF;ADII;EACE,yBAAA;ACFN;ADME;EACE,UAAA;ACJJ;ADOE;EAEE,mBAAA;EACA,6BAAA;ACNJ;;ADUA;EACE,iBAAA;EACA,mBAAA;EACA,yBAAA;ACPF;;ADUA;EACE,cE9Be;ADuBjB","file":"Messages.css"}

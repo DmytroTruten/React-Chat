@@ -13,4 +13,14 @@
 .Messages::-webkit-scrollbar-track, .Messages::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: transparent;
+}
+
+.IntroTextContainer {
+  padding: 2px 12px;
+  border-radius: 20px;
+  background-color: #2f343b;
+}
+
+.IntroText {
+  color: #61dbfb;
 }/*# sourceMappingURL=Messages.css.map */

@@ -22,6 +22,13 @@ const Messages = () => {
 
   return (
     <div className="Messages d-flex flex-column align-items-end">
+      {messages && (
+        <div className="IntroTextContainer align-self-center my-auto">
+          <p className="IntroText text-center ">
+            Choose who you would like to write to
+          </p>
+        </div>
+      )}
       {messages?.map((message) => (
         <Message message={message} key={message.id} />
       ))}

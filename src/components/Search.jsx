@@ -1,12 +1,24 @@
-import React, { useState } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import React, { useState, useContext } from "react";
+import {
+  collection,
+  query,
+  where,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import Form from "react-bootstrap/Form";
+import { AuthContext } from "../context/AuthContext";
 
 const Search = (props) => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
+  const { currentUser } = useContext(AuthContext);
 
   const handleKeyDown = (e) => {
     e.code == "Enter" && handleUserSearch();
@@ -24,7 +36,42 @@ const Search = (props) => {
         setUser(doc.data());
       });
     } catch (error) {
-      setError(error);
+      setError(true);
+    }
+  };
+
+  const handleUserChatSelect = async () => {
+    const combinedID =
+      currentUser.uid > user.uid
+        ? currentUser.uid + user.uid
+        : user.uid + currentUser.uid;
+    try {
+      const response = await getDoc(doc(db, "chats", combinedID));
+      if (!response.exists()) {
+        await setDoc(doc(db, "chats", combinedID), { message: [] });
+
+        await updateDoc(doc(db, "usersChats", currentUser.uid), {
+          [combinedID + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          },
+          [combinedID + ".date"]: serverTimestamp(),
+        });
+
+        await updateDoc(doc(db, "usersChats", user.uid), {
+          [combinedID + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
+          [combinedID + ".date"]: serverTimestamp(),
+        });
+      }
+      setUser(null);
+      setUsername("");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -47,10 +94,11 @@ const Search = (props) => {
             setUsername(e.target.value);
           }}
           onKeyDown={handleKeyDown}
+          value={username}
         />
         {error && <p>User not found...</p>}
         {user && (
-          <div className="SidebarChat d-flex">
+          <div className="SidebarChat d-flex" onClick={handleUserChatSelect}>
             <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
               <img className="UserAvatar" src={user.photoURL} alt="" />
             </div>

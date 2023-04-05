@@ -1,12 +1,14 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
 const SidebarChatList = () => {
   const [chats, setChats] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   useEffect(() => {
     const getChats = () => {
@@ -22,11 +24,18 @@ const SidebarChatList = () => {
     };
     currentUser.uid && getChats();
   }, [currentUser.uid]);
-  console.log(Object.entries(chats));
+
+  const handleSelect = (userInfo) => {
+    dispatch({ type: "CHANGE_USER", payload: userInfo });
+  };
   return (
     <div className="SidebarChatList">
       {Object.entries(chats)?.map((chat) => (
-        <div className="SidebarChat d-flex" key={chat[0]}>
+        <div
+          className="SidebarChat d-flex"
+          key={chat[0]}
+          onClick={() => handleSelect(chat[1].userInfo)}
+        >
           <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
             <img
               className="UserAvatar"

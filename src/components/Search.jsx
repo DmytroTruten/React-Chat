@@ -85,7 +85,7 @@ const Search = (props) => {
         <span></span>
         <span></span>
       </div>
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column w-100">
         <Form.Control
           className="SidebarSearchControl"
           type="text"

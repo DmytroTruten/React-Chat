@@ -1,6 +1,7 @@
 .ChatContainer {
   height: 90%;
   max-height: 100vh;
+  min-height: 480px;
   min-width: 400px;
   resize: both;
   overflow: auto;

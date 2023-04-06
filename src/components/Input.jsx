@@ -1,21 +1,29 @@
-import React from 'react';
+import React from "react";
 import Form from "react-bootstrap/Form";
-import "../styles/Input/Input.css"
+import "../styles/Input/Input.css";
 import attachIcon from "../assets/attach-icon.svg";
 import sendIcon from "../assets/send-icon.svg";
 
 const Input = () => {
   return (
-    <div className='InputContainer d-flex justify-content-center align-items-center'>
-      <div className='AttachButton d-flex justify-content-center align-items-center'>
-        <img className='AttachIcon' src={attachIcon} alt="attach" />
+    <div className="InputContainer d-flex justify-content-center align-items-center">
+      <div className="InputButtonsContainer d-flex justify-content-center align-items-center">
+        <div className="AttachButton d-flex justify-content-center align-items-center">
+          <img className="AttachIcon" src={attachIcon} alt="attach" />
+        </div>
       </div>
-      <Form.Control className='Input ps-1' type='text' placeholder='Write a message...' />
-      <div className="SendButton d-flex justify-content-center align-items-center">
-      <img className='SendIcon' src={sendIcon} alt="" />
+      <Form.Control
+        className="Input ps-1"
+        type="text"
+        placeholder="Write a message..."
+      />
+      <div className="InputButtonsContainer d-flex justify-content-center align-items-center">
+        <div className="SendButton d-flex justify-content-center align-items-center">
+          <img className="SendIcon" src={sendIcon} alt="" />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Input;

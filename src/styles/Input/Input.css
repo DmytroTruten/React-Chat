@@ -29,9 +29,19 @@
   font-weight: 300;
 }
 
-.AttachButton {
-  width: 55px;
+.InputButtonsContainer {
   height: 100%;
+  width: 55px;
+  background-color: #282e33;
+}
+
+.AttachButton {
+  max-width: -webkit-min-content;
+  max-width: -moz-min-content;
+  max-width: min-content;
+  max-height: -webkit-min-content;
+  max-height: -moz-min-content;
+  max-height: min-content;
   cursor: pointer;
   background-color: #282e33;
   border: none;
@@ -42,8 +52,12 @@
 }
 
 .SendButton {
-  width: 55px;
-  height: 100%;
+  max-width: -webkit-min-content;
+  max-width: -moz-min-content;
+  max-width: min-content;
+  max-height: -webkit-min-content;
+  max-height: -moz-min-content;
+  max-height: min-content;
   cursor: pointer;
   background-color: #282e33;
   border: none;

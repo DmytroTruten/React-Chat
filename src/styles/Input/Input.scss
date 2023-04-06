@@ -28,6 +28,12 @@
   }
 }
 
+.InputButtonsContainer {
+  height: 100%;
+  width: 55px;
+  background-color: $secondary-background-color;
+}
+
 .AttachButton {
   @include input-button(attach);
   &:hover {

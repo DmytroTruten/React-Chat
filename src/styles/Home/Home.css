@@ -3,18 +3,26 @@
   max-height: 100vh;
   min-height: 480px;
   min-width: 400px;
-  resize: both;
   overflow: auto;
   position: relative;
+  touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .Sidebar {
   width: 30%;
   min-width: 260px;
   position: relative;
-  resize: horizontal;
   overflow: auto;
   background-color: #282e33;
+  touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .SidebarSettings {

@@ -3,12 +3,13 @@ import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import Messages from "../components/Messages";
 import Input from "../components/Input";
-
+import interact from "interactjs";
 import "../styles/Home/Home.css";
 
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
   const overlayRef = useRef(null);
+  const chatContainerRef = useRef(null);
 
   const Overlay = React.forwardRef((props, ref) => {
     const [isVisible, setIsVisible] = useState(true);
@@ -36,6 +37,30 @@ const Home = () => {
   });
 
   useEffect(() => {
+    if (chatContainerRef.current) {
+      interact(chatContainerRef.current).resizable({
+        edges: { top: true, left: true, bottom: true, right: true },
+        listeners: {
+          move: function (event) {
+            let { x, y } = event.target.dataset;
+
+            x = (parseFloat(x) || 0) + event.deltaRect.left;
+            y = (parseFloat(y) || 0) + event.deltaRect.top;
+
+            Object.assign(event.target.style, {
+              width: `${event.rect.width}px`,
+              height: `${event.rect.height}px`,
+              transform: `translate(${x}px, ${y}px)`,
+            });
+
+            Object.assign(event.target.dataset, { x, y });
+          },
+        },
+      });
+    }
+  }, [chatContainerRef]);
+
+  useEffect(() => {
     if (overlayRef.current) {
       if (sidebarSettingsOpened === "opened") {
         overlayRef.current.style.display = "block";
@@ -56,7 +81,7 @@ const Home = () => {
   };
   return (
     <div className="Home row justify-content-center align-items-center h-100 mx-0 my-0">
-      <div className="ChatContainer col-8 d-flex px-0">
+      <div className="ChatContainer col-8 d-flex px-0" ref={chatContainerRef}>
         <Sidebar
           handleToggleSidebarSettings={handleToggleSidebarSettings}
           state={sidebarSettingsOpened}

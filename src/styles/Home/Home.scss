@@ -25,7 +25,7 @@
   height: 100%;
   position: absolute;
   overflow-x: hidden;
-  transition: width 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background-color: $secondary-background-color;
   z-index: 1;
   &.closed {

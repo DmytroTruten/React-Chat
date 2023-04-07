@@ -29,7 +29,7 @@
   height: 100%;
   position: absolute;
   overflow-x: hidden;
-  transition: width 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background-color: #282e33;
   z-index: 1;
 }

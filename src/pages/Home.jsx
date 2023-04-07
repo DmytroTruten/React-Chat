@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import Sidebar from "../components/Sidebar";
+import Search from "../components/Search";
+import SidebarChatList from "../components/SidebarChatList";
+import SidebarSettings from "../components/SidebarSettings";
 import Navbar from "../components/Navbar";
 import Messages from "../components/Messages";
 import Input from "../components/Input";
@@ -9,7 +11,18 @@ import "../styles/Home/Home.css";
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
   const overlayRef = useRef(null);
+  const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
+
+  const Sidebar = React.forwardRef((props, ref) => {
+    return (
+      <div className="Sidebar d-flex flex-column" ref={ref}>
+        <Search handleToggleSidebarSettings={handleToggleSidebarSettings} />
+        <SidebarChatList />
+        <SidebarSettings state={sidebarSettingsOpened} />
+      </div>
+    );
+  });
 
   const Overlay = React.forwardRef((props, ref) => {
     const [isVisible, setIsVisible] = useState(true);
@@ -27,7 +40,7 @@ const Home = () => {
 
     return (
       <div
-        ref={overlayRef}
+        ref={ref}
         onClick={handleClick}
         className="Overlay"
         style={{ display: "none" }}
@@ -73,27 +86,26 @@ const Home = () => {
       }
     }
   }, [sidebarSettingsOpened]);
-
+  
   const handleToggleSidebarSettings = () => {
     sidebarSettingsOpened === "closed"
       ? setSidebarSettings("opened")
       : setSidebarSettings("closed");
   };
+
   return (
     <div className="Home row justify-content-center align-items-center h-100 mx-0 my-0">
       <div className="ChatContainer col-8 d-flex px-0" ref={chatContainerRef}>
-        <Sidebar
-          handleToggleSidebarSettings={handleToggleSidebarSettings}
-          state={sidebarSettingsOpened}
-        />
+        <Sidebar ref={sidebarRef} />
         <div className="Chat">
           <Navbar />
           <Messages />
           <Input />
         </div>
         <Overlay
-          ref={overlayRef}
           handleToggleSidebarSettings={handleToggleSidebarSettings}
+          ref={overlayRef}
+          z
         />
       </div>
     </div>

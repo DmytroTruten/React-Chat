@@ -74,6 +74,28 @@ const Home = () => {
   }, [chatContainerRef]);
 
   useEffect(() => {
+    if (sidebarRef.current) {
+      interact(sidebarRef.current).resizable({
+        edges: { top: false, left: false, bottom: false, right: true },
+        listeners: {
+          move: function (event) {
+            let { x } = event.target.dataset;
+
+            x = (parseFloat(x) || 0) + event.deltaRect.left;
+
+            Object.assign(event.target.style, {
+              width: `${event.rect.width}px`,
+              transform: `translate(${x}px)`,
+            });
+
+            Object.assign(event.target.dataset, { x });
+          },
+        },
+      });
+    }
+  }, [sidebarRef])
+
+  useEffect(() => {
     if (overlayRef.current) {
       if (sidebarSettingsOpened === "opened") {
         overlayRef.current.style.display = "block";
@@ -86,7 +108,7 @@ const Home = () => {
       }
     }
   }, [sidebarSettingsOpened]);
-  
+
   const handleToggleSidebarSettings = () => {
     sidebarSettingsOpened === "closed"
       ? setSidebarSettings("opened")
@@ -94,8 +116,8 @@ const Home = () => {
   };
 
   return (
-    <div className="Home row justify-content-center align-items-center h-100 mx-0 my-0">
-      <div className="ChatContainer col-8 d-flex px-0" ref={chatContainerRef}>
+    <div className="Home justify-content-center align-items-center h-100 mx-0 my-0">
+      <div className="ChatContainer d-flex px-0" ref={chatContainerRef}>
         <Sidebar ref={sidebarRef} />
         <div className="Chat">
           <Navbar />

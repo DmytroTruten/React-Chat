@@ -1,5 +1,6 @@
 .ChatContainer {
-  height: 90%;
+  height: 100%;
+  width: 100%;
   max-height: 100vh;
   min-height: 480px;
   min-width: 400px;

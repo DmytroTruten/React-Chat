@@ -53,7 +53,11 @@ const Home = () => {
   useEffect(() => {
     if (chatContainerRef.current) {
       interact(chatContainerRef.current).resizable({
-        edges: { top: true, left: true, bottom: true, right: true },
+        edges: { left: true, right: true, top: false, bottom: true },
+        restrictEdges: {
+          outer: ".Home",
+          endOnly: true,
+        },
         listeners: {
           move: function (event) {
             let { x, y } = event.target.dataset;
@@ -71,36 +75,27 @@ const Home = () => {
           },
         },
         modifiers: [
-          interact.modifiers.restrictEdges({
-            outer: ".Home",
-            endOnly: true,
-          }),
           interact.modifiers.restrictSize({
             min: { width: 400, height: 480 },
           }),
         ],
       });
       interact(chatContainerRef.current).draggable({
+        allowFrom: '.TopPanel',
+        restrict: {
+          restriction: ".Home",
+        },
         listeners: {
-          start(event) {
-            event.interactable.draggable(false);
-          },
           move(event) {
             const target = event.target;
             const x =
               (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
             const y =
               (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
-            // Set the new element position
-            target.style.transform = `translate(${x}px, ${y}px)`;
-
-            // Update the element data-x and data-y attributes
+            target.style.webkitTransform = target.style.transform =
+              "translate(" + x + "px, " + y + "px)";
             target.setAttribute("data-x", x);
             target.setAttribute("data-y", y);
-          },
-          end(event) {
-            event.interactable.draggable(true);
           },
         },
         inertia: true,
@@ -110,10 +105,10 @@ const Home = () => {
             endOnly: true,
           }),
         ],
-        edges: { top: true, left: false, bottom: false, right: false },
       });
     }
   }, [chatContainerRef]);
+
   useEffect(() => {
     if (sidebarRef.current) {
       interact(sidebarRef.current).resizable({

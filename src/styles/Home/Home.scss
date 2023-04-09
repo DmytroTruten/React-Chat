@@ -1,15 +1,15 @@
 @import "../variables";
 
 .Home {
+  min-height: 100vh;
   max-height: 100vh;
+  overflow: hidden;
 }
 
 .ChatContainer {
   height: 100%;
   width: 100%;
   max-height: 100vh;
-  min-height: 480px;
-  min-width: 400px;
   // overflow: auto;
   // overflow-y: hidden;
   position: relative;

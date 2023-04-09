@@ -10,7 +10,6 @@ import "../styles/Home/Home.css";
 
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
-  const topPanelref = useRef(null);
   const overlayRef = useRef(null);
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
@@ -70,6 +69,15 @@ const Home = () => {
             Object.assign(event.target.dataset, { x, y });
           },
         },
+        modifiers: [
+          interact.modifiers.restrictEdges({
+            outer: ".Home",
+            endOnly: true,
+          }),
+          interact.modifiers.restrictSize({
+            min: { width: 400, height: 480 },
+          }),
+        ],
       });
     }
   }, [chatContainerRef]);

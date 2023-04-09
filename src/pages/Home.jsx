@@ -10,6 +10,7 @@ import "../styles/Home/Home.css";
 
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
+  const topPanelref = useRef(null);
   const overlayRef = useRef(null);
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
@@ -93,7 +94,7 @@ const Home = () => {
         },
       });
     }
-  }, [sidebarRef])
+  }, [sidebarRef]);
 
   useEffect(() => {
     if (overlayRef.current) {
@@ -116,19 +117,25 @@ const Home = () => {
   };
 
   return (
-    <div className="Home justify-content-center align-items-center h-100 mx-0 my-0">
-      <div className="ChatContainer d-flex px-0" ref={chatContainerRef}>
-        <Sidebar ref={sidebarRef} />
-        <div className="Chat">
-          <Navbar />
-          <Messages />
-          <Input />
+    <div className="Home h-100 mx-0 my-0">
+      <div
+        className="ChatContainer d-flex flex-column px-0"
+        ref={chatContainerRef}
+      >
+        <div className="TopPanel"></div>
+        <div className="d-flex h-100">
+          <Sidebar ref={sidebarRef} />
+          <div className="Chat">
+            <Navbar />
+            <Messages />
+            <Input />
+          </div>
+          <Overlay
+            handleToggleSidebarSettings={handleToggleSidebarSettings}
+            ref={overlayRef}
+            z
+          />
         </div>
-        <Overlay
-          handleToggleSidebarSettings={handleToggleSidebarSettings}
-          ref={overlayRef}
-          z
-        />
       </div>
     </div>
   );

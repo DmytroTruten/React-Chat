@@ -10,6 +10,7 @@ import "../styles/Home/Home.css";
 
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
+  const topPanelRef = useRef(null);
   const overlayRef = useRef(null);
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
@@ -79,9 +80,40 @@ const Home = () => {
           }),
         ],
       });
+      interact(chatContainerRef.current).draggable({
+        listeners: {
+          start(event) {
+            event.interactable.draggable(false);
+          },
+          move(event) {
+            const target = event.target;
+            const x =
+              (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+            const y =
+              (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+
+            // Set the new element position
+            target.style.transform = `translate(${x}px, ${y}px)`;
+
+            // Update the element data-x and data-y attributes
+            target.setAttribute("data-x", x);
+            target.setAttribute("data-y", y);
+          },
+          end(event) {
+            event.interactable.draggable(true);
+          },
+        },
+        inertia: true,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: ".Home",
+            endOnly: true,
+          }),
+        ],
+        edges: { top: true, left: false, bottom: false, right: false },
+      });
     }
   }, [chatContainerRef]);
-
   useEffect(() => {
     if (sidebarRef.current) {
       interact(sidebarRef.current).resizable({
@@ -130,7 +162,7 @@ const Home = () => {
         className="ChatContainer d-flex flex-column px-0"
         ref={chatContainerRef}
       >
-        <div className="TopPanel"></div>
+        <div className="TopPanel" ref={topPanelRef}></div>
         <div className="d-flex h-100">
           <Sidebar ref={sidebarRef} />
           <div className="Chat">

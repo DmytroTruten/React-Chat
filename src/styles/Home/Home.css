@@ -145,8 +145,8 @@
 
 .Overlay {
   position: absolute;
-  top: 0;
-  height: 100%;
+  bottom: 0;
+  height: calc(100% - 25px);
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }

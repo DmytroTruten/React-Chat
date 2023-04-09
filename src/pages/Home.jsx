@@ -52,66 +52,69 @@ const Home = () => {
 
   useEffect(() => {
     if (chatContainerRef.current) {
-      interact(chatContainerRef.current).resizable({
-        edges: { left: true, right: true, top: false, bottom: true },
-        restrictEdges: {
-          outer: ".Home",
-          endOnly: true,
-        },
-        listeners: {
-          move: function (event) {
-            let { x, y } = event.target.dataset;
-
-            x = (parseFloat(x) || 0) + event.deltaRect.left;
-            y = (parseFloat(y) || 0) + event.deltaRect.top;
-
-            Object.assign(event.target.style, {
-              width: `${event.rect.width}px`,
-              height: `${event.rect.height}px`,
-              transform: `translate(${x}px, ${y}px)`,
-            });
-
-            Object.assign(event.target.dataset, { x, y });
-          },
-        },
-        modifiers: [
-          interact.modifiers.restrictSize({
-            min: { width: 400, height: 480 },
-          }),
-        ],
-      });
-      interact(chatContainerRef.current).draggable({
-        allowFrom: '.TopPanel',
-        restrict: {
-          restriction: ".Home",
-        },
-        listeners: {
-          move(event) {
-            const target = event.target;
-            const x =
-              (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-            const y =
-              (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-            target.style.webkitTransform = target.style.transform =
-              "translate(" + x + "px, " + y + "px)";
-            target.setAttribute("data-x", x);
-            target.setAttribute("data-y", y);
-          },
-        },
-        inertia: true,
-        modifiers: [
-          interact.modifiers.restrictRect({
-            restriction: ".Home",
+      interact(chatContainerRef.current)
+        .resizable({
+          margin: 5,
+          edges: { top: true, right: true, bottom: true, left: true },
+          restrictEdges: {
+            outer: ".Home",
             endOnly: true,
-          }),
-        ],
-      });
+          },
+          listeners: {
+            move: function (event) {
+              let { x, y } = event.target.dataset;
+
+              x = (parseFloat(x) || 0) + event.deltaRect.left;
+              y = (parseFloat(y) || 0) + event.deltaRect.top;
+
+              Object.assign(event.target.style, {
+                width: `${event.rect.width}px`,
+                height: `${event.rect.height}px`,
+                transform: `translate(${x}px, ${y}px)`,
+              });
+
+              Object.assign(event.target.dataset, { x, y });
+            },
+          },
+          modifiers: [
+            interact.modifiers.restrictSize({
+              min: { width: 400, height: 480 },
+            }),
+          ],
+        })
+        .draggable({
+          allowFrom: ".TopPanel",
+          restrict: {
+            restriction: ".Home",
+          },
+          listeners: {
+            move(event) {
+              const target = event.target;
+              const x =
+                (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+              const y =
+                (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+              target.style.webkitTransform = target.style.transform =
+                "translate(" + x + "px, " + y + "px)";
+              target.setAttribute("data-x", x);
+              target.setAttribute("data-y", y);
+            },
+          },
+          inertia: true,
+          modifiers: [
+            interact.modifiers.restrictRect({
+              restriction: ".Home",
+              endOnly: true,
+            }),
+          ],
+        });
     }
   }, [chatContainerRef]);
 
   useEffect(() => {
     if (sidebarRef.current) {
       interact(sidebarRef.current).resizable({
+        margin: 5,
         edges: { top: false, left: false, bottom: false, right: true },
         listeners: {
           move: function (event) {

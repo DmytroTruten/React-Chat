@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
+import moment from "moment";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
 const SidebarChatList = () => {
@@ -48,11 +49,12 @@ const SidebarChatList = () => {
               <p className="SidebarChatUsername">
                 {chat[1].userInfo.displayName}
               </p>
-              <p className="SidebarChatTime">12:34</p>
+              <p className="SidebarChatTime">
+                {moment.unix(chat[1]?.date?.seconds).format("HH:mm")}
+              </p>
+              {console.log(chat[1])}
             </div>
-            <p className="SidebarChatLastMsg">
-              {chat[1].userInfo.lastMessage?.text}
-            </p>
+            <p className="SidebarChatLastMsg">{chat[1].lastMessage?.text}</p>
           </div>
         </div>
       ))}

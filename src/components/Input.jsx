@@ -3,7 +3,13 @@ import Form from "react-bootstrap/Form";
 import "../styles/Input/Input.css";
 import attachIcon from "../assets/attach-icon.svg";
 import sendIcon from "../assets/send-icon.svg";
-import { arrayUnion, doc, Timestamp, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
@@ -42,6 +48,21 @@ const Input = () => {
         }),
       });
     }
+
+    await updateDoc(doc(db, "usersChats", currentUser.uid), {
+      [data.chatID + ".lastMessage"]: {
+        text,
+      },
+      [data.chatID + ".date"]: serverTimestamp(),
+    });
+
+    await updateDoc(doc(db, "usersChats", data.user.uid), {
+      [data.chatID + ".lastMessage"]: {
+        text,
+      },
+      [data.chatID + ".date"]: serverTimestamp(),
+    });
+
     setText("");
     setImage(null);
   };

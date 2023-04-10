@@ -80,6 +80,10 @@ const Home = () => {
             interact.modifiers.restrictSize({
               min: { width: 400, height: 480 },
             }),
+            interact.modifiers.restrict({
+              restriction: ".Home",
+              endOnly: true,
+            }),
           ],
         })
         .draggable({

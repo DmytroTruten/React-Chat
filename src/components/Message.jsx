@@ -5,6 +5,9 @@ import { ChatContext } from "../context/ChatContext";
 import "../styles/Message/Message.css";
 
 const Message = ({ message }) => {
+  const { currentUser } = useContext(AuthContext)
+  const { data } = useContext(ChatContext)
+
   return (
     <div className="MessageContainer d-flex">
       <p className="Message">Message Example</p>

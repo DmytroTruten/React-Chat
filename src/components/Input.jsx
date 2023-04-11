@@ -14,18 +14,22 @@ import { db, storage } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { v4 } from "uuid";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { useRef } from "react";
 
 const Input = () => {
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
+  const inputRef = useRef(null);
 
   const handleSend = async () => {
+    inputRef.current.value = "";
+
     if (image) {
       const storageRef = ref(storage, v4());
-      uploadBytes(storageRef, file).then((snapshot) => {
+      uploadBytesResumable(storageRef, file).then((snapshot) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
           await updateDoc(doc(db, "chats", data.chatID), {
             messages: arrayUnion({
@@ -67,15 +71,14 @@ const Input = () => {
     setImage(null);
   };
 
+  const handleKeyDown = (e) => {
+    e.code === "Enter" && handleSend();
+  };
+
   return (
     <div className="InputContainer d-flex justify-content-center align-items-center">
       <div className="InputButtonsContainer d-flex justify-content-center align-items-center">
-        <label
-          className="AttachButton d-flex justify-content-center align-items-center"
-          onChange={(e) => {
-            setImage(e.target.files[0]);
-          }}
-        >
+        <label className="AttachButton d-flex justify-content-center align-items-center">
           <Form.Control
             type="file"
             onChange={(e) => {
@@ -90,9 +93,11 @@ const Input = () => {
         className="Input ps-1"
         type="text"
         placeholder="Write a message..."
+        ref={inputRef}
         onChange={(e) => {
           setText(e.target.value);
         }}
+        onKeyDown={handleKeyDown}
       />
       <div className="InputButtonsContainer d-flex justify-content-center align-items-center">
         <div

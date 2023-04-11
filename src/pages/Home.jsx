@@ -10,7 +10,7 @@ import "../styles/Home/Home.css";
 
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
-  const [sidebarChatState, setSidebarChatState] = useState("opened");
+  const [sidebarChatState, setSidebarChatState] = useState("closed");
   const topPanelRef = useRef(null);
   const overlayRef = useRef(null);
   const sidebarRef = useRef(null);
@@ -164,7 +164,7 @@ const Home = () => {
   const handleSidebarChatState = () => {
     sidebarChatState === "closed"
       ? setSidebarChatState("opened")
-      : setSidebarChatState("closed");
+      : null
   };
 
   return (

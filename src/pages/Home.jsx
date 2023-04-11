@@ -9,7 +9,7 @@ import interact from "interactjs";
 import "../styles/Home/Home.css";
 
 const Home = () => {
-  const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
+  const [sidebarSettingsState, setSidebarSettingsState] = useState("closed");
   const [sidebarChatState, setSidebarChatState] = useState("closed");
   const topPanelRef = useRef(null);
   const overlayRef = useRef(null);
@@ -19,11 +19,11 @@ const Home = () => {
   const Sidebar = React.forwardRef((props, ref) => {
     return (
       <div className="Sidebar d-flex flex-column" ref={ref}>
-        <Search handleToggleSidebarSettings={handleToggleSidebarSettings} />
+        <Search handleSidebarState={props.handleSidebarState} />
         <SidebarChatList
-          handleSidebarChatState={props.handleSidebarChatState}
+          handleSidebarState={props.handleSidebarState}
         />
-        <SidebarSettings state={sidebarSettingsOpened} />
+        <SidebarSettings state={sidebarSettingsState} />
       </div>
     );
   });
@@ -33,11 +33,11 @@ const Home = () => {
 
     const handleClick = () => {
       setIsVisible(!isVisible);
-      props.handleToggleSidebarSettings();
+      props.handleSidebarState("settings");
     };
 
     const handleAnimationEnd = () => {
-      if (overlayRef.current && sidebarSettingsOpened === "closed") {
+      if (overlayRef.current && sidebarSettingsState === "closed") {
         overlayRef.current.style.display = "none";
       }
     };
@@ -143,7 +143,7 @@ const Home = () => {
 
   useEffect(() => {
     if (overlayRef.current) {
-      if (sidebarSettingsOpened === "opened") {
+      if (sidebarSettingsState === "opened") {
         overlayRef.current.style.display = "block";
         overlayRef.current.style.animation = "reveal .2s ease-in-out forwards";
       } else {
@@ -153,18 +153,16 @@ const Home = () => {
         }, 200);
       }
     }
-  }, [sidebarSettingsOpened]);
+  }, [sidebarSettingsState]);
 
-  const handleToggleSidebarSettings = () => {
-    sidebarSettingsOpened === "closed"
-      ? setSidebarSettings("opened")
-      : setSidebarSettings("closed");
-  };
-
-  const handleSidebarChatState = () => {
-    sidebarChatState === "closed"
-      ? setSidebarChatState("opened")
-      : null
+  const handleSidebarState = (sidebarType) => {
+    if (sidebarType === "chat") {
+      sidebarChatState === "closed" ? setSidebarChatState("opened") : null;
+    } else {
+      sidebarSettingsState === "closed"
+        ? setSidebarSettingsState("opened")
+        : setSidebarSettingsState("closed");
+    }
   };
 
   return (
@@ -177,10 +175,12 @@ const Home = () => {
         <div className="d-flex h-100">
           <Sidebar
             ref={sidebarRef}
-            handleSidebarChatState={handleSidebarChatState}
+            handleSidebarState={handleSidebarState}
           />
           <div className="Chat">
-            {sidebarChatState === "closed" && <Messages sidebarChatState={sidebarChatState} />}
+            {sidebarChatState === "closed" && (
+              <Messages sidebarChatState={sidebarChatState} />
+            )}
             {sidebarChatState === "opened" && (
               <Fragment>
                 <Navbar />
@@ -190,7 +190,7 @@ const Home = () => {
             )}
           </div>
           <Overlay
-            handleToggleSidebarSettings={handleToggleSidebarSettings}
+            handleSidebarState={handleSidebarState}
             ref={overlayRef}
             z
           />

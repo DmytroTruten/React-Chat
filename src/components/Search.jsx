@@ -14,7 +14,7 @@ import { db } from "../firebase";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../context/AuthContext";
 
-const Search = (props) => {
+const Search = ({ handleSidebarState }) => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
@@ -79,7 +79,7 @@ const Search = (props) => {
     <div className="SidebarHeader d-flex">
       <div
         className="Settings d-flex flex-column justify-content-center align-items-center"
-        onClick={props.handleToggleSidebarSettings}
+        onClick={handleSidebarState}
       >
         <span></span>
         <span></span>

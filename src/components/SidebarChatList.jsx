@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import moment from "moment";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
-const SidebarChatList = () => {
+const SidebarChatList = ({ handleSidebarChatState }) => {
   const [chats, setChats] = useState([]);
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
@@ -27,6 +27,7 @@ const SidebarChatList = () => {
   }, [currentUser.uid]);
 
   const handleSelect = (userInfo) => {
+    handleSidebarChatState();
     dispatch({ type: "CHANGE_USER", payload: userInfo });
   };
   return (

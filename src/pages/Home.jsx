@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Fragment } from "react";
 import Search from "../components/Search";
 import SidebarChatList from "../components/SidebarChatList";
 import SidebarSettings from "../components/SidebarSettings";
@@ -10,6 +10,7 @@ import "../styles/Home/Home.css";
 
 const Home = () => {
   const [sidebarSettingsOpened, setSidebarSettings] = useState("closed");
+  const [sidebarChatState, setSidebarChatState] = useState("opened");
   const topPanelRef = useRef(null);
   const overlayRef = useRef(null);
   const sidebarRef = useRef(null);
@@ -19,7 +20,9 @@ const Home = () => {
     return (
       <div className="Sidebar d-flex flex-column" ref={ref}>
         <Search handleToggleSidebarSettings={handleToggleSidebarSettings} />
-        <SidebarChatList />
+        <SidebarChatList
+          handleSidebarChatState={props.handleSidebarChatState}
+        />
         <SidebarSettings state={sidebarSettingsOpened} />
       </div>
     );
@@ -158,6 +161,12 @@ const Home = () => {
       : setSidebarSettings("closed");
   };
 
+  const handleSidebarChatState = () => {
+    sidebarChatState === "closed"
+      ? setSidebarChatState("opened")
+      : setSidebarChatState("closed");
+  };
+
   return (
     <div className="Home h-100 mx-0 my-0">
       <div
@@ -166,11 +175,19 @@ const Home = () => {
       >
         <div className="TopPanel" ref={topPanelRef}></div>
         <div className="d-flex h-100">
-          <Sidebar ref={sidebarRef} />
+          <Sidebar
+            ref={sidebarRef}
+            handleSidebarChatState={handleSidebarChatState}
+          />
           <div className="Chat">
-            <Navbar />
-            <Messages />
-            <Input />
+            {sidebarChatState === "closed" && <Messages sidebarChatState={sidebarChatState} />}
+            {sidebarChatState === "opened" && (
+              <Fragment>
+                <Navbar />
+                <Messages sidebarChatState={sidebarChatState} />
+                <Input />
+              </Fragment>
+            )}
           </div>
           <Overlay
             handleToggleSidebarSettings={handleToggleSidebarSettings}

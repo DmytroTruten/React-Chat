@@ -6,7 +6,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 
-const Messages = () => {
+const Messages = ({ sidebarChatState }) => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
 
@@ -21,8 +21,12 @@ const Messages = () => {
   }, [data.chatID]);
 
   return (
-    <div className="Messages d-flex flex-column align-items-end">
-      {messages && (
+    <div
+      className={`Messages ${
+        sidebarChatState === "closed" ? "h-100" : ""
+      } d-flex flex-column align-items-end`}
+    >
+      {sidebarChatState === "closed" && (
         <div className="IntroTextContainer align-self-center my-auto">
           <p className="IntroText text-center ">
             Choose who you would like to write to

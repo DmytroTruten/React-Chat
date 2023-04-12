@@ -1,5 +1,5 @@
 .InputContainer {
-  height: 46px;
+  min-height: 46px;
 }
 
 .Input {

@@ -177,7 +177,7 @@ const Home = () => {
             ref={sidebarRef}
             handleSidebarState={handleSidebarState}
           />
-          <div className="Chat">
+          <div className="Chat d-flex flex-column">
             {sidebarChatState === "closed" && (
               <Messages sidebarChatState={sidebarChatState} />
             )}

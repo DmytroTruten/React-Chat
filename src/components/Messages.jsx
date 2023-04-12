@@ -24,7 +24,7 @@ const Messages = ({ sidebarChatState }) => {
     <div
       className={`Messages ${
         sidebarChatState === "closed" ? "h-100" : ""
-      } d-flex flex-column align-items-end`}
+      } d-flex flex-column justify-content-end align-items-end`}
     >
       {sidebarChatState === "closed" && (
         <div className="IntroTextContainer align-self-center my-auto">
@@ -33,9 +33,10 @@ const Messages = ({ sidebarChatState }) => {
           </p>
         </div>
       )}
-      {messages?.map((message) => (
-        <Message message={message} key={message.id} />
-      ))}
+      {sidebarChatState === "opened" &&
+        messages?.map((message) => (
+          <Message message={message} key={message.id} />
+        ))}
     </div>
   );
 };

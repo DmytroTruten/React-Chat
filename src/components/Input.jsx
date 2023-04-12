@@ -14,12 +14,12 @@ import { db, storage } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { v4 } from "uuid";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRef } from "react";
 
 const Input = () => {
   const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const inputRef = useRef(null);
@@ -28,8 +28,8 @@ const Input = () => {
     inputRef.current.value = "";
 
     if (image) {
-      const storageRef = ref(storage, v4());
-      uploadBytesResumable(storageRef, file).then((snapshot) => {
+      const storageRef = ref(storage, "images/" + v4());
+      uploadBytes(storageRef, image).then((snapshot) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
           await updateDoc(doc(db, "chats", data.chatID), {
             messages: arrayUnion({

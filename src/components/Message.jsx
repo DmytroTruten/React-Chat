@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
@@ -10,13 +10,18 @@ const Message = ({ message }) => {
   const { data } = useContext(ChatContext);
 
   return (
-    <div className="MessageContainer d-flex">
-      <p className="Message">{message.text}</p>
-      <p className="MessageTime d-flex">
-        {moment.unix(message.date.seconds).format("HH:mm")}
-      </p>
-      {console.log(message)}
-    </div>
+    <Fragment>
+      <div className="MessageContainer d-flex">
+        <p className="Message">{message.text}</p>
+        <p className="MessageTime d-flex">
+          {moment.unix(message.date.seconds).format("HH:mm")}
+        </p>
+        {console.log(message)}
+      </div>
+      {message.image && (
+        <img className="MessageImage" src={message.image} alt="" />
+      )}
+    </Fragment>
   );
 };
 

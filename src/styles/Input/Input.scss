@@ -32,10 +32,13 @@
   height: 100%;
   width: 55px;
   background-color: $secondary-background-color;
+  &.AttachContainer {
+    border-left: 1px solid #242a2f;
+  }
 }
 
 .AttachButton {
-  @include input-button(attach);
+  @include input-button;
   &:hover {
     .AttachIcon {
       filter: brightness(0) saturate(100%) invert(78%) sepia(6%)
@@ -45,7 +48,7 @@
 }
 
 .SendButton {
-  @include input-button(send);
+  @include input-button;
 }
 
 .AttachIcon,

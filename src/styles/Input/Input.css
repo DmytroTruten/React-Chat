@@ -34,6 +34,9 @@
   width: 55px;
   background-color: #282e33;
 }
+.InputButtonsContainer.AttachContainer {
+  border-left: 1px solid #242a2f;
+}
 
 .AttachButton {
   max-width: -webkit-min-content;
@@ -45,7 +48,6 @@
   cursor: pointer;
   background-color: #282e33;
   border: none;
-  border-left: 1px solid #242a2f;
 }
 .AttachButton:hover .AttachIcon {
   filter: brightness(0) saturate(100%) invert(78%) sepia(6%) hue-rotate(101deg) contrast(93%);

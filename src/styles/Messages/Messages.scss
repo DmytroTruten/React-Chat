@@ -1,10 +1,10 @@
 @import "../variables";
 
 .Messages {
-  height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   padding: 9px;
+  flex: 1 0 0;
 
   &:hover {
     &::-webkit-scrollbar-thumb {

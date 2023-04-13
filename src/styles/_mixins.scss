@@ -1,10 +1,7 @@
-@mixin input-button($button) {
+@mixin input-button {
   max-width: min-content;
   max-height: min-content;
   cursor: pointer;
   background-color: $secondary-background-color;
   border: none;
-  @if $button == attach {
-    border-left: 1px solid #242a2f;
-  }
 }

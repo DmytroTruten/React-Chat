@@ -77,7 +77,7 @@ const Input = () => {
 
   return (
     <div className="InputContainer d-flex justify-content-center align-items-center">
-      <div className="InputButtonsContainer d-flex justify-content-center align-items-center">
+      <div className="InputButtonsContainer AttachContainer d-flex justify-content-center align-items-center">
         <label className="AttachButton d-flex justify-content-center align-items-center">
           <Form.Control
             type="file"

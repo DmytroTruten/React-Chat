@@ -30,6 +30,7 @@ const SidebarChatList = ({ handleSidebarState }) => {
     handleSidebarState("chat");
     dispatch({ type: "CHANGE_USER", payload: userInfo });
   };
+
   return (
     <div className="SidebarChatList">
       {Object.entries(chats)?.map((chat) => (
@@ -55,7 +56,11 @@ const SidebarChatList = ({ handleSidebarState }) => {
               </p>
               {console.log(chat[1])}
             </div>
-            <p className="SidebarChatLastMsg">{chat[1].lastMessage?.text}</p>
+            <p className="SidebarChatLastMsg">
+              {chat[1].lastMessage.text.length > 30
+                ? chat[1].lastMessage.text.slice(0, 30) + "..."
+                : chat[1].lastMessage.text}
+            </p>
           </div>
         </div>
       ))}

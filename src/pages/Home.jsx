@@ -69,7 +69,7 @@ const Home = () => {
           },
           modifiers: [
             interact.modifiers.restrictSize({
-              min: { width: 400, height: 480 },
+              min: { width: 400, height: 505 },
             }),
             interact.modifiers.restrict({
               restriction: ".Home",

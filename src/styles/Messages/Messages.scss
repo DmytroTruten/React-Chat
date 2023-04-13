@@ -1,7 +1,7 @@
 @import "../variables";
 
 .Messages {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 9px;
   flex: 1 0 0;

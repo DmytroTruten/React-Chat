@@ -16,18 +16,6 @@ const Home = () => {
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
 
-  const Sidebar = React.forwardRef((props, ref) => {
-    return (
-      <div className="Sidebar d-flex flex-column" ref={ref}>
-        <Search handleSidebarState={props.handleSidebarState} />
-        <SidebarChatList
-          handleSidebarState={props.handleSidebarState}
-        />
-        <SidebarSettings state={sidebarSettingsState} />
-      </div>
-    );
-  });
-
   const Overlay = React.forwardRef((props, ref) => {
     const [isVisible, setIsVisible] = useState(true);
 
@@ -173,10 +161,11 @@ const Home = () => {
       >
         <div className="TopPanel" ref={topPanelRef}></div>
         <div className="d-flex h-100">
-          <Sidebar
-            ref={sidebarRef}
-            handleSidebarState={handleSidebarState}
-          />
+          <div className="Sidebar d-flex flex-column" ref={sidebarRef}>
+            <Search handleSidebarState={handleSidebarState} />
+            <SidebarChatList handleSidebarState={handleSidebarState} />
+            <SidebarSettings state={sidebarSettingsState} />
+          </div>
           <div className="Chat d-flex flex-column">
             {sidebarChatState === "closed" && (
               <Messages sidebarChatState={sidebarChatState} />
@@ -189,11 +178,7 @@ const Home = () => {
               </Fragment>
             )}
           </div>
-          <Overlay
-            handleSidebarState={handleSidebarState}
-            ref={overlayRef}
-            z
-          />
+          <Overlay handleSidebarState={handleSidebarState} ref={overlayRef} />
         </div>
       </div>
     </div>

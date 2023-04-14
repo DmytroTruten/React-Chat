@@ -56,11 +56,18 @@ const SidebarChatList = ({ handleSidebarState }) => {
               </p>
               {console.log(chat[1])}
             </div>
-            <p className="SidebarChatLastMsg">
-              {chat[1].lastMessage.text.length > 30
-                ? chat[1].lastMessage.text.slice(0, 30) + "..."
-                : chat[1].lastMessage.text}
-            </p>
+            <div className="d-flex align-items-center">
+              <img
+                className="SidebarChatLastImg me-1"
+                src={chat[1].lastImageURL?.downloadURL}
+                alt=""
+              />
+              <p className="SidebarChatLastMsg">
+                {chat[1].lastMessage.lastMessage.length > 30
+                  ? chat[1].lastMessage.lastMessage.slice(0, 30) + "..."
+                  : chat[1].lastMessage.lastMessage}
+              </p>
+            </div>
           </div>
         </div>
       ))}

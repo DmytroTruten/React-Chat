@@ -27,8 +27,8 @@ const Input = () => {
   const handleSend = async () => {
     inputRef.current.value = "";
 
+    const storageRef = ref(storage, "chatsImages/" + v4());
     if (image) {
-      const storageRef = ref(storage, "chatsImages/" + v4());
       uploadBytes(storageRef, image).then((snapshot) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
           await updateDoc(doc(db, "chats", data.chatID), {
@@ -53,16 +53,28 @@ const Input = () => {
       });
     }
 
+    const lastMessage = text === "" ? "Image" : text;
+
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        await updateDoc(doc(db, "usersChats", currentUser.uid), {
+          [data.chatID + ".lastImageURL"]: {
+            downloadURL,
+          }
+        })
+      });
+    })
+
     await updateDoc(doc(db, "usersChats", currentUser.uid), {
       [data.chatID + ".lastMessage"]: {
-        text,
+        lastMessage,
       },
       [data.chatID + ".date"]: serverTimestamp(),
     });
 
     await updateDoc(doc(db, "usersChats", data.user.uid), {
       [data.chatID + ".lastMessage"]: {
-        text,
+        lastMessage,
       },
       [data.chatID + ".date"]: serverTimestamp(),
     });

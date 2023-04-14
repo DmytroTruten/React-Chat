@@ -49,10 +49,20 @@ const Input = () => {
               downloadURL,
             },
           });
+          await updateDoc(doc(db, "usersChats", data.user.uid), {
+            [data.chatID + ".lastImageURL"]: {
+              downloadURL,
+            },
+          });
         });
       });
     } else {
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
+        [data.chatID + ".lastImageURL"]: {
+          downloadURL: null,
+        },
+      });
+      await updateDoc(doc(db, "usersChats", data.user.uid), {
         [data.chatID + ".lastImageURL"]: {
           downloadURL: null,
         },

@@ -11,16 +11,20 @@ const Message = ({ message }) => {
 
   return (
     <Fragment>
-      <div className="MessageContainer d-flex">
+      <div
+        className={`${
+          message.image ? "ImageContainer" : "MessageContainer"
+        } d-flex`}
+      >
         <p className="Message">{message.text}</p>
         <p className="MessageTime d-flex">
           {moment.unix(message.date.seconds).format("HH:mm")}
         </p>
         {console.log(message)}
+        {message.image && (
+          <img className="MessageImage" src={message.image} alt="" />
+        )}
       </div>
-      {message.image && (
-        <img className="MessageImage" src={message.image} alt="" />
-      )}
     </Fragment>
   );
 };

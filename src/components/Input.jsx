@@ -28,7 +28,7 @@ const Input = () => {
     inputRef.current.value = "";
 
     if (image) {
-      const storageRef = ref(storage, "images/" + v4());
+      const storageRef = ref(storage, "chatsImages/" + v4());
       uploadBytes(storageRef, image).then((snapshot) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
           await updateDoc(doc(db, "chats", data.chatID), {

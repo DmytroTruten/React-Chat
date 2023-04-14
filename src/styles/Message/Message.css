@@ -19,13 +19,7 @@
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 0px 0px #282e33;
 }
-
-.Message {
-  margin: 3px 0px;
-  overflow-wrap: anywhere;
-}
-
-.MessageTime {
+.MessageContainer .MessageTime {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
@@ -34,9 +28,34 @@
   align-self: end;
 }
 
+.ImageContainer {
+  max-width: 70%;
+  position: relative;
+  margin: 1px 0px;
+}
+.ImageContainer .MessageTime {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 1px 10px;
+  font-size: 12px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
+.Message {
+  margin: 3px 0px;
+  overflow-wrap: anywhere;
+}
+
 .MessageImage {
-  max-width: 50%;
-  max-height: 60%;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
+  border-radius: 15px;
 }/*# sourceMappingURL=Message.css.map */

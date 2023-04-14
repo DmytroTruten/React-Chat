@@ -13,7 +13,7 @@ const Message = ({ message }) => {
     <Fragment>
       <div
         className={`${
-          message.image ? "ImageContainer" : "MessageContainer"
+          message.image ? "ImageContainer flex-column" : "MessageContainer"
         } d-flex`}
       >
         <p className="Message">{message.text}</p>

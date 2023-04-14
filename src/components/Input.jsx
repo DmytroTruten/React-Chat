@@ -42,7 +42,21 @@ const Input = () => {
           });
         });
       });
+      uploadBytes(storageRef, image).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+          await updateDoc(doc(db, "usersChats", currentUser.uid), {
+            [data.chatID + ".lastImageURL"]: {
+              downloadURL,
+            },
+          });
+        });
+      });
     } else {
+      await updateDoc(doc(db, "usersChats", currentUser.uid), {
+        [data.chatID + ".lastImageURL"]: {
+          downloadURL: null,
+        },
+      });
       await updateDoc(doc(db, "chats", data.chatID), {
         messages: arrayUnion({
           id: v4(),
@@ -54,16 +68,6 @@ const Input = () => {
     }
 
     const lastMessage = text === "" ? "Image" : text;
-
-    uploadBytes(storageRef, image).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-        await updateDoc(doc(db, "usersChats", currentUser.uid), {
-          [data.chatID + ".lastImageURL"]: {
-            downloadURL,
-          }
-        })
-      });
-    })
 
     await updateDoc(doc(db, "usersChats", currentUser.uid), {
       [data.chatID + ".lastMessage"]: {

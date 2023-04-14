@@ -5,7 +5,7 @@
   color: #fff;
   font-size: 14px;
   background-color: #2a2f33;
-  padding: 3px 15px;
+  padding: 3px 5px 3px 15px;
   margin: 1px 0px;
   border-radius: 20px 20px 0px 20px;
   position: relative;
@@ -34,17 +34,50 @@
   max-width: 70%;
   position: relative;
   margin: 1px 0px;
-  .MessageTime {
-    height: min-content;
-    position: absolute;
-    right: 4px;
-    bottom: 4px;
-    padding: 1px 10px;
-    font-size: 12px;
-    color: #fff;
-    background-color: rgba(0,0,0, 0.4);
-    border-radius: 20px;
+  background-color: #2a2f33;
+  font-size: 14px;  
 
+  &.WithoutCaption {
+      border-radius: 15px;
+    .MessageTime {
+      height: min-content;
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+      padding: 1px 10px;
+      font-size: 12px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+    }
+  }
+
+  &.WithCaption {
+    border-radius: 15px 15px 0px 15px;
+    &::before {
+      content: "";
+      background-color: transparent;
+      position: absolute;
+      right: -20px;
+      bottom: 0px;
+      height: 10px;
+      width: 20px;
+      border-radius: 0px 0px 0px 15px;
+      box-shadow: -10px 0px 0px $secondary-background-color;
+    }
+    .MessageImage {
+      border-radius: 15px 15px 0px 0px;
+    }
+    .MessageTextContainer {
+      padding: 3px 5px 3px 15px;  
+    }
+    .MessageTime {
+      height: min-content;
+      padding: 1px 10px;
+      font-size: 12px;
+      border-radius: 20px;
+      align-self: end;
+    }
   }
 }
 

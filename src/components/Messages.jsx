@@ -24,7 +24,7 @@ const Messages = ({ sidebarChatState }) => {
     <div
       className={`Messages ${
         sidebarChatState === "closed" ? "h-100" : ""
-      } d-flex flex-column align-items-end`}
+      } d-flex flex-column`}
     >
       {sidebarChatState === "closed" && (
         <div className="IntroTextContainer align-self-center my-auto">

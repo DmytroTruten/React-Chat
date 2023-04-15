@@ -45,7 +45,7 @@ const Home = () => {
     if (chatContainerRef.current) {
       interact(chatContainerRef.current)
         .resizable({
-          margin: 0,
+          margin: 5,
           edges: { top: true, right: true, bottom: true, left: true },
           restrictEdges: {
             outer: ".Home",
@@ -109,7 +109,7 @@ const Home = () => {
   useEffect(() => {
     if (sidebarRef.current) {
       interact(sidebarRef.current).resizable({
-        margin: 0,
+        margin: 5,
         edges: { top: false, left: false, bottom: false, right: true },
         listeners: {
           move: function (event) {

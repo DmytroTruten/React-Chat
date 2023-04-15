@@ -5,10 +5,20 @@
   background-color: #2a2f33;
   padding: 3px 5px 3px 15px;
   margin: 1px 0px;
-  border-radius: 20px 20px 0px 20px;
   position: relative;
 }
-.MessageContainer::before {
+.MessageContainer .MessageTime {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 0px 10px 0px 15px;
+  font-size: 12px;
+  align-self: end;
+}
+.MessageContainer.current {
+  border-radius: 20px 20px 0px 20px;
+}
+.MessageContainer.current::before {
   content: "";
   background-color: transparent;
   position: absolute;
@@ -19,13 +29,19 @@
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 0px 0px #282e33;
 }
-.MessageContainer .MessageTime {
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
-  margin: 0px 10px 0px 15px;
-  font-size: 12px;
-  align-self: end;
+.MessageContainer.other {
+  border-radius: 20px 20px 20px 0px;
+}
+.MessageContainer.other::before {
+  content: "";
+  background-color: transparent;
+  position: absolute;
+  left: -20px;
+  bottom: 0px;
+  height: 10px;
+  width: 20px;
+  border-radius: 0px 0px 15px 0px;
+  box-shadow: 10px 0px 0px #282e33;
 }
 
 .ImageContainer {
@@ -52,18 +68,21 @@
   border-radius: 20px;
 }
 .ImageContainer.WithCaption {
-  border-radius: 15px 15px 0px 15px;
+  border-radius: 15px 15px 15px 0px;
 }
-.ImageContainer.WithCaption::before {
+.ImageContainer.WithCaption.other {
+  border-radius: 20px 20px 20px 0px;
+}
+.ImageContainer.WithCaption.other::before {
   content: "";
   background-color: transparent;
   position: absolute;
-  right: -20px;
+  left: -20px;
   bottom: 0px;
   height: 10px;
   width: 20px;
-  border-radius: 0px 0px 0px 15px;
-  box-shadow: -10px 0px 0px #282e33;
+  border-radius: 0px 0px 15px 0px;
+  box-shadow: 10px 0px 0px #282e33;
 }
 .ImageContainer.WithCaption .MessageImage {
   border-radius: 15px 15px 0px 0px;

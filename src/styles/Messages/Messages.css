@@ -1,7 +1,7 @@
 .Messages {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 9px;
+  padding: 0px 9px 0px 16px;
   flex: 1 0 0;
 }
 .Messages:hover::-webkit-scrollbar-thumb {

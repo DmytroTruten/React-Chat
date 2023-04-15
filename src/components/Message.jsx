@@ -18,6 +18,10 @@ const Message = ({ message }) => {
                 message.text ? "WithCaption" : "WithoutCaption"
               } flex-column`
             : "MessageContainer"
+        } ${
+          message.senderID === currentUser.uid
+            ? "current align-self-end"
+            : "other align-self-start"
         } d-flex`}
       >
         {message.image && (

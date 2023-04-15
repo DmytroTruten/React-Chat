@@ -39,7 +39,7 @@
   overflow-x: hidden;
   transition: all 0.2s ease-in-out;
   background-color: $secondary-background-color;
-  z-index: 1;
+  z-index: 2;
   &.closed {
     width: 0;
   }

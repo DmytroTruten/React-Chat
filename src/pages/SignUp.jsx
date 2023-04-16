@@ -40,7 +40,7 @@ const SignUp = () => {
           photoURL: downloadURL,
         });
       });
-      navigate("/Home");
+      navigate("/React-Chat/Home");
     } catch (error) {
       setError(true);
       console.log(error);
@@ -78,7 +78,7 @@ const SignUp = () => {
         </Button>
         <div className="d-flex justify-content-center w-100">
           <p className="mb-0 me-2">You already have an account? </p>
-          <Link to="/">Log in</Link>
+          <Link to="/React-Chat">Log in</Link>
         </div>
       </Form>
     </div>

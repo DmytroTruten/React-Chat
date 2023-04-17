@@ -33,46 +33,48 @@ const SidebarChatList = ({ handleSidebarState }) => {
 
   return (
     <div className="SidebarChatList">
-      {Object.entries(chats)?.map((chat) => (
-        <div
-          className="SidebarChat d-flex"
-          key={chat[0]}
-          onClick={() => handleSelect(chat[1].userInfo)}
-        >
-          <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
-            <img
-              className="UserAvatar"
-              src={chat[1].userInfo.photoURL}
-              alt=""
-            />
-          </div>
-          <div className="SidebarChatInfo d-flex flex-column w-100">
-            <div className="SidebarChatUsernameContainer d-flex justify-content-between">
-              <p className="SidebarChatUsername">
-                {chat[1].userInfo.displayName}
-              </p>
-              <p className="SidebarChatTime">
-                {moment.unix(chat[1]?.date?.seconds).format("HH:mm")}
-              </p>
-              {console.log(chat[1])}
+      {Object.entries(chats)
+        ?.sort((a, b) => b[1].date - a[1].date)
+        .map((chat) => (
+          <div
+            className="SidebarChat d-flex"
+            key={chat[0]}
+            onClick={() => handleSelect(chat[1].userInfo)}
+          >
+            <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
+              <img
+                className="UserAvatar"
+                src={chat[1].userInfo.photoURL}
+                alt=""
+              />
             </div>
-            <div className="d-flex align-items-center">
-              {chat[1].lastImageURL?.downloadURL && (
-                <img
-                  className="SidebarChatLastImg me-1"
-                  src={chat[1].lastImageURL?.downloadURL}
-                  alt=""
-                />
-              )}
-              <p className="SidebarChatLastMsg">
-                {chat[1].lastMessage?.lastMessage.length > 30
-                  ? chat[1].lastMessage?.lastMessage.slice(0, 30) + "..."
-                  : chat[1].lastMessage?.lastMessage}
-              </p>
+            <div className="SidebarChatInfo d-flex flex-column w-100">
+              <div className="SidebarChatUsernameContainer d-flex justify-content-between">
+                <p className="SidebarChatUsername">
+                  {chat[1].userInfo.displayName}
+                </p>
+                <p className="SidebarChatTime">
+                  {moment.unix(chat[1]?.date?.seconds).format("HH:mm")}
+                </p>
+                {console.log(chat[1])}
+              </div>
+              <div className="d-flex align-items-center">
+                {chat[1].lastImageURL?.downloadURL && (
+                  <img
+                    className="SidebarChatLastImg me-1"
+                    src={chat[1].lastImageURL?.downloadURL}
+                    alt=""
+                  />
+                )}
+                <p className="SidebarChatLastMsg">
+                  {chat[1].lastMessage?.lastMessage.length > 30
+                    ? chat[1].lastMessage?.lastMessage.slice(0, 30) + "..."
+                    : chat[1].lastMessage?.lastMessage}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   );
 };

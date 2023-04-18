@@ -1,17 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef, useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
 import moment from "moment";
 import "../styles/Message/Message.css";
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
-  const { data } = useContext(ChatContext);
+  const messageRef = useRef(null);
+
+  useEffect(() => {
+    messageRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
 
   return (
     <Fragment>
       <div
+        ref={messageRef}
         className={`${
           message.image
             ? `ImageContainer ${

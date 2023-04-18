@@ -70,17 +70,28 @@
   border: none;
   background-color: transparent;
   transition: none;
-  
-  .LogoutIcon {
-    width: 20px;
-    margin-right: 12px;
-  }
   p {
     color: #cd6667;
   }
   &:hover {
     background-color: #313b43;
   }
+}
+
+.UploadImageButton {
+  padding: 10px 16px;
+  border-radius: 0;
+  border: none;
+  transition: none;
+  p {
+    color: #fff;
+  }
+}
+
+.LogoutIcon,
+.UploadIcon {
+  width: 20px;
+  margin-right: 12px;
 }
 
 .SidebarHeader {

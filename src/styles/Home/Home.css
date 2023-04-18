@@ -72,15 +72,27 @@
   background-color: transparent;
   transition: none;
 }
-.LogoutButton .LogoutIcon {
-  width: 20px;
-  margin-right: 12px;
-}
 .LogoutButton p {
   color: #cd6667;
 }
 .LogoutButton:hover {
   background-color: #313b43;
+}
+
+.UploadImageButton {
+  padding: 10px 16px;
+  border-radius: 0;
+  border: none;
+  transition: none;
+}
+.UploadImageButton p {
+  color: #fff;
+}
+
+.LogoutIcon,
+.UploadIcon {
+  width: 20px;
+  margin-right: 12px;
 }
 
 .SidebarHeader {

@@ -7,6 +7,7 @@ import { auth, storage, db } from "../firebase";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import logoutIcon from "../assets/logout-icon.svg";
+import uploadIcon from "../assets/upload-icon.svg";
 
 const SidebarSettings = ({ state }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -63,8 +64,9 @@ const SidebarSettings = ({ state }) => {
         </div>
         <div className="d-flex flex-column">
           {selectedFile && (
-            <Button type="submit" size="sm">
-              Upload Image
+            <Button className="UploadImageButton d-flex align-items-center" type="submit">
+              <img className="UploadIcon" src={uploadIcon} alt="" />
+              <p>Upload image</p>
             </Button>
           )}
           <Button

@@ -6,6 +6,7 @@ import { signOut, updateProfile } from "firebase/auth";
 import { auth, storage, db } from "../firebase";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import logoutIcon from "../assets/logout-icon.svg";
 
 const SidebarSettings = ({ state }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -27,7 +28,7 @@ const SidebarSettings = ({ state }) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
           await updateDoc(photoRef, {
             photoURL: downloadURL,
-          })
+          });
           await updateProfile(currentUser, {
             photoURL: downloadURL,
           });
@@ -43,23 +44,23 @@ const SidebarSettings = ({ state }) => {
 
   return (
     <div className={`SidebarSettings ${state} d-flex flex-column`}>
-      <form
-        className="SidebarSettingsInnerContainer p-3"
-        onSubmit={handleSubmit}
-      >
+      <form className="SidebarSettingsInnerContainer" onSubmit={handleSubmit}>
         <Form.Control
+          accept="image/*"
           className="ImagePicker"
           type="file"
           id="file"
           onChange={handleInputFile}
         />
-        <label htmlFor="file">
-          <div className="UserAvatarContainer mt-2">
-            <img className="UserAvatar" src={currentUser.photoURL} alt="" />
-          </div>
-        </label>
-        {error && (<p className="ErrorMsg">Something went wrong...</p>)}
-        <p className="my-2">{currentUser.displayName}</p>
+        <div className="p-3">
+          <label htmlFor="file">
+            <div className="UserAvatarContainer mt-2">
+              <img className="UserAvatar" src={currentUser.photoURL} alt="" />
+            </div>
+          </label>
+          {error && <p className="ErrorMsg">Something went wrong...</p>}
+          <p className="my-2">{currentUser.displayName}</p>
+        </div>
         <div className="d-flex flex-column">
           {selectedFile && (
             <Button type="submit" size="sm">
@@ -67,13 +68,13 @@ const SidebarSettings = ({ state }) => {
             </Button>
           )}
           <Button
-            className="LogoutButton my-2"
-            size="sm"
+            className="LogoutButton d-flex align-items-center"
             onClick={() => {
               signOut(auth);
             }}
           >
-            Logout
+            <img className="LogoutIcon" src={logoutIcon} alt="" />
+            <p>Logout</p>
           </Button>
         </div>
       </form>

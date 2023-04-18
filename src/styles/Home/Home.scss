@@ -64,6 +64,25 @@
   }
 }
 
+.LogoutButton {
+  padding: 10px 16px;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  transition: none;
+  
+  .LogoutIcon {
+    width: 20px;
+    margin-right: 12px;
+  }
+  p {
+    color: #cd6667;
+  }
+  &:hover {
+    background-color: #313b43;
+  }
+}
+
 .SidebarHeader {
   padding: 12px 16px 12px 0px;
 }

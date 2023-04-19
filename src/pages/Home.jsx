@@ -9,6 +9,7 @@ import interact from "interactjs";
 import "../styles/Home/Home.css";
 
 const Home = () => {
+  const [chatContainerState, setChatContainerState] = useState("desktop");
   const [sidebarSettingsState, setSidebarSettingsState] = useState("closed");
   const [sidebarChatState, setSidebarChatState] = useState("closed");
   const topPanelRef = useRef(null);
@@ -40,6 +41,27 @@ const Home = () => {
       ></div>
     );
   });
+
+  useEffect(() => {
+    function handleResize() {
+      let chatContainerWidth = chatContainerRef.current.offsetWidth;
+      if (chatContainerWidth < 650) {
+        setChatContainerState("mobile");
+      } else {
+        setChatContainerState("desktop");
+      }
+    }
+    
+    if (chatContainerRef.current) {
+      chatContainerRef.current.addEventListener("resize", handleResize);
+      return () => {
+        if (chatContainerRef.current) {
+          chatContainerRef.current.removeEventListener("resize", handleResize);
+        }
+      };
+    }
+  }, []);
+  
 
   useEffect(() => {
     if (chatContainerRef.current) {

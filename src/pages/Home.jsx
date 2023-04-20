@@ -5,7 +5,6 @@ import SidebarSettings from "../components/SidebarSettings";
 import Navbar from "../components/Navbar";
 import Messages from "../components/Messages";
 import Input from "../components/Input";
-import interact from "interactjs";
 import "../styles/Home/Home.css";
 
 const Home = () => {
@@ -61,95 +60,8 @@ const Home = () => {
       };
     }
   }, []);
-  
 
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      interact(chatContainerRef.current)
-        .resizable({
-          margin: 5,
-          edges: { top: true, right: true, bottom: true, left: true },
-          restrictEdges: {
-            outer: ".Home",
-            endOnly: true,
-          },
-          listeners: {
-            move: function (event) {
-              let { x, y } = event.target.dataset;
-
-              x = (parseFloat(x) || 0) + event.deltaRect.left;
-              y = (parseFloat(y) || 0) + event.deltaRect.top;
-
-              Object.assign(event.target.style, {
-                width: `${event.rect.width}px`,
-                height: `${event.rect.height}px`,
-                transform: `translate(${x}px, ${y}px)`,
-              });
-
-              Object.assign(event.target.dataset, { x, y });
-            },
-          },
-          modifiers: [
-            interact.modifiers.restrictSize({
-              min: { width: 400, height: 505 },
-            }),
-            interact.modifiers.restrict({
-              restriction: ".Home",
-              endOnly: true,
-            }),
-          ],
-        })
-        .draggable({
-          allowFrom: ".TopPanel",
-          restrict: {
-            restriction: ".Home",
-          },
-          listeners: {
-            move(event) {
-              const target = event.target;
-              const x =
-                (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-              const y =
-                (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-              target.style.webkitTransform = target.style.transform =
-                "translate(" + x + "px, " + y + "px)";
-              target.setAttribute("data-x", x);
-              target.setAttribute("data-y", y);
-            },
-          },
-          inertia: true,
-          modifiers: [
-            interact.modifiers.restrictRect({
-              restriction: ".Home",
-              endOnly: true,
-            }),
-          ],
-        });
-    }
-  }, [chatContainerRef]);
-
-  useEffect(() => {
-    if (sidebarRef.current) {
-      interact(sidebarRef.current).resizable({
-        margin: 5,
-        edges: { top: false, left: false, bottom: false, right: true },
-        listeners: {
-          move: function (event) {
-            let { x } = event.target.dataset;
-
-            x = (parseFloat(x) || 0) + event.deltaRect.left;
-
-            Object.assign(event.target.style, {
-              width: `${event.rect.width}px`,
-              transform: `translate(${x}px)`,
-            });
-
-            Object.assign(event.target.dataset, { x });
-          },
-        },
-      });
-    }
-  }, [sidebarRef]);
+  ;
 
   useEffect(() => {
     if (overlayRef.current) {
@@ -181,7 +93,6 @@ const Home = () => {
         className="ChatContainer d-flex flex-column px-0"
         ref={chatContainerRef}
       >
-        <div className="TopPanel" ref={topPanelRef}></div>
         <div className="d-flex h-100">
           <div className="Sidebar d-flex flex-column" ref={sidebarRef}>
             <Search handleSidebarState={handleSidebarState} />

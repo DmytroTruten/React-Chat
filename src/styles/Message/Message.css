@@ -2,7 +2,7 @@
   max-width: 70%;
   color: #fff;
   font-size: 14px;
-  background-color: #2a2f33;
+  background-color: #212121;
   padding: 3px 5px 3px 15px;
   margin: 1px 0px;
   position: relative;
@@ -27,7 +27,7 @@
   height: 10px;
   width: 20px;
   border-radius: 0px 0px 0px 15px;
-  box-shadow: -10px 0px 0px #282e33;
+  box-shadow: -10px 0px 0px #212121;
 }
 .MessageContainer.other {
   border-radius: 20px 20px 20px 0px;
@@ -41,7 +41,7 @@
   height: 10px;
   width: 20px;
   border-radius: 0px 0px 15px 0px;
-  box-shadow: 10px 0px 0px #282e33;
+  box-shadow: 10px 0px 0px #212121;
 }
 
 .ImageContainer {
@@ -82,7 +82,7 @@
   height: 10px;
   width: 20px;
   border-radius: 0px 0px 15px 0px;
-  box-shadow: 10px 0px 0px #282e33;
+  box-shadow: 10px 0px 0px #212121;
 }
 .ImageContainer.WithCaption .MessageImage {
   border-radius: 15px 15px 0px 0px;

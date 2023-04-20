@@ -6,7 +6,7 @@
   height: 100%;
   padding: 8px 16px 8px 0px;
   border-radius: 0;
-  background-color: #282e33;
+  background-color: #212121;
   border: none;
   font-size: 14px;
   font-weight: 300;
@@ -22,7 +22,7 @@
   font-weight: 400;
 }
 .Input:focus {
-  background-color: #282e33;
+  background-color: #212121;
   box-shadow: none;
   caret-color: #fff;
   color: #fff;
@@ -32,7 +32,7 @@
 .InputButtonsContainer {
   height: 100%;
   width: 55px;
-  background-color: #282e33;
+  background-color: #212121;
 }
 .InputButtonsContainer.AttachContainer {
   border-left: 1px solid #242a2f;
@@ -46,7 +46,7 @@
   max-height: -moz-min-content;
   max-height: min-content;
   cursor: pointer;
-  background-color: #282e33;
+  background-color: #212121;
   border: none;
 }
 .AttachButton:hover .AttachIcon {
@@ -61,7 +61,7 @@
   max-height: -moz-min-content;
   max-height: min-content;
   cursor: pointer;
-  background-color: #282e33;
+  background-color: #212121;
   border: none;
 }
 

@@ -16,7 +16,8 @@
   align-self: end;
 }
 .MessageContainer.current {
-  border-radius: 15px 15px 0px 15px;
+  border-radius: 12px 12px 0px 12px;
+  right: 25%;
 }
 .MessageContainer.current::before {
   content: "";
@@ -31,6 +32,7 @@
 }
 .MessageContainer.other {
   border-radius: 15px 15px 15px 0px;
+  left: 20%;
 }
 .MessageContainer.other::before {
   content: "";
@@ -45,7 +47,7 @@
 }
 
 .ImageContainer {
-  max-width: 70%;
+  max-width: 40%;
   position: relative;
   margin: 1px 0px;
   background-color: #212121;
@@ -53,6 +55,12 @@
 }
 .ImageContainer.WithoutCaption {
   border-radius: 15px;
+}
+.ImageContainer.WithoutCaption.current {
+  right: 25%;
+}
+.ImageContainer.WithoutCaption.other {
+  left: 20%;
 }
 .ImageContainer.WithoutCaption .MessageTime {
   height: -webkit-min-content;
@@ -69,6 +77,7 @@
 }
 .ImageContainer.WithCaption.current {
   border-radius: 15px 15px 0px 15px;
+  right: 25%;
 }
 .ImageContainer.WithCaption.current::before {
   content: "";
@@ -83,6 +92,7 @@
 }
 .ImageContainer.WithCaption.other {
   border-radius: 15px 15px 15px 0px;
+  left: 20%;
 }
 .ImageContainer.WithCaption.other::before {
   content: "";
@@ -114,12 +124,11 @@
 .Message {
   margin: 3px 0px;
   overflow-wrap: anywhere;
+  max-width: 400px;
 }
 
 .MessageImage {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
   border-radius: 15px;
 }/*# sourceMappingURL=Message.css.map */

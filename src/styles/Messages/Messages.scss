@@ -7,12 +7,12 @@
 
   &:hover {
     &::-webkit-scrollbar-thumb {
-      background-color: #7d8084;
+      background-color: rgba(0, 0, 0, 0.3);
     }
   }
 
   &::-webkit-scrollbar {
-    width: 7px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track,

@@ -4,10 +4,10 @@
   flex: 1 0 0;
 }
 .Messages:hover::-webkit-scrollbar-thumb {
-  background-color: #7d8084;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .Messages::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 .Messages::-webkit-scrollbar-track, .Messages::-webkit-scrollbar-thumb {
   border-radius: 10px;

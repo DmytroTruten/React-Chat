@@ -16,7 +16,8 @@
     align-self: end;
   }
   &.current {
-    border-radius: 15px 15px 0px 15px;
+    border-radius: 12px 12px 0px 12px;
+    right: 25%;
     &::before {
       content: "";
       background-color: transparent;
@@ -31,6 +32,7 @@
   }
   &.other {
     border-radius: 15px 15px 15px 0px;
+    left: 20%;
     &::before {
       content: "";
       background-color: transparent;
@@ -46,7 +48,7 @@
 }
 
 .ImageContainer {
-  max-width: 70%;
+  max-width: 40%;
   position: relative;
   margin: 1px 0px;
   background-color: $dark-mode-background-color;
@@ -54,6 +56,12 @@
 
   &.WithoutCaption {
     border-radius: 15px;
+    &.current {
+      right: 25%;
+    }
+    &.other {
+      left: 20%;
+    }
     .MessageTime {
       height: min-content;
       position: absolute;
@@ -70,6 +78,7 @@
   &.WithCaption {
     &.current {
       border-radius: 15px 15px 0px 15px;
+      right: 25%;
       &::before {
         content: "";
         background-color: transparent;
@@ -84,6 +93,7 @@
     }
     &.other {
       border-radius: 15px 15px 15px 0px;
+      left: 20%;
       &::before {
         content: "";
         background-color: transparent;
@@ -115,12 +125,11 @@
 .Message {
   margin: 3px 0px;
   overflow-wrap: anywhere;
+  max-width: 400px;
 }
 
 .MessageImage {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
   border-radius: 15px;
 }

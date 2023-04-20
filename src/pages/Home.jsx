@@ -97,19 +97,17 @@ const Home = () => {
             <SidebarChatList handleSidebarState={handleSidebarState} />
             <SidebarSettings state={sidebarSettingsState} />
           </div>
-          <div className="Chat row justify-content-center">
-            <div className="ChatInnerContainer col-8 d-flex flex-column h-100 px-0">
-              {sidebarChatState === "closed" && (
+          <div className="Chat d-flex flex-column justify-content-center">
+            {sidebarChatState === "closed" && (
+              <Messages sidebarChatState={sidebarChatState} />
+            )}
+            {sidebarChatState === "opened" && (
+              <Fragment>
+                <Navbar />
                 <Messages sidebarChatState={sidebarChatState} />
-              )}
-              {sidebarChatState === "opened" && (
-                <Fragment>
-                  <Navbar />
-                  <Messages sidebarChatState={sidebarChatState} />
-                  <Input />
-                </Fragment>
-              )}
-            </div>
+                <Input />
+              </Fragment>
+            )}
           </div>
           <Overlay handleSidebarState={handleSidebarState} ref={overlayRef} />
         </div>

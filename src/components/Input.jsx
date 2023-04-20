@@ -103,36 +103,50 @@ const Input = () => {
 
   return (
     <div className="InputContainer d-flex justify-content-center align-items-center">
-      <div className="InputButtonsContainer AttachContainer d-flex justify-content-center align-items-center">
-        <label className="AttachButton d-flex justify-content-center align-items-center">
-          <Form.Control
-            type="file"
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-            }}
-            style={{ display: "none" }}
-          />
-          <img className="AttachIcon" src={attachIcon} alt="attach" />
-        </label>
-      </div>
-      <Form.Control
-        className="Input ps-1"
-        type="text"
-        placeholder="Write a message..."
-        ref={inputRef}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
-        onKeyDown={handleKeyDown}
-      />
-      <div className="InputButtonsContainer d-flex justify-content-center align-items-center">
-        <div
-          className="SendButton d-flex justify-content-center align-items-center"
-          onClick={handleSend}
-        >
-          <img className="SendIcon" src={sendIcon} alt="" />
+      <div className="InputElementsWrapper d-flex justify-content-center align-items-center">
+        <div className="InputButtonsContainer EmojiContainer d-flex justify-content-center align-items-center">
+          <label className="AttachButton d-flex justify-content-center align-items-center">
+            <Form.Control
+              type="file"
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+              style={{ display: "none" }}
+            />
+            <img className="AttachIcon" src={attachIcon} alt="attach" />
+          </label>
+        </div>
+        <Form.Control
+          className="Input ps-1"
+          type="text"
+          placeholder="Message"
+          ref={inputRef}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+          onKeyDown={handleKeyDown}
+        />
+        <div className="InputButtonsContainer AttachContainer d-flex justify-content-center align-items-center">
+          <label className="AttachButton d-flex justify-content-center align-items-center">
+            <Form.Control
+              type="file"
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+              style={{ display: "none" }}
+            />
+            <img className="AttachIcon" src={attachIcon} alt="attach" />
+          </label>
         </div>
       </div>
+      <div className="InputButtonsContainer SendContainer d-flex justify-content-center align-items-center">
+          <div
+            className="SendButton d-flex justify-content-center align-items-center"
+            onClick={handleSend}
+          >
+            <img className="SendIcon" src={sendIcon} alt="" />
+          </div>
+        </div>
     </div>
   );
 };

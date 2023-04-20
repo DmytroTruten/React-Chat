@@ -4,6 +4,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1 0 0;
+  padding-bottom: 5px;
 
   &:hover {
     &::-webkit-scrollbar-thumb {

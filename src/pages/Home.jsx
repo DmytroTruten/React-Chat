@@ -50,7 +50,7 @@ const Home = () => {
         setChatContainerState("desktop");
       }
     }
-    
+
     if (chatContainerRef.current) {
       chatContainerRef.current.addEventListener("resize", handleResize);
       return () => {
@@ -60,8 +60,6 @@ const Home = () => {
       };
     }
   }, []);
-
-  ;
 
   useEffect(() => {
     if (overlayRef.current) {
@@ -99,17 +97,19 @@ const Home = () => {
             <SidebarChatList handleSidebarState={handleSidebarState} />
             <SidebarSettings state={sidebarSettingsState} />
           </div>
-          <div className="Chat d-flex flex-column">
-            {sidebarChatState === "closed" && (
-              <Messages sidebarChatState={sidebarChatState} />
-            )}
-            {sidebarChatState === "opened" && (
-              <Fragment>
-                <Navbar />
+          <div className="Chat row justify-content-center">
+            <div className="ChatInnerContainer col-8 d-flex flex-column h-100 px-0">
+              {sidebarChatState === "closed" && (
                 <Messages sidebarChatState={sidebarChatState} />
-                <Input />
-              </Fragment>
-            )}
+              )}
+              {sidebarChatState === "opened" && (
+                <Fragment>
+                  <Navbar />
+                  <Messages sidebarChatState={sidebarChatState} />
+                  <Input />
+                </Fragment>
+              )}
+            </div>
           </div>
           <Overlay handleSidebarState={handleSidebarState} ref={overlayRef} />
         </div>

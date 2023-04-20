@@ -16,7 +16,7 @@
     align-self: end;
   }
   &.current {
-    border-radius: 20px 20px 0px 20px;
+    border-radius: 15px 15px 0px 15px;
     &::before {
       content: "";
       background-color: transparent;
@@ -30,7 +30,7 @@
     }
   }
   &.other {
-    border-radius: 20px 20px 20px 0px;
+    border-radius: 15px 15px 15px 0px;
     &::before {
       content: "";
       background-color: transparent;
@@ -49,7 +49,7 @@
   max-width: 70%;
   position: relative;
   margin: 1px 0px;
-  background-color: #2a2f33;
+  background-color: $dark-mode-background-color;
   font-size: 14px;
 
   &.WithoutCaption {
@@ -68,9 +68,22 @@
   }
 
   &.WithCaption {
-    border-radius: 15px 15px 15px 0px;
+    &.current {
+      border-radius: 15px 15px 0px 15px;
+      &::before {
+        content: "";
+        background-color: transparent;
+        position: absolute;
+        right: -20px;
+        bottom: 0px;
+        height: 10px;
+        width: 20px;
+        border-radius: 0px 0px 0px 15px;
+        box-shadow: -10px 0px 0px $dark-mode-background-color;
+      }
+    }
     &.other {
-      border-radius: 20px 20px 20px 0px;
+      border-radius: 15px 15px 15px 0px;
       &::before {
         content: "";
         background-color: transparent;

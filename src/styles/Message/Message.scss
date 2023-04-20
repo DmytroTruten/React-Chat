@@ -3,7 +3,6 @@
 .MessageContainer {
   max-width: 70%;
   color: #fff;
-  font-size: 14px;
   background-color: $dark-mode-background-color;
   padding: 3px 5px 3px 15px;
   margin: 1px 0px;
@@ -17,7 +16,7 @@
   }
   &.current {
     border-radius: 12px 12px 0px 12px;
-    right: 25%;
+    right: 25.5%;
     &::before {
       content: "";
       background-color: transparent;
@@ -52,12 +51,11 @@
   position: relative;
   margin: 1px 0px;
   background-color: $dark-mode-background-color;
-  font-size: 14px;
 
   &.WithoutCaption {
     border-radius: 15px;
     &.current {
-      right: 25%;
+      right: 25.5%;
     }
     &.other {
       left: 20%;
@@ -78,7 +76,7 @@
   &.WithCaption {
     &.current {
       border-radius: 15px 15px 0px 15px;
-      right: 25%;
+      right: 25.5%;
       &::before {
         content: "";
         background-color: transparent;
@@ -126,6 +124,8 @@
   margin: 3px 0px;
   overflow-wrap: anywhere;
   max-width: 400px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .MessageImage {

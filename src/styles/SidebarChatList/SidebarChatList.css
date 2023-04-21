@@ -22,14 +22,14 @@
 }
 
 .SidebarChatImgContainer {
-  height: 43px;
-  min-width: 43px;
+  height: 54px;
+  min-width: 54px;
   margin-right: 12px;
   border-radius: 50%;
 }
 
 .SidebarChatUsername {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .SidebarChatLastMsg {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .SidebarChatLastImg {

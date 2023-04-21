@@ -135,7 +135,7 @@
 }
 .SidebarSearch:focus {
   background-color: #181818;
-  border-color: #61dbfb;
+  border: 2px solid #61dbfb;
   box-shadow: none;
   caret-color: #999694;
   color: #fff;
@@ -146,6 +146,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  padding: 8px;
   cursor: pointer;
 }
 .Settings:hover {

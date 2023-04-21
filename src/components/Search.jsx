@@ -87,7 +87,7 @@ const Search = ({ handleSidebarState }) => {
       </div>
       <div className="d-flex flex-column w-100">
         <Form.Control
-          className="SidebarSearchControl"
+          className="SidebarSearch"
           type="text"
           placeholder="Search"
           onChange={(e) => {

@@ -97,14 +97,14 @@
   height: 100%;
   padding: 0px 44px;
   margin: 0px 7px;
-  background-color: #181818; 
+  background-color: #181818;
   color: #fff;
   border: 1px solid #2f2f2f;
   border-radius: 22px;
   font-size: 16px;
   font-weight: 400;
   transition: border-color 0.2s ease-in-out;
-  background-image: url("../../assets/search-icon.svg"); 
+  background-image: url("../../assets/search-icon.svg");
   background-repeat: no-repeat;
   background-position: 10px;
   background-size: 24px;
@@ -121,7 +121,7 @@
   }
 
   &:focus {
-    background-color: #181818; 
+    background-color: #181818;
     border: 2px solid $main-lightblue;
     box-shadow: none;
     caret-color: #999694;
@@ -155,8 +155,20 @@
 
 .Chat {
   flex: 1 0 0;
-  background-color: #000;
   position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../../assets/chat-background.jpg");
+    background-size: cover;
+    z-index: -1;
+    filter: brightness(40%);
+  }
 }
 
 .Overlay {

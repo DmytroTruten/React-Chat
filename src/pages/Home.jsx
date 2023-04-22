@@ -8,80 +8,23 @@ import Input from "../components/Input";
 import "../styles/Home/Home.css";
 
 const Home = () => {
-  const [chatContainerState, setChatContainerState] = useState("desktop");
   const [sidebarSettingsState, setSidebarSettingsState] = useState("closed");
   const [sidebarChatState, setSidebarChatState] = useState("closed");
-  const topPanelRef = useRef(null);
-  const overlayRef = useRef(null);
+  const [sidebarMenuState, setSidebarMenuState] = useState("closed");
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
-
-  const Overlay = React.forwardRef((props, ref) => {
-    const [isVisible, setIsVisible] = useState(true);
-
-    const handleClick = () => {
-      setIsVisible(!isVisible);
-      props.handleSidebarState("settings");
-    };
-
-    const handleAnimationEnd = () => {
-      if (overlayRef.current && sidebarSettingsState === "closed") {
-        overlayRef.current.style.display = "none";
-      }
-    };
-
-    return (
-      <div
-        ref={ref}
-        onClick={handleClick}
-        className="Overlay"
-        style={{ display: "none" }}
-        onAnimationEnd={handleAnimationEnd}
-      ></div>
-    );
-  });
-
-  useEffect(() => {
-    function handleResize() {
-      let chatContainerWidth = chatContainerRef.current.offsetWidth;
-      if (chatContainerWidth < 650) {
-        setChatContainerState("mobile");
-      } else {
-        setChatContainerState("desktop");
-      }
-    }
-
-    if (chatContainerRef.current) {
-      chatContainerRef.current.addEventListener("resize", handleResize);
-      return () => {
-        if (chatContainerRef.current) {
-          chatContainerRef.current.removeEventListener("resize", handleResize);
-        }
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    if (overlayRef.current) {
-      if (sidebarSettingsState === "opened") {
-        overlayRef.current.style.display = "block";
-        overlayRef.current.style.animation = "reveal .2s ease-in-out forwards";
-      } else {
-        overlayRef.current.style.animation = "hide .2s ease-in-out forwards";
-        setTimeout(() => {
-          overlayRef.current.style.display = "none";
-        }, 200);
-      }
-    }
-  }, [sidebarSettingsState]);
 
   const handleSidebarState = (sidebarType) => {
     if (sidebarType === "chat") {
       sidebarChatState === "closed" ? setSidebarChatState("opened") : null;
-    } else {
+    } else if (sidebarType === "settings") {
       sidebarSettingsState === "closed"
         ? setSidebarSettingsState("opened")
         : setSidebarSettingsState("closed");
+    } else {
+      sidebarMenuState === "closed"
+        ? setSidebarMenuState("opened")
+        : setSidebarMenuState("closed");
     }
   };
 
@@ -109,7 +52,6 @@ const Home = () => {
               </Fragment>
             )}
           </div>
-          <Overlay handleSidebarState={handleSidebarState} ref={overlayRef} />
         </div>
       </div>
     </div>

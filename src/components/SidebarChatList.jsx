@@ -1,5 +1,5 @@
 import { doc, onSnapshot } from "firebase/firestore";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
@@ -8,6 +8,7 @@ import "../styles/SidebarChatList/SidebarChatList.css";
 
 const SidebarChatList = ({ handleSidebarState }) => {
   const [chats, setChats] = useState([]);
+  const sidebarMenuRef = useRef(null);
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
 
@@ -33,6 +34,9 @@ const SidebarChatList = ({ handleSidebarState }) => {
 
   return (
     <div className="SidebarChatList">
+      <div className="SidebarMenu d-flex flex-column" ref={sidebarMenuRef}>
+        <p>Settings</p>
+      </div>
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat) => (

@@ -1,0 +1,54 @@
+.SearchInput {
+  width: 100%;
+  height: 100%;
+  padding: 0px 44px;
+  margin: 0px 7px;
+  background-color: #181818;
+  color: #fff;
+  border: 1px solid #2f2f2f;
+  border-radius: 22px;
+  font-size: 16px;
+  font-weight: 400;
+  transition: border-color 0.2s ease-in-out;
+  background-image: url("../../assets/search-icon.svg");
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 24px;
+}
+.SearchInput:hover {
+  border-color: #707579;
+}
+.SearchInput::-moz-placeholder {
+  font-weight: 400;
+  color: #909192;
+  -moz-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  font-family: "Roboto";
+}
+.SearchInput:-ms-input-placeholder {
+  font-weight: 400;
+  color: #909192;
+  -ms-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  font-family: "Roboto";
+}
+.SearchInput::placeholder {
+  font-weight: 400;
+  color: #909192;
+  transition: color 0.2s ease-in-out;
+  font-family: "Roboto";
+}
+.SearchInput:focus {
+  background-color: #181818;
+  border: 2px solid #61dbfb;
+  box-shadow: none;
+  caret-color: #999694;
+  color: #fff;
+  font-weight: 300;
+}
+
+.SidebarMenu {
+  position: absolute;
+  left: 16px;
+  background-color: #2f2f2f;
+}/*# sourceMappingURL=Search.css.map */

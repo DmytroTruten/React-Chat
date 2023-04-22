@@ -13,13 +13,14 @@ import {
 import { db } from "../firebase";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../context/AuthContext";
+import "../styles/Search/Search.css";
 
 const Search = ({ handleSidebarState }) => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
   const { currentUser } = useContext(AuthContext);
-
+  
   const handleKeyDown = (e) => {
     e.code == "Enter" && handleUserSearch();
   };
@@ -79,7 +80,7 @@ const Search = ({ handleSidebarState }) => {
     <div className="SidebarHeader d-flex">
       <div
         className="Settings d-flex flex-column justify-content-center align-items-center"
-        onClick={handleSidebarState}
+        onClick={() => {handleSidebarState("menu")}}
       >
         <span></span>
         <span></span>
@@ -87,7 +88,7 @@ const Search = ({ handleSidebarState }) => {
       </div>
       <div className="d-flex flex-column w-100">
         <Form.Control
-          className="SidebarSearch"
+          className="SearchInput"
           type="text"
           placeholder="Search"
           onChange={(e) => {

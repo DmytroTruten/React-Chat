@@ -37,7 +37,10 @@ const Home = () => {
         <div className="d-flex h-100">
           <div className="Sidebar d-flex flex-column" ref={sidebarRef}>
             <Search handleSidebarState={handleSidebarState} />
-            <SidebarChatList handleSidebarState={handleSidebarState} />
+            <SidebarChatList
+              handleSidebarState={handleSidebarState}
+              sidebarMenuState={sidebarMenuState}
+            />
             <SidebarSettings state={sidebarSettingsState} />
           </div>
           <div className="Chat d-flex flex-column justify-content-center">

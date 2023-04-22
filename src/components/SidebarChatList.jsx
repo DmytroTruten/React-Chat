@@ -6,7 +6,7 @@ import { db } from "../firebase";
 import moment from "moment";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
-const SidebarChatList = ({ handleSidebarState }) => {
+const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
   const [chats, setChats] = useState([]);
   const sidebarMenuRef = useRef(null);
   const { currentUser } = useContext(AuthContext);
@@ -32,9 +32,26 @@ const SidebarChatList = ({ handleSidebarState }) => {
     dispatch({ type: "CHANGE_USER", payload: userInfo });
   };
 
+  useEffect(() => {
+    if(sidebarMenuRef.current) {
+      sidebarMenuRef.current.style.animation = "show-menu .2s ease-in-out forwards";
+    }
+  }, [sidebarMenuState])
+
   return (
     <div className="SidebarChatList">
-      <div className="SidebarMenu d-flex flex-column" ref={sidebarMenuRef}>
+      <div
+        className={`SidebarMenu ${
+          sidebarMenuState === "closed" ? "closed" : "opened"
+        }`}
+        ref={sidebarMenuRef}
+      >
+        <p>Settings</p>
+        <p>Settings</p>
+        <p>Settings</p>
+        <p>Settings</p>
+        <p>Settings</p>
+        <p>Settings</p>
         <p>Settings</p>
       </div>
       {Object.entries(chats)

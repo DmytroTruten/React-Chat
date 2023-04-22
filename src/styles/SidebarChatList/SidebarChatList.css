@@ -1,5 +1,6 @@
 .SidebarChatList {
   overflow-y: auto;
+  padding-left: 8px;
 }
 .SidebarChatList:hover::-webkit-scrollbar-thumb {
   background-color: #7d8084;
@@ -51,4 +52,57 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.SidebarMenu.closed {
+  display: none;
+}
+.SidebarMenu.opened {
+  min-width: 260px;
+  position: absolute;
+  left: 16px;
+  background-color: #2f2f2f;
+  transform-origin: 0% 0%;
+}
+
+@-webkit-keyframes show-menu {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes show-menu {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes hide-menu {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+@keyframes hide-menu {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
 }/*# sourceMappingURL=SidebarChatList.css.map */

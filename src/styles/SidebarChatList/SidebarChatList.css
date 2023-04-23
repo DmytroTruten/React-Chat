@@ -54,10 +54,19 @@
   border-radius: 50%;
 }
 
+.SidebarMenu {
+  transition: visibility 0.2s linear;
+}
 .SidebarMenu.closed {
-  display: none;
+  visibility: hidden;
+  min-width: 260px;
+  position: absolute;
+  left: 16px;
+  background-color: #2f2f2f;
+  transform-origin: 0% 0%;
 }
 .SidebarMenu.opened {
+  visibility: visible;
   min-width: 260px;
   position: absolute;
   left: 16px;

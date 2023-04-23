@@ -33,10 +33,15 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
   };
 
   useEffect(() => {
-    if(sidebarMenuRef.current) {
-      sidebarMenuRef.current.style.animation = "show-menu .2s ease-in-out forwards";
+    if (sidebarMenuRef.current) {
+      sidebarMenuRef.current.style.animation =
+        "show-menu .2s ease-in-out forwards";
+      if (sidebarMenuState === "closed") {
+        sidebarMenuRef.current.style.animation =
+          "hide-menu .2s ease-in-out forwards";
+      }
     }
-  }, [sidebarMenuState])
+  }, [sidebarMenuState]);
 
   return (
     <div className="SidebarChatList">

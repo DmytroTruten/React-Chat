@@ -1,6 +1,6 @@
 .SidebarChatList {
   overflow-y: auto;
-  padding-left: 8px;
+  padding: 0px 8px 0px 8px;
 
   &:hover {
     &::-webkit-scrollbar-thumb {
@@ -9,7 +9,7 @@
   }
 
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track,
@@ -23,6 +23,7 @@
   padding: 10px;
   overflow-x: hidden;
   cursor: pointer;
+  border-radius: 15px;
 
   &:hover {
     background-color: #353c43;

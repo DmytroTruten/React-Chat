@@ -9,6 +9,7 @@ import "../styles/SidebarChatList/SidebarChatList.css";
 const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
   const [chats, setChats] = useState([]);
   const sidebarMenuRef = useRef(null);
+  const sidebarChatListRef = useRef(null);
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
 
@@ -43,8 +44,19 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
     }
   }, [sidebarMenuState]);
 
+  useEffect(() => {
+    if (sidebarChatListRef.current) {
+      const { scrollHeight, clientHeight } = sidebarChatListRef.current;
+      if (scrollHeight > clientHeight) {
+        sidebarChatListRef.current.style.padding = "0px 1px 0px 8px";
+      } else {
+        sidebarChatListRef.current.style.padding = "0px 8px 0px 8px";
+      }
+    }
+  }, [sidebarChatListRef.current]);
+
   return (
-    <div className="SidebarChatList">
+    <div className="SidebarChatList" ref={sidebarChatListRef}>
       <div
         className={`SidebarMenu ${
           sidebarMenuState === "closed" ? "closed" : "opened"

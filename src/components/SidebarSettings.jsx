@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import logoutIcon from "../assets/logout-icon.svg";
 import uploadIcon from "../assets/upload-icon.svg";
 
-const SidebarSettings = ({ state }) => {
+const SidebarSettings = ({ sidebarSettingsState }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState(false);
   const { currentUser } = useContext(AuthContext);
@@ -44,7 +44,7 @@ const SidebarSettings = ({ state }) => {
   };
 
   return (
-    <div className={`SidebarSettings ${state} d-flex flex-column`}>
+    <div className={`SidebarSettings ${sidebarSettingsState} d-flex flex-column`}>
       <form className="SidebarSettingsInnerContainer" onSubmit={handleSubmit}>
         <Form.Control
           accept="image/*"

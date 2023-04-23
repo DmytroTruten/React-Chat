@@ -41,7 +41,9 @@ const Home = () => {
               handleSidebarState={handleSidebarState}
               sidebarMenuState={sidebarMenuState}
             />
-            <SidebarSettings state={sidebarSettingsState} />
+            <SidebarSettings
+              sidebarSettingsState={sidebarSettingsState}
+            />
           </div>
           <div className="Chat d-flex flex-column justify-content-center">
             {sidebarChatState === "closed" && (

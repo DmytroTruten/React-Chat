@@ -74,6 +74,9 @@
   background-color: #2f2f2f;
   transform-origin: 0% 0%;
 }
+.SidebarMenu > * {
+  cursor: pointer;
+}
 
 @-webkit-keyframes show-menu {
   0% {

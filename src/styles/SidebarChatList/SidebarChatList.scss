@@ -63,7 +63,7 @@
 }
 
 .SidebarMenu {
-  transition: visibility .2s linear;
+  transition: visibility 0.2s linear;
   &.closed {
     visibility: hidden;
     min-width: 260px;
@@ -79,6 +79,9 @@
     left: 16px;
     background-color: #2f2f2f;
     transform-origin: 0% 0%;
+  }
+  & > * {
+    cursor: pointer;
   }
 }
 

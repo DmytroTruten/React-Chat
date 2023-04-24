@@ -63,13 +63,14 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
         }`}
         ref={sidebarMenuRef}
       >
-        <p>Settings</p>
-        <p>Settings</p>
-        <p>Settings</p>
-        <p>Settings</p>
-        <p>Settings</p>
-        <p>Settings</p>
-        <p>Settings</p>
+        <p
+          onClick={() => {
+            handleSidebarState("menu");
+            handleSidebarState("settings");
+          }}
+        >
+          Settings
+        </p>
       </div>
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)

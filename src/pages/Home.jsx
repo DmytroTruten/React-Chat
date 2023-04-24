@@ -42,6 +42,7 @@ const Home = () => {
               sidebarMenuState={sidebarMenuState}
             />
             <SidebarSettings
+              handleSidebarState={handleSidebarState}
               sidebarSettingsState={sidebarSettingsState}
             />
           </div>

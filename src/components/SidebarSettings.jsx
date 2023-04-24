@@ -8,8 +8,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import logoutIcon from "../assets/logout-icon.svg";
 import uploadIcon from "../assets/upload-icon.svg";
+import leftArrowIcon from "../assets/left-arrow-icon.svg";
+import pencilIcon from "../assets/pencil-icon.svg";
+import kebabMenuIcon from "../assets/kebab-menu-icon.svg";
 
-const SidebarSettings = ({ sidebarSettingsState }) => {
+const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState(false);
   const { currentUser } = useContext(AuthContext);
@@ -44,7 +47,24 @@ const SidebarSettings = ({ sidebarSettingsState }) => {
   };
 
   return (
-    <div className={`SidebarSettings ${sidebarSettingsState} d-flex flex-column`}>
+    <div
+      className={`SidebarSettings ${sidebarSettingsState} d-flex flex-column`}
+    >
+      <header className="SidebarSettingsHeader d-flex align-items-center">
+        <Button
+          className="SidebarSettingsHeaderButton d-flex justify-content-center align-items-center"
+          onClick={() => handleSidebarState("settings")}
+        >
+          <img src={leftArrowIcon} alt="" />
+        </Button>
+        <p className="SettingsText w-100">Settings</p>
+        <Button className="SidebarSettingsHeaderButton d-flex justify-content-center align-items-center">
+          <img src={pencilIcon} alt="" />
+        </Button>
+        <Button className="SidebarSettingsHeaderButton d-flex justify-content-center align-items-center ms-2">
+          <img src={kebabMenuIcon} alt="" />
+        </Button>
+      </header>
       <form className="SidebarSettingsInnerContainer" onSubmit={handleSubmit}>
         <Form.Control
           accept="image/*"
@@ -64,7 +84,10 @@ const SidebarSettings = ({ sidebarSettingsState }) => {
         </div>
         <div className="d-flex flex-column">
           {selectedFile && (
-            <Button className="UploadImageButton d-flex align-items-center" type="submit">
+            <Button
+              className="UploadImageButton d-flex align-items-center"
+              type="submit"
+            >
               <img className="UploadIcon" src={uploadIcon} alt="" />
               <p>Upload image</p>
             </Button>

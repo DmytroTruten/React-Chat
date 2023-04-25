@@ -74,7 +74,7 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
           onChange={handleInputFile}
         />
         <div className="SidebarSettingsUserInfo">
-          <label htmlFor="file">
+          <label className="w-100" htmlFor="file">
             <div className="UserAvatarContainer">
               <img className="UserAvatar" src={currentUser.photoURL} alt="" />
             </div>

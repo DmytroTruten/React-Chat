@@ -21,7 +21,8 @@
   min-width: 260px;
   max-width: 420px;
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: $dark-mode-background-color;
   touch-action: none;
   user-select: none;
@@ -30,17 +31,17 @@
 .SidebarSettings {
   height: 100%;
   max-width: 420px;
+  width: 100%;
   position: absolute;
-  right: 0;
   overflow-x: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: right .3s ease-in-out;
   background-color: $dark-mode-background-color;
   z-index: 2;
   &.closed {
-    width: 0;
+    right: -100%;
   }
   &.opened {
-    width: 100%;
+    right: 0;
   }
 
   .SidebarSettingsHeader {
@@ -75,13 +76,14 @@
   .UserAvatarContainer {
     cursor: pointer;
     height: 100%;
-    max-height: 240px;
+    width: 100%;
     overflow: hidden;
 
     .UserAvatar {
       min-width: 100%;
-      min-height: 100%;
+      height: 240px;
       border-radius: 0;
+      object-fit: cover;
     }
   }
 }

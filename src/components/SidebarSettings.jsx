@@ -78,9 +78,11 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
             <div className="UserAvatarContainer">
               <img className="UserAvatar" src={currentUser.photoURL} alt="" />
             </div>
+            <p className="SidebarSettingsDisplayName">
+              {currentUser.displayName}
+            </p>
           </label>
           {error && <p className="ErrorMsg">Something went wrong...</p>}
-          <p className="my-2">{currentUser.displayName}</p>
         </div>
         <div className="d-flex flex-column">
           {selectedFile && (

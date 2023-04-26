@@ -64,16 +64,15 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
         }`}
         ref={sidebarMenuRef}
       >
-        <div className="SidebarMenuOption d-flex align-items-center">
+        <div
+          className="SidebarMenuOption d-flex align-items-center"
+          onClick={() => {
+            handleSidebarState("menu");
+            handleSidebarState("settings");
+          }}
+        >
           <img src={settingsIcon} alt="" />
-          <p
-            onClick={() => {
-              handleSidebarState("menu");
-              handleSidebarState("settings");
-            }}
-          >
-            Settings
-          </p>
+          <p>Settings</p>
         </div>
       </div>
       {Object.entries(chats)

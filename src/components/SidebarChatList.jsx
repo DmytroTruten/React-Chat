@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 import moment from "moment";
+import settingsIcon from "../assets/settings-icon.svg";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
 const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
@@ -63,14 +64,17 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
         }`}
         ref={sidebarMenuRef}
       >
-        <p
-          onClick={() => {
-            handleSidebarState("menu");
-            handleSidebarState("settings");
-          }}
-        >
-          Settings
-        </p>
+        <div className="SidebarMenuOption d-flex align-items-center">
+          <img src={settingsIcon} alt="" />
+          <p
+            onClick={() => {
+              handleSidebarState("menu");
+              handleSidebarState("settings");
+            }}
+          >
+            Settings
+          </p>
+        </div>
       </div>
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)

@@ -51,6 +51,7 @@
 .SidebarSettings .SidebarSettingsHeader {
   height: 56px;
   padding: 0px 16px;
+  position: relative;
 }
 .SidebarSettings .SidebarSettingsHeader .SidebarSettingsHeaderButton {
   width: 40px;
@@ -103,10 +104,29 @@
   font-weight: 500;
 }
 
+.LogoutButtonContainer {
+  padding: 5px 0px;
+  position: absolute;
+  z-index: 1;
+}
+.LogoutButtonContainer.closed {
+  visibility: hidden;
+}
+.LogoutButtonContainer.opened {
+  width: 40%;
+  top: 100%;
+  right: 20px;
+  visibility: visible;
+  background-color: #4a494a;
+  border-radius: 10px;
+}
+
 .LogoutButton {
-  padding: 10px 16px;
-  border-radius: 0;
+  width: 100%;
+  padding: 4px 12px;
+  margin: 0px 5px;
   border: none;
+  border-radius: 0.3125rem;
   background-color: transparent;
   transition: none;
 }
@@ -114,7 +134,7 @@
   color: #cd6667;
 }
 .LogoutButton:hover {
-  background-color: #313b43;
+  background-color: #575757;
 }
 
 .UploadImageButton {

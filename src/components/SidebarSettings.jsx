@@ -15,6 +15,7 @@ import kebabMenuIcon from "../assets/kebab-menu-icon.svg";
 const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState(false);
+  const [kebabMenuState, setKebabMenuState] = useState("closed");
   const { currentUser } = useContext(AuthContext);
 
   const handleInputFile = (e) => {
@@ -46,6 +47,12 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
     }
   };
 
+  const handleToggleKebabMenu = () => {
+    kebabMenuState === "closed"
+      ? setKebabMenuState("opened")
+      : setKebabMenuState("closed");
+  };
+
   return (
     <div
       className={`SidebarSettings ${sidebarSettingsState} d-flex flex-column`}
@@ -61,9 +68,23 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
         <Button className="SidebarSettingsHeaderButton d-flex justify-content-center align-items-center">
           <img src={pencilIcon} alt="" />
         </Button>
-        <Button className="SidebarSettingsHeaderButton d-flex justify-content-center align-items-center ms-2">
+        <Button
+          className="SidebarSettingsHeaderButton  d-flex justify-content-center align-items-center ms-2"
+          onClick={handleToggleKebabMenu}
+        >
           <img src={kebabMenuIcon} alt="" />
         </Button>
+        <div className={`LogoutButtonContainer ${kebabMenuState} d-flex`}>
+          <Button
+            className="LogoutButton d-flex align-items-center"
+            onClick={() => {
+              signOut(auth);
+            }}
+          >
+            <img className="LogoutIcon" src={logoutIcon} alt="" />
+            <p>Log Out</p>
+          </Button>
+        </div>
       </header>
       <form className="SidebarSettingsInnerContainer" onSubmit={handleSubmit}>
         <Form.Control
@@ -94,15 +115,6 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
               <p>Upload image</p>
             </Button>
           )}
-          <Button
-            className="LogoutButton d-flex align-items-center"
-            onClick={() => {
-              signOut(auth);
-            }}
-          >
-            <img className="LogoutIcon" src={logoutIcon} alt="" />
-            <p>Logout</p>
-          </Button>
         </div>
       </form>
     </div>

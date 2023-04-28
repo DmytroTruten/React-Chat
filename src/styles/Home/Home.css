@@ -108,8 +108,15 @@
   padding: 5px 0px;
   position: absolute;
   z-index: 1;
+  transition: visibility 0.2s linear;
 }
 .LogoutButtonContainer.closed {
+  width: 40%;
+  top: 100%;
+  right: 20px;
+  background-color: #4a494a;
+  border-radius: 10px;
+  transform-origin: top right;
   visibility: hidden;
 }
 .LogoutButtonContainer.opened {
@@ -119,6 +126,7 @@
   visibility: visible;
   background-color: #4a494a;
   border-radius: 10px;
+  transform-origin: top right;
 }
 
 .LogoutButton {

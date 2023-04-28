@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -16,6 +16,7 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState(false);
   const [kebabMenuState, setKebabMenuState] = useState("closed");
+  const logoutButtonContainerRef = useRef(null);
   const { currentUser } = useContext(AuthContext);
 
   const handleInputFile = (e) => {
@@ -53,6 +54,17 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
       : setKebabMenuState("closed");
   };
 
+  useEffect(() => {
+    if (logoutButtonContainerRef.current) {
+      logoutButtonContainerRef.current.style.animation =
+        "show-menu .2s ease-in-out forwards";
+      if (kebabMenuState === "closed") {
+        logoutButtonContainerRef.current.style.animation =
+          "hide-menu .2s ease-in-out forwards";
+      }
+    }
+  }, [kebabMenuState]);
+
   return (
     <div
       className={`SidebarSettings ${sidebarSettingsState} d-flex flex-column`}
@@ -74,7 +86,10 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
         >
           <img src={kebabMenuIcon} alt="" />
         </Button>
-        <div className={`LogoutButtonContainer ${kebabMenuState} d-flex`}>
+        <div
+          className={`LogoutButtonContainer ${kebabMenuState} d-flex`}
+          ref={logoutButtonContainerRef}
+        >
           <Button
             className="LogoutButton d-flex align-items-center"
             onClick={() => {

@@ -12,10 +12,14 @@ import leftArrowIcon from "../assets/left-arrow-icon.svg";
 import pencilIcon from "../assets/pencil-icon.svg";
 import kebabMenuIcon from "../assets/kebab-menu-icon.svg";
 
-const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
+const SidebarSettings = ({
+  sidebarSettingsState,
+  handleSidebarState,
+  handleToggleKebabMenu,
+  kebabMenuState
+}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState(false);
-  const [kebabMenuState, setKebabMenuState] = useState("closed");
   const logoutButtonContainerRef = useRef(null);
   const { currentUser } = useContext(AuthContext);
 
@@ -46,12 +50,6 @@ const SidebarSettings = ({ sidebarSettingsState, handleSidebarState }) => {
       setError(true);
       console.log(error);
     }
-  };
-
-  const handleToggleKebabMenu = () => {
-    kebabMenuState === "closed"
-      ? setKebabMenuState("opened")
-      : setKebabMenuState("closed");
   };
 
   useEffect(() => {

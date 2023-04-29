@@ -11,6 +11,7 @@ const Home = () => {
   const [sidebarSettingsState, setSidebarSettingsState] = useState("closed");
   const [sidebarChatState, setSidebarChatState] = useState("closed");
   const [sidebarMenuState, setSidebarMenuState] = useState("closed");
+  const [kebabMenuState, setKebabMenuState] = useState("closed");
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
 
@@ -28,6 +29,12 @@ const Home = () => {
     }
   };
 
+  const handleToggleKebabMenu = () => {
+    kebabMenuState === "closed"
+      ? setKebabMenuState("opened")
+      : setKebabMenuState("closed");
+  };
+
   const handleMouseMove = (e) => {
     if (!chatContainerRef.current) return;
 
@@ -38,9 +45,19 @@ const Home = () => {
 
     if (
       sidebarMenuState === "opened" &&
-      (cursorPositionX > innerWidth / 3 || cursorPositionY > (innerHeight * 2) / 3)
+      (cursorPositionX > innerWidth / 3 ||
+        cursorPositionY > (innerHeight * 2) / 3)
     ) {
       handleSidebarState("menu");
+    }
+
+    if (
+      kebabMenuState === "opened" &&
+      (cursorPositionX < innerWidth / 12 ||
+        cursorPositionX > innerWidth / 3 ||
+        cursorPositionY > innerHeight / 3)
+    ) {
+      handleToggleKebabMenu();
     }
   };
 
@@ -61,6 +78,8 @@ const Home = () => {
             <SidebarSettings
               handleSidebarState={handleSidebarState}
               sidebarSettingsState={sidebarSettingsState}
+              handleToggleKebabMenu={handleToggleKebabMenu}
+              kebabMenuState={kebabMenuState}
             />
           </div>
           <div className="Chat d-flex flex-column justify-content-center">

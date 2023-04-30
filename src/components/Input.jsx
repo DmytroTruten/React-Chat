@@ -6,7 +6,6 @@ import sendIcon from "../assets/send-icon.svg";
 import {
   arrayUnion,
   doc,
-  serverTimestamp,
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -57,16 +56,28 @@ const Input = () => {
         });
       });
     } else {
+      const lastMessage = text === "" ? "Image" : text;
+
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
         [data.chatID + ".lastImageURL"]: {
           downloadURL: null,
         },
+        [data.chatID + ".lastMessage"]: {
+          lastMessage,
+        },
+        [data.chatID + ".date"]: Timestamp.now(),
       });
+
       await updateDoc(doc(db, "usersChats", data.user.uid), {
         [data.chatID + ".lastImageURL"]: {
           downloadURL: null,
         },
+        [data.chatID + ".lastMessage"]: {
+          lastMessage,
+        },
+        [data.chatID + ".date"]: Timestamp.now(),
       });
+
       await updateDoc(doc(db, "chats", data.chatID), {
         messages: arrayUnion({
           id: v4(),
@@ -76,22 +87,6 @@ const Input = () => {
         }),
       });
     }
-
-    const lastMessage = text === "" ? "Image" : text;
-
-    await updateDoc(doc(db, "usersChats", currentUser.uid), {
-      [data.chatID + ".lastMessage"]: {
-        lastMessage,
-      },
-      [data.chatID + ".date"]: serverTimestamp(),
-    });
-
-    await updateDoc(doc(db, "usersChats", data.user.uid), {
-      [data.chatID + ".lastMessage"]: {
-        lastMessage,
-      },
-      [data.chatID + ".date"]: serverTimestamp(),
-    });
 
     setText("");
     setImage(null);
@@ -140,13 +135,13 @@ const Input = () => {
         </div>
       </div>
       <div className="InputButtonsContainer SendContainer d-flex justify-content-center align-items-center">
-          <div
-            className="SendButton d-flex justify-content-center align-items-center"
-            onClick={handleSend}
-          >
-            <img className="SendIcon" src={sendIcon} alt="" />
-          </div>
+        <div
+          className="SendButton d-flex justify-content-center align-items-center"
+          onClick={handleSend}
+        >
+          <img className="SendIcon" src={sendIcon} alt="" />
         </div>
+      </div>
     </div>
   );
 };

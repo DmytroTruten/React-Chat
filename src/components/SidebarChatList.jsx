@@ -11,6 +11,8 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
   const [chats, setChats] = useState([]);
   const sidebarMenuRef = useRef(null);
   const sidebarChatListRef = useRef(null);
+  const [selectedChatIndex, setSelectedChatIndex] = useState(null);
+  const chatRefs = useRef([]);
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
 
@@ -29,9 +31,10 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
-  const handleSelect = (userInfo) => {
+  const handleSelect = (userInfo, index) => {
     handleSidebarState("chat");
     dispatch({ type: "CHANGE_USER", payload: userInfo });
+    setSelectedChatIndex(index);
   };
 
   useEffect(() => {
@@ -77,11 +80,14 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
       </div>
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)
-        .map((chat) => (
+        .map((chat, index) => (
           <div
-            className="SidebarChat d-flex"
+            className={`SidebarChat d-flex ${
+              selectedChatIndex === index ? "selected" : ""
+            }`}
             key={chat[0]}
-            onClick={() => handleSelect(chat[1].userInfo)}
+            onClick={() => handleSelect(chat[1].userInfo, index)}
+            ref={(el) => (chatRefs.current[index] = el)}
           >
             <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
               <img

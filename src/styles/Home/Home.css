@@ -140,6 +140,8 @@
 }
 .LogoutButton p {
   color: #cd6667;
+  font-size: 14px;
+  font-weight: 600;
 }
 .LogoutButton:hover {
   background-color: #575757;

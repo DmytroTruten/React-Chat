@@ -5,6 +5,7 @@ import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 import moment from "moment";
 import settingsIcon from "../assets/settings-icon.svg";
+import moonIcon from "../assets/moon-icon.svg";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
 const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
@@ -76,6 +77,18 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
         >
           <img src={settingsIcon} alt="" />
           <p>Settings</p>
+        </div>
+        <div
+          className="SidebarMenuOption d-flex align-items-center justify-content-between"
+          onClick={() => {}}
+        >
+          <div className="d-flex align-items-center">
+            <img src={moonIcon} alt="" />
+            <p>Dark Mode</p>
+          </div>
+          <div className="darkModeSwitch d-flex align-items-center">
+            <div className="darkModeSwitchToggle"></div>
+          </div>
         </div>
       </div>
       {Object.entries(chats)

@@ -60,6 +60,28 @@
   border-radius: 50%;
 }
 
+.darkModeSwitch {
+  width: 37px;
+  height: 20px;
+  position: relative;
+}
+.darkModeSwitch .darkModeSwitchToggle {
+  width: 31px;
+  height: 14px;
+  background-color: #61dbfb;
+  border-radius: 20px;
+}
+.darkModeSwitch::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(33, 33, 33);
+  border-radius: 50%;
+  border: 2px solid #61dbfb;
+}
+
 .SidebarMenu {
   transition: visibility 0.2s linear;
   padding: 5px 0px;

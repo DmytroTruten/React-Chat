@@ -70,25 +70,35 @@
   border-radius: 50%;
 }
 
-.darkModeSwitch {
+.DarkModeSwitch {
   width: 37px;
   height: 20px;
-  position: relative;
-  .darkModeSwitchToggle {
+  .DarkModeSwitchToggle {
     width: 31px;
     height: 14px;
     background-color: #61dbfb;
     border-radius: 20px;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(33, 33, 33);
-    border-radius: 50%;
-    border: 2px solid #61dbfb;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgb(33, 33, 33);
+      border-radius: 50%;
+      border: 2px solid #61dbfb;
+      transition: right .2s ease-in-out;
+    }
+    &.light {
+      &::before {
+        right: 40%;
+      }
+    }
+    &.dark {
+      &::before {
+        right: 0;
+      }
+    }
   }
 }
 

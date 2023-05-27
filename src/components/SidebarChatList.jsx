@@ -8,7 +8,12 @@ import settingsIcon from "../assets/settings-icon.svg";
 import moonIcon from "../assets/moon-icon.svg";
 import "../styles/SidebarChatList/SidebarChatList.css";
 
-const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
+const SidebarChatList = ({
+  handleSidebarState,
+  sidebarMenuState,
+  handleToggleDarkModeSwitch,
+  darkModeSwitchState,
+}) => {
   const [chats, setChats] = useState([]);
   const sidebarMenuRef = useRef(null);
   const sidebarChatListRef = useRef(null);
@@ -80,14 +85,16 @@ const SidebarChatList = ({ handleSidebarState, sidebarMenuState }) => {
         </div>
         <div
           className="SidebarMenuOption d-flex align-items-center justify-content-between"
-          onClick={() => {}}
+          onClick={() => {
+            handleToggleDarkModeSwitch();
+          }}
         >
           <div className="d-flex align-items-center">
             <img src={moonIcon} alt="" />
             <p>Dark Mode</p>
           </div>
-          <div className="darkModeSwitch d-flex align-items-center">
-            <div className="darkModeSwitchToggle"></div>
+          <div className="DarkModeSwitch d-flex align-items-center">
+            <div className={`DarkModeSwitchToggle d-flex align-items-center ${darkModeSwitchState}`}></div>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ const Home = () => {
   const [sidebarChatState, setSidebarChatState] = useState("closed");
   const [sidebarMenuState, setSidebarMenuState] = useState("closed");
   const [kebabMenuState, setKebabMenuState] = useState("closed");
+  const [darkModeSwitchState, setDarkModeSwitchState] = useState("dark");
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
 
@@ -34,6 +35,12 @@ const Home = () => {
       ? setKebabMenuState("opened")
       : setKebabMenuState("closed");
   };
+
+  const handleToggleDarkSwitch = () => {
+    darkModeSwitchState === "dark"
+      ? setDarkModeSwitchState("light")
+      : setDarkModeSwitchState("dark");
+  }
 
   const handleMouseMove = (e) => {
     if (!chatContainerRef.current) return;
@@ -74,6 +81,8 @@ const Home = () => {
             <SidebarChatList
               handleSidebarState={handleSidebarState}
               sidebarMenuState={sidebarMenuState}
+              handleToggleDarkModeSwitch={handleToggleDarkSwitch}
+              darkModeSwitchState={darkModeSwitchState}
             />
             <SidebarSettings
               handleSidebarState={handleSidebarState}

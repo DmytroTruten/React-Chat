@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Search from "../components/Search";
 import SidebarChatList from "../components/SidebarChatList";
 import SidebarSettings from "../components/SidebarSettings";
@@ -6,15 +7,17 @@ import Navbar from "../components/Navbar";
 import Messages from "../components/Messages";
 import Input from "../components/Input";
 import "../styles/Home/Home.css";
+import { setSidebarMenuState, selectSidebarMenuState } from "../store";
 
 const Home = () => {
   const [sidebarSettingsState, setSidebarSettingsState] = useState("closed");
   const [sidebarChatState, setSidebarChatState] = useState("closed");
-  const [sidebarMenuState, setSidebarMenuState] = useState("closed");
   const [kebabMenuState, setKebabMenuState] = useState("closed");
   const [darkModeSwitchState, setDarkModeSwitchState] = useState("dark");
   const sidebarRef = useRef(null);
   const chatContainerRef = useRef(null);
+  const sidebarMenuState = useSelector(selectSidebarMenuState);
+  const storeDispatch = useDispatch();
 
   const handleSidebarState = (sidebarType) => {
     if (sidebarType === "chat") {
@@ -23,10 +26,6 @@ const Home = () => {
       sidebarSettingsState === "closed"
         ? setSidebarSettingsState("opened")
         : setSidebarSettingsState("closed");
-    } else {
-      sidebarMenuState === "closed"
-        ? setSidebarMenuState("opened")
-        : setSidebarMenuState("closed");
     }
   };
 
@@ -40,7 +39,7 @@ const Home = () => {
     darkModeSwitchState === "dark"
       ? setDarkModeSwitchState("light")
       : setDarkModeSwitchState("dark");
-  }
+  };
 
   const handleMouseMove = (e) => {
     if (!chatContainerRef.current) return;
@@ -55,7 +54,7 @@ const Home = () => {
       (cursorPositionX > innerWidth / 3 ||
         cursorPositionY > (innerHeight * 2) / 3)
     ) {
-      handleSidebarState("menu");
+      storeDispatch(setSidebarMenuState());
     }
 
     if (
@@ -80,7 +79,6 @@ const Home = () => {
             <Search handleSidebarState={handleSidebarState} />
             <SidebarChatList
               handleSidebarState={handleSidebarState}
-              sidebarMenuState={sidebarMenuState}
               handleToggleDarkModeSwitch={handleToggleDarkSwitch}
               darkModeSwitchState={darkModeSwitchState}
             />

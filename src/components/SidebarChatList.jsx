@@ -1,5 +1,6 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useState, useEffect, useContext, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
@@ -7,10 +8,10 @@ import moment from "moment";
 import settingsIcon from "../assets/settings-icon.svg";
 import moonIcon from "../assets/moon-icon.svg";
 import "../styles/SidebarChatList/SidebarChatList.css";
+import { selectSidebarMenuState, setSidebarMenuState } from "../store";
 
 const SidebarChatList = ({
   handleSidebarState,
-  sidebarMenuState,
   handleToggleDarkModeSwitch,
   darkModeSwitchState,
 }) => {
@@ -21,6 +22,8 @@ const SidebarChatList = ({
   const chatRefs = useRef([]);
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
+  const sidebarMenuState = useSelector(selectSidebarMenuState)
+  const storeDispatch = useDispatch();
 
   useEffect(() => {
     const getChats = () => {
@@ -76,7 +79,7 @@ const SidebarChatList = ({
         <div
           className="SidebarMenuOption d-flex align-items-center"
           onClick={() => {
-            handleSidebarState("menu");
+            storeDispatch(setSidebarMenuState())
             handleSidebarState("settings");
           }}
         >

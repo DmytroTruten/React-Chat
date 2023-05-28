@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useDispatch } from "react-redux";
 import {
   collection,
   query,
@@ -13,14 +14,16 @@ import {
 import { db } from "../firebase";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../context/AuthContext";
+import { selectSidebarMenuState, setSidebarMenuState, store } from "../store";
 import "../styles/Search/Search.css";
 
-const Search = ({ handleSidebarState }) => {
+const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
   const { currentUser } = useContext(AuthContext);
-  
+  const storeDispatch = useDispatch();
+
   const handleKeyDown = (e) => {
     e.code == "Enter" && handleUserSearch();
   };
@@ -80,7 +83,7 @@ const Search = ({ handleSidebarState }) => {
     <div className="SidebarHeader d-flex">
       <div
         className="Settings d-flex flex-column justify-content-center align-items-center"
-        onClick={() => {handleSidebarState("menu")}}
+        onClick={() => {storeDispatch(setSidebarMenuState())}}
       >
         <span></span>
         <span></span>

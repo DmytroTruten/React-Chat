@@ -8,21 +8,25 @@ import moment from "moment";
 import settingsIcon from "../assets/settings-icon.svg";
 import moonIcon from "../assets/moon-icon.svg";
 import "../styles/SidebarChatList/SidebarChatList.css";
-import { selectSidebarMenuState, setSidebarMenuState } from "../store";
+import {
+  selectDarkModeSwitchState,
+  selectSidebarMenuState,
+  setDarkModeSwitchState,
+  setSidebarChatState,
+  setSidebarMenuState,
+  setSidebarSettingsState,
+} from "../store";
 
-const SidebarChatList = ({
-  handleSidebarState,
-  handleToggleDarkModeSwitch,
-  darkModeSwitchState,
-}) => {
+const SidebarChatList = () => {
   const [chats, setChats] = useState([]);
-  const sidebarMenuRef = useRef(null);
-  const sidebarChatListRef = useRef(null);
   const [selectedChatIndex, setSelectedChatIndex] = useState(null);
-  const chatRefs = useRef([]);
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
-  const sidebarMenuState = useSelector(selectSidebarMenuState)
+  const sidebarMenuRef = useRef(null);
+  const sidebarChatListRef = useRef(null);
+  const chatRefs = useRef([]);
+  const sidebarMenuState = useSelector(selectSidebarMenuState);
+  const darkModeSwitchState = useSelector(selectDarkModeSwitchState)
   const storeDispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +45,7 @@ const SidebarChatList = ({
   }, [currentUser.uid]);
 
   const handleSelect = (userInfo, index) => {
-    handleSidebarState("chat");
+    storeDispatch(setSidebarChatState());
     dispatch({ type: "CHANGE_USER", payload: userInfo });
     setSelectedChatIndex(index);
   };
@@ -79,8 +83,8 @@ const SidebarChatList = ({
         <div
           className="SidebarMenuOption d-flex align-items-center"
           onClick={() => {
-            storeDispatch(setSidebarMenuState())
-            handleSidebarState("settings");
+            storeDispatch(setSidebarMenuState());
+            storeDispatch(setSidebarSettingsState());
           }}
         >
           <img src={settingsIcon} alt="" />
@@ -89,7 +93,7 @@ const SidebarChatList = ({
         <div
           className="SidebarMenuOption d-flex align-items-center justify-content-between"
           onClick={() => {
-            handleToggleDarkModeSwitch();
+            storeDispatch(setDarkModeSwitchState());
           }}
         >
           <div className="d-flex align-items-center">
@@ -97,7 +101,9 @@ const SidebarChatList = ({
             <p>Dark Mode</p>
           </div>
           <div className="DarkModeSwitch d-flex align-items-center">
-            <div className={`DarkModeSwitchToggle d-flex align-items-center ${darkModeSwitchState}`}></div>
+            <div
+              className={`DarkModeSwitchToggle d-flex align-items-center ${darkModeSwitchState}`}
+            ></div>
           </div>
         </div>
       </div>

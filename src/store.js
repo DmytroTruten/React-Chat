@@ -1,15 +1,16 @@
 import { createStore } from "redux";
 
 const initialState = {
-  sidebarSettingState: "closed",
+  sidebarSettingsState: "closed",
   sidebarChatState: "closed",
   sidebarMenuState: "closed",
   kebabMenuState: "closed",
+  darkModeSwitchState: "dark",
 };
 
-export const setSidebarSettingState = () => {
+export const setSidebarSettingsState = () => {
   return {
-    type: "sidebarSettingState/setSidebarSettingState",
+    type: "sidebarSettingsState/setSidebarSettingsState",
   };
 };
 
@@ -25,25 +26,30 @@ export const setSidebarMenuState = () => {
   };
 };
 
-export const setkebabMenuState = () => {
+export const setKebabMenuState = () => {
   return {
     type: "kebabMenuState/setkebabMenuState",
   };
 };
 
+export const setDarkModeSwitchState = () => {
+  return {
+    type: "darkModeSwitchState/setDarkModeSwitchState",
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "sidebarSettingState/setSidebarSettingState":
+    case "sidebarSettingsState/setSidebarSettingsState":
       return {
         ...state,
-        sidebarSettingState:
-          state.sidebarSettingState === "closed" ? "opened" : "closed",
+        sidebarSettingsState:
+          state.sidebarSettingsState === "closed" ? "opened" : "closed",
       };
     case "sidebarChatState/setSidebarChatState":
       return {
         ...state,
-        sidebarChatState:
-          state.sidebarChatState === "closed" ? "opened" : "closed",
+        sidebarChatState: "opened",
       };
     case "sidebarMenuState/setSidebarMenuState":
       return {
@@ -56,14 +62,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         kebabMenuState: state.kebabMenuState === "closed" ? "opened" : "closed",
       };
+    case "darkModeSwitchState/setDarkModeSwitchState":
+      return {
+        ...state,
+        darkModeSwitchState:
+          state.darkModeSwitchState === "dark" ? "light" : "dark",
+      };
     default:
       return state;
   }
 };
 
-export const selectSidebarSettingState = (state) => state.sidebarSettingState;
+export const selectSidebarSettingsState = (state) => state.sidebarSettingsState;
 export const selectSidebarChatState = (state) => state.sidebarChatState;
 export const selectSidebarMenuState = (state) => state.sidebarMenuState;
-export const selectkebabMenuState = (state) => state.kebabMenuState;
+export const selectKebabMenuState = (state) => state.kebabMenuState;
+export const selectDarkModeSwitchState = state => state.darkModeSwitchState;
 
 export const store = createStore(reducer);

@@ -1,4 +1,11 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSidebarSettingsState,
+  selectSidebarSettingsState,
+  selectKebabMenuState,
+  setKebabMenuState,
+} from "../store";
 import { AuthContext } from "../context/AuthContext";
 import { doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -12,16 +19,14 @@ import leftArrowIcon from "../assets/left-arrow-icon.svg";
 import pencilIcon from "../assets/pencil-icon.svg";
 import kebabMenuIcon from "../assets/kebab-menu-icon.svg";
 
-const SidebarSettings = ({
-  sidebarSettingsState,
-  handleSidebarState,
-  handleToggleKebabMenu,
-  kebabMenuState
-}) => {
+const SidebarSettings = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [error, setError] = useState(false);
   const logoutButtonContainerRef = useRef(null);
   const { currentUser } = useContext(AuthContext);
+  const sidebarSettingsState = useSelector(selectSidebarSettingsState);
+  const kebabMenuState = useSelector(selectKebabMenuState);
+  const storeDispatch = useDispatch();
 
   const handleInputFile = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -70,7 +75,7 @@ const SidebarSettings = ({
       <header className="SidebarSettingsHeader d-flex align-items-center">
         <Button
           className="SidebarSettingsHeaderButton d-flex justify-content-center align-items-center"
-          onClick={() => handleSidebarState("settings")}
+          onClick={() => storeDispatch(setSidebarSettingsState())}
         >
           <img src={leftArrowIcon} alt="" />
         </Button>
@@ -80,7 +85,7 @@ const SidebarSettings = ({
         </Button>
         <Button
           className="SidebarSettingsHeaderButton  d-flex justify-content-center align-items-center ms-2"
-          onClick={handleToggleKebabMenu}
+          onClick={() => {storeDispatch(setKebabMenuState())}}
         >
           <img src={kebabMenuIcon} alt="" />
         </Button>

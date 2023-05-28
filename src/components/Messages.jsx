@@ -1,14 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Message from "./Message";
 import "../styles/Messages/Messages.css";
-import { useEffect } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
+import { selectSidebarChatState } from "../store";
 
-const Messages = ({ sidebarChatState }) => {
+const Messages = () => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
+  const sidebarChatState = useSelector(selectSidebarChatState);
 
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "chats", data.chatID), (doc) => {

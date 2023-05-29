@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const sidebarSlice = createSlice({
-  name: "sidebarSlice",
+  name: "sidebar",
   initialState: {
     sidebarSettingsState: "closed",
     sidebarChatState: "closed",
@@ -10,38 +10,44 @@ const sidebarSlice = createSlice({
     darkModeSwitchState: "dark",
   },
   reducers: {
-    setSidebarSettingsState: (state, action) => {
-      state.sidebarSettingsState === "closed" ? "opened" : "closed";
+    setSidebarSettingsState: (state) => {
+      state.sidebarSettingsState =
+        state.sidebarSettingsState === "closed" ? "opened" : "closed";
     },
-    setSidebarChatState: (state, action) => {
-      state.sidebarChatState = "opened";
+    setSidebarChatState: (state) => {
+      if (state.sidebarChatState !== "opened") {
+        state.sidebarChatState = "opened";
+      }
     },
-    setSidebarMenuState: (state, action) => {
-      state.sidebarMenuState === "closed" ? "opened" : "closed";
+    setSidebarMenuState: (state) => {
+      state.sidebarMenuState =
+        state.sidebarMenuState === "closed" ? "opened" : "closed";
     },
-    setKebabMenuState: (state, action) => {
-      state.kebabMenuState === "closed" ? "opened" : "closed";
+    setKebabMenuState: (state) => {
+      state.kebabMenuState =
+        state.kebabMenuState === "closed" ? "opened" : "closed";
     },
-    setDarkModeSwitchState: (state, action) => {
-      state.darkModeSwitchState === "dark" ? "light" : "dark";
+    setDarkModeSwitchState: (state) => {
+      state.darkModeSwitchState =
+        state.darkModeSwitchState === "dark" ? "light" : "dark";
     },
   },
 });
 
 export const selectSidebarSettingsState = (state) =>
-  state.sidebarSlice.sidebarSettingsState;
+  state.sidebar.sidebarSettingsState;
 
 export const selectSidebarMenuState = (state) =>
-  state.sidebarSlice.sidebarMenuState;
+  state.sidebar.sidebarMenuState;
 
 export const selectSidebarChatState = (state) =>
-  state.sidebarSlice.sidebarChatState;
+  state.sidebar.sidebarChatState;
 
 export const selectKebabMenuState = (state) =>
-  state.sidebarSlice.kebabMenuState;
+  state.sidebar.kebabMenuState;
 
 export const selectDarkModeSwitchState = (state) =>
-  state.sidebarSlice.darkModeSwitchState;
+  state.sidebar.darkModeSwitchState;
 
 export const {
   setSidebarSettingsState,
@@ -52,4 +58,3 @@ export const {
 } = sidebarSlice.actions;
 
 export default sidebarSlice.reducer;
-

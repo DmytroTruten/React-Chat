@@ -13,7 +13,7 @@ import {
   selectSidebarChatState,
   selectKebabMenuState,
   setKebabMenuState,
-} from "../store";
+} from "../features/sidebar/sidebarSlice.js";
 
 const Home = () => {
   const sidebarRef = useRef(null);

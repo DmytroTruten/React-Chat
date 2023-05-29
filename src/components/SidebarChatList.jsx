@@ -15,7 +15,7 @@ import {
   setSidebarChatState,
   setSidebarMenuState,
   setSidebarSettingsState,
-} from "../store";
+} from "../features/sidebar/sidebarSlice.js";
 
 const SidebarChatList = () => {
   const [chats, setChats] = useState([]);
@@ -26,7 +26,7 @@ const SidebarChatList = () => {
   const sidebarChatListRef = useRef(null);
   const chatRefs = useRef([]);
   const sidebarMenuState = useSelector(selectSidebarMenuState);
-  const darkModeSwitchState = useSelector(selectDarkModeSwitchState)
+  const darkModeSwitchState = useSelector(selectDarkModeSwitchState);
   const storeDispatch = useDispatch();
 
   useEffect(() => {
@@ -74,12 +74,7 @@ const SidebarChatList = () => {
 
   return (
     <div className="SidebarChatList" ref={sidebarChatListRef}>
-      <div
-        className={`SidebarMenu ${
-          sidebarMenuState === "closed" ? "closed" : "opened"
-        }`}
-        ref={sidebarMenuRef}
-      >
+      <div className={`SidebarMenu ${sidebarMenuState}`} ref={sidebarMenuRef}>
         <div
           className="SidebarMenuOption d-flex align-items-center"
           onClick={() => {

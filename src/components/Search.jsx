@@ -14,7 +14,7 @@ import {
 import { db } from "../firebase";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../context/AuthContext";
-import { setSidebarMenuState } from "../store";
+import { setSidebarMenuState } from "../features/sidebar/sidebarSlice";
 import "../styles/Search/Search.css";
 
 const Search = () => {

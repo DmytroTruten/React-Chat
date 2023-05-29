@@ -5,7 +5,7 @@ import {
   selectSidebarSettingsState,
   selectKebabMenuState,
   setKebabMenuState,
-} from "../store";
+} from "../features/sidebar/sidebarSlice.js";
 import { AuthContext } from "../context/AuthContext";
 import { doc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";

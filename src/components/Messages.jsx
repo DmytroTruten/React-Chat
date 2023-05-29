@@ -5,7 +5,7 @@ import "../styles/Messages/Messages.css";
 import { doc, onSnapshot } from "firebase/firestore";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
-import { selectSidebarChatState } from "../store";
+import { selectSidebarChatState } from "../features/sidebar/sidebarSlice.js";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);

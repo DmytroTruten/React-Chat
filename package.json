@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "bootstrap": "^5.2.3",
     "firebase": "^9.18.0",
     "interactjs": "^1.10.17",

@@ -30,6 +30,12 @@
 .Home.light .Message {
   color: #000;
 }
+.Home.light .SidebarChat:hover {
+  background-color: rgb(240, 240, 240);
+}
+.Home.light .SidebarChat.selected {
+  background-color: #3390ec;
+}
 .Home.light .SidebarChat.selected .SidebarChatLastMsg,
 .Home.light .SidebarChat.selected .SidebarChatTime,
 .Home.light .SidebarChat.selected .SidebarChatUsername {
@@ -40,6 +46,19 @@
   background-color: #fff;
   border-color: rgb(223, 225, 229);
 }
+.Home.light .SidebarMenuOption:hover {
+  background-color: rgb(240, 240, 240);
+}
+.Home.light .SidebarMenuOptionIcon {
+  filter: brightness(0) saturate(100%);
+}
+.Home.light .DarkModeSwitchToggle {
+  background-color: rgb(196, 201, 204);
+}
+.Home.light .DarkModeSwitchToggle::before {
+  border: 2px solid rgb(196, 201, 204);
+  background-color: #fff;
+}
 .Home.dark .Sidebar,
 .Home.dark .SidebarSettings,
 .Home.dark .Input,
@@ -49,6 +68,27 @@
 .Home.dark .InputButtonsContainer::before,
 .Home.dark .MessageContainer::before {
   color: #212121;
+}
+.Home.dark .SidebarChat:hover {
+  background-color: #353c43;
+}
+.Home.dark .SidebarChat.selected {
+  background-color: #3e9eb6;
+}
+.Home.dark .SidebarChat.selected .SidebarChatUsername,
+.Home.dark .SidebarChat.selected .SidebarChatTime,
+.Home.dark .SidebarChat.selected .SidebarChatLastMsg {
+  color: #212121;
+}
+.Home.dark .SidebarMenuOption:hover {
+  background-color: #353c43;
+}
+.Home .DarkModeSwitchToggle {
+  background-color: #61dbfb;
+}
+.Home .DarkModeSwitchToggle::before {
+  border: 2px solid #61dbfb;
+  background-color: rgb(33, 33, 33);
 }
 
 .ChatContainer {

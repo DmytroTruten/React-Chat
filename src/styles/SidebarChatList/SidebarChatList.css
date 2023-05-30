@@ -18,17 +18,7 @@
   overflow-x: hidden;
   cursor: pointer;
   border-radius: 15px;
-}
-.SidebarChat:hover {
-  background-color: #353c43;
-}
-.SidebarChat.selected {
-  background-color: #3e9eb6;
-}
-.SidebarChat.selected .SidebarChatUsername,
-.SidebarChat.selected .SidebarChatTime,
-.SidebarChat.selected .SidebarChatLastMsg {
-  color: #212121;
+  transition: none !important;
 }
 
 .SidebarChatImgContainer {
@@ -67,7 +57,6 @@
 .DarkModeSwitch .DarkModeSwitchToggle {
   width: 31px;
   height: 14px;
-  background-color: #61dbfb;
   border-radius: 20px;
   position: relative;
 }
@@ -76,10 +65,8 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: rgb(33, 33, 33);
   border-radius: 50%;
-  border: 2px solid #61dbfb;
-  transition: right 0.2s ease-in-out;
+  transition: right 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 .DarkModeSwitch .DarkModeSwitchToggle.light::before {
   right: 40%;
@@ -92,6 +79,7 @@
   transition: visibility 0.2s linear;
   padding: 5px 0px;
   border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 .SidebarMenu.closed {
   visibility: hidden;
@@ -122,9 +110,6 @@
   width: 20px;
   height: 20px;
   margin-right: 20px;
-}
-.SidebarMenuOption:hover {
-  background-color: #353c43;
 }
 
 .SidebarMenuOptionText {

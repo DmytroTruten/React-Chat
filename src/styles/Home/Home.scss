@@ -5,7 +5,8 @@
   max-height: 100vh;
   overflow: hidden;
   & * {
-    transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out;
   }
   &.light {
     .Sidebar,
@@ -35,7 +36,11 @@
       color: #000;
     }
     .SidebarChat {
+      &:hover {
+        background-color: rgb(240, 240, 240);
+      }
       &.selected {
+        background-color: #3390ec;
         .SidebarChatLastMsg,
         .SidebarChatTime,
         .SidebarChatUsername {
@@ -47,6 +52,21 @@
     .Navbar {
       background-color: $light-mode-background-color;
       border-color: rgb(223, 225, 229);
+    }
+    .SidebarMenuOption {
+      &:hover {
+        background-color: rgb(240, 240, 240);
+      }
+    }
+    .SidebarMenuOptionIcon {
+      filter: brightness(0) saturate(100%);
+    }
+    .DarkModeSwitchToggle {
+      background-color: rgb(196, 201, 204);
+      &::before {
+        border: 2px solid rgb(196, 201, 204);
+        background-color: $light-mode-background-color;
+      }
     }
   }
   &.dark {
@@ -61,6 +81,32 @@
       &::before {
         color: $dark-mode-background-color;
       }
+    }
+    .SidebarChat {
+      &:hover {
+        background-color: #353c43;
+      }
+
+      &.selected {
+        background-color: #3e9eb6;
+        .SidebarChatUsername,
+        .SidebarChatTime,
+        .SidebarChatLastMsg {
+          color: $dark-mode-background-color;
+        }
+      }
+    }
+    .SidebarMenuOption {
+      &:hover {
+        background-color: #353c43;
+      }
+    }
+  }
+  .DarkModeSwitchToggle {
+    background-color: $main-lightblue;
+    &::before {
+      border: 2px solid $main-lightblue;
+      background-color: rgb(33, 33, 33);
     }
   }
 }

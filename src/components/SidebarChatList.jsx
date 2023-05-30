@@ -82,7 +82,7 @@ const SidebarChatList = () => {
             storeDispatch(setSidebarSettingsState());
           }}
         >
-          <img src={settingsIcon} alt="" />
+          <img className="SidebarMenuOptionIcon" src={settingsIcon} alt="" />
           <p className="SidebarMenuOptionText">Settings</p>
         </div>
         <div
@@ -92,7 +92,7 @@ const SidebarChatList = () => {
           }}
         >
           <div className="d-flex align-items-center">
-            <img src={moonIcon} alt="" />
+            <img className="SidebarMenuOptionIcon" src={moonIcon} alt="" />
             <p className="SidebarMenuOptionText">Dark Mode</p>
           </div>
           <div className="DarkModeSwitch d-flex align-items-center">

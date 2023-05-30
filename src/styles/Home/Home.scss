@@ -4,6 +4,65 @@
   min-height: 100vh;
   max-height: 100vh;
   overflow: hidden;
+  & * {
+    transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
+  }
+  &.light {
+    .Sidebar,
+    .SidebarSettings,
+    .SidebarMenu,
+    .InputButtonsContainer,
+    .SendButton,
+    .AttachButton,
+    .MessageContainer {
+      background-color: $light-mode-background-color;
+    }
+    .InputButtonsContainer,
+    .MessageContainer {
+      &::before {
+        color: $light-mode-background-color;
+      }
+    }
+    .SidebarChatLastMsg,
+    .SidebarChatTime,
+    .MessageTime {
+      color: $light-mode-text-color;
+    }
+    .SidebarChatUsername,
+    .SidebarMenuOptionText,
+    .NavbarUsername,
+    .Message {
+      color: #000;
+    }
+    .SidebarChat {
+      &.selected {
+        .SidebarChatLastMsg,
+        .SidebarChatTime,
+        .SidebarChatUsername {
+          color: $light-mode-background-color;
+        }
+      }
+    }
+    .SearchInput,
+    .Navbar {
+      background-color: $light-mode-background-color;
+      border-color: rgb(223, 225, 229);
+    }
+  }
+  &.dark {
+    .Sidebar,
+    .SidebarSettings,
+    .Input,
+    .MessageContainer {
+      background-color: $dark-mode-background-color;
+    }
+    .InputButtonsContainer,
+    .MessageContainer {
+      &::before {
+        color: $dark-mode-background-color;
+      }
+    }
+  }
 }
 
 .ChatContainer {
@@ -23,7 +82,6 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: $dark-mode-background-color;
   touch-action: none;
   user-select: none;
 }
@@ -35,7 +93,6 @@
   position: absolute;
   overflow-x: hidden;
   transition: right 0.3s ease-in-out;
-  background-color: $dark-mode-background-color;
   z-index: 2;
   &.closed {
     right: -100%;
@@ -106,7 +163,7 @@
   padding: 5px 0px;
   position: absolute;
   z-index: 1;
-  transition: visibility .2s linear;
+  transition: visibility 0.2s linear;
 
   &.closed {
     width: 40%;

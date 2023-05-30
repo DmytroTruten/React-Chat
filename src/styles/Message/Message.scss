@@ -3,7 +3,6 @@
 .MessageContainer {
   max-width: 70%;
   color: #fff;
-  background-color: $dark-mode-background-color;
   padding: 3px 5px 3px 15px;
   margin: 1px 0px;
   position: relative;
@@ -26,7 +25,7 @@
       height: 10px;
       width: 20px;
       border-radius: 0px 0px 0px 15px;
-      box-shadow: -10px 0px 0px $dark-mode-background-color;
+      box-shadow: -10px 0px 0px;
     }
   }
   &.other {
@@ -41,7 +40,7 @@
       height: 10px;
       width: 20px;
       border-radius: 0px 0px 15px 0px;
-      box-shadow: 10px 0px 0px $dark-mode-background-color;
+      box-shadow: 10px 0px 0px;
     }
   }
 }
@@ -86,7 +85,7 @@
         height: 10px;
         width: 20px;
         border-radius: 0px 0px 0px 15px;
-        box-shadow: -10px 0px 0px $dark-mode-background-color;
+        box-shadow: -10px 0px 0px;
       }
     }
     &.other {
@@ -101,7 +100,7 @@
         height: 10px;
         width: 20px;
         border-radius: 0px 0px 15px 0px;
-        box-shadow: 10px 0px 0px $dark-mode-background-color;
+        box-shadow: 10px 0px 0px;
       }
     }
     .MessageImage {

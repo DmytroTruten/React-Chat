@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Fragment } from "react";
+import React, { useRef, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "../components/Search";
 import SidebarChatList from "../components/SidebarChatList";
@@ -12,6 +12,7 @@ import {
   selectSidebarMenuState,
   selectSidebarChatState,
   selectKebabMenuState,
+  selectDarkModeSwitchState,
   setKebabMenuState,
 } from "../features/sidebar/sidebarSlice.js";
 
@@ -21,6 +22,7 @@ const Home = () => {
   const sidebarMenuState = useSelector(selectSidebarMenuState);
   const sidebarChatState = useSelector(selectSidebarChatState);
   const kebabMenuState = useSelector(selectKebabMenuState);
+  const darkModeSwitchState = useSelector(selectDarkModeSwitchState);
   const storeDispatch = useDispatch();
 
   const handleMouseMove = (e) => {
@@ -50,7 +52,9 @@ const Home = () => {
   };
 
   return (
-    <div className="Home h-100 mx-0 my-0">
+    <div
+      className={`Home h-100 mx-0 my-0 ${darkModeSwitchState}`}
+    >
       <div
         className="ChatContainer d-flex flex-column px-0"
         ref={chatContainerRef}

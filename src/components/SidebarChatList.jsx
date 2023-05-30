@@ -83,7 +83,7 @@ const SidebarChatList = () => {
           }}
         >
           <img src={settingsIcon} alt="" />
-          <p>Settings</p>
+          <p className="SidebarMenuOptionText">Settings</p>
         </div>
         <div
           className="SidebarMenuOption d-flex align-items-center justify-content-between"
@@ -93,7 +93,7 @@ const SidebarChatList = () => {
         >
           <div className="d-flex align-items-center">
             <img src={moonIcon} alt="" />
-            <p>Dark Mode</p>
+            <p className="SidebarMenuOptionText">Dark Mode</p>
           </div>
           <div className="DarkModeSwitch d-flex align-items-center">
             <div

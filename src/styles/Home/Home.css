@@ -3,6 +3,53 @@
   max-height: 100vh;
   overflow: hidden;
 }
+.Home * {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+.Home.light .Sidebar,
+.Home.light .SidebarSettings,
+.Home.light .SidebarMenu,
+.Home.light .InputButtonsContainer,
+.Home.light .SendButton,
+.Home.light .AttachButton,
+.Home.light .MessageContainer {
+  background-color: #fff;
+}
+.Home.light .InputButtonsContainer::before,
+.Home.light .MessageContainer::before {
+  color: #fff;
+}
+.Home.light .SidebarChatLastMsg,
+.Home.light .SidebarChatTime,
+.Home.light .MessageTime {
+  color: rgb(112, 117, 121);
+}
+.Home.light .SidebarChatUsername,
+.Home.light .SidebarMenuOptionText,
+.Home.light .NavbarUsername,
+.Home.light .Message {
+  color: #000;
+}
+.Home.light .SidebarChat.selected .SidebarChatLastMsg,
+.Home.light .SidebarChat.selected .SidebarChatTime,
+.Home.light .SidebarChat.selected .SidebarChatUsername {
+  color: #fff;
+}
+.Home.light .SearchInput,
+.Home.light .Navbar {
+  background-color: #fff;
+  border-color: rgb(223, 225, 229);
+}
+.Home.dark .Sidebar,
+.Home.dark .SidebarSettings,
+.Home.dark .Input,
+.Home.dark .MessageContainer {
+  background-color: #212121;
+}
+.Home.dark .InputButtonsContainer::before,
+.Home.dark .MessageContainer::before {
+  color: #212121;
+}
 
 .ChatContainer {
   height: 100%;
@@ -24,7 +71,6 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #212121;
   touch-action: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -39,7 +85,6 @@
   position: absolute;
   overflow-x: hidden;
   transition: right 0.3s ease-in-out;
-  background-color: #212121;
   z-index: 2;
 }
 .SidebarSettings.closed {

@@ -18,6 +18,7 @@ import uploadIcon from "../assets/upload-icon.svg";
 import leftArrowIcon from "../assets/left-arrow-icon.svg";
 import pencilIcon from "../assets/pencil-icon.svg";
 import kebabMenuIcon from "../assets/kebab-menu-icon.svg";
+import "../styles/SidebarSettings/SidebarSettings.css";
 
 const SidebarSettings = () => {
   const [selectedFile, setSelectedFile] = useState(null);

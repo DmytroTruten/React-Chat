@@ -25,11 +25,13 @@
 .Home.light .SidebarChatUsername,
 .Home.light .SidebarMenuOptionText,
 .Home.light .NavbarUsername,
-.Home.light .Message {
+.Home.light .Message,
+.Home.light .SettingsText,
+.Home.light .SidebarSettingsDisplayName {
   color: #000;
 }
 .Home.light .SidebarChat:hover {
-  background-color: rgb(240, 240, 240);
+  background-color: #f0f0f0;
 }
 .Home.light .SidebarChat.selected {
   background-color: #3390ec;
@@ -44,8 +46,11 @@
   background-color: #fff;
   border-color: rgb(223, 225, 229);
 }
-.Home.light .SidebarMenuOption:hover, .Home.light .AttachButton:hover, .Home.light .Settings:hover {
-  background-color: rgb(240, 240, 240);
+.Home.light .SidebarMenuOption:hover,
+.Home.light .AttachButton:hover,
+.Home.light .Settings:hover,
+.Home.light .SidebarSettingsHeaderButton:hover {
+  background-color: #f0f0f0;
 }
 .Home.light .SidebarMenuOptionIcon {
   filter: brightness(0) saturate(100%);
@@ -56,6 +61,20 @@
 .Home.light .DarkModeSwitchToggle::before {
   border: 2px solid rgb(196, 201, 204);
   background-color: #fff;
+}
+.Home.light .Input,
+.Home.light .SearchInput {
+  color: #000;
+}
+.Home.light .Input:focus,
+.Home.light .SearchInput:focus {
+  caret-color: #000;
+}
+.Home.light .SearchInput:hover {
+  border-color: #c2c2c2;
+}
+.Home.light .SearchInput:focus {
+  border: 2px solid #3390ec;
 }
 .Home.dark .Sidebar,
 .Home.dark .SidebarSettings,
@@ -88,8 +107,20 @@
   border: 2px solid #61dbfb;
   background-color: rgb(33, 33, 33);
 }
-.Home.dark .AttachButton:hover, .Home.dark .Settings:hover {
+.Home.dark .AttachButton:hover,
+.Home.dark .Settings:hover,
+.Home.dark .SidebarSettingsHeaderButton:hover {
   background-color: #2b2b2b;
+}
+.Home.dark .Input,
+.Home.dark .SearchInput {
+  color: #fff;
+}
+.Home.dark .SearchInput:hover {
+  border-color: #707579;
+}
+.Home.dark .SearchInput:focus {
+  border: 2px solid #61dbfb;
 }
 
 .ChatContainer {
@@ -117,162 +148,6 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-.SidebarSettings {
-  height: 100%;
-  max-width: 420px;
-  width: 100%;
-  position: absolute;
-  overflow-x: hidden;
-  transition: right 0.3s ease-in-out;
-  z-index: 2;
-}
-.SidebarSettings.closed {
-  right: -100%;
-}
-.SidebarSettings.opened {
-  right: 0;
-}
-.SidebarSettings .SidebarSettingsHeader {
-  height: 56px;
-  padding: 0px 16px;
-  position: relative;
-}
-.SidebarSettings .SidebarSettingsHeader .SidebarSettingsHeaderButton {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-}
-.SidebarSettings .SidebarSettingsHeader .SidebarSettingsHeaderButton:hover {
-  background-color: #2b2b2b;
-}
-.SidebarSettings .SidebarSettingsHeader .SidebarSettingsHeaderButton img {
-  width: 24px;
-}
-.SidebarSettings .SidebarSettingsHeader .SettingsText {
-  padding-left: 24px;
-  font-size: 20px;
-  font-weight: 500;
-}
-.SidebarSettings .ImagePicker {
-  display: none;
-}
-
-.UserAvatarContainer {
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-.UserAvatarContainer .UserAvatar {
-  min-width: 100%;
-  height: 240px;
-  border-radius: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.SidebarSettingsUserInfo {
-  max-height: 240px;
-  position: relative;
-}
-
-.SidebarSettingsDisplayName {
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.LogoutButtonContainer {
-  padding: 5px 0px;
-  position: absolute;
-  z-index: 1;
-  transition: visibility 0.2s linear;
-}
-.LogoutButtonContainer.closed {
-  width: 40%;
-  top: 100%;
-  right: 20px;
-  background-color: #4a494a;
-  border-radius: 10px;
-  transform-origin: top right;
-  visibility: hidden;
-}
-.LogoutButtonContainer.opened {
-  width: 40%;
-  top: 100%;
-  right: 20px;
-  visibility: visible;
-  background-color: #4a494a;
-  border-radius: 10px;
-  transform-origin: top right;
-}
-
-.LogoutButton {
-  width: 100%;
-  padding: 4px 12px;
-  margin: 0px 5px;
-  border: none;
-  border-radius: 0.3125rem;
-  background-color: transparent;
-  transition: none;
-}
-.LogoutButton p {
-  color: #cd6667;
-  font-size: 14px;
-  font-weight: 600;
-}
-.LogoutButton:hover {
-  background-color: #575757;
-}
-
-.UploadImageButton {
-  padding: 10px 16px;
-  border-radius: 0;
-  border: none;
-  transition: none;
-}
-.UploadImageButton p {
-  color: #fff;
-}
-
-.LogoutIcon,
-.UploadIcon {
-  width: 20px;
-  margin-right: 12px;
-}
-
-.SidebarHeader {
-  height: 56px;
-  padding: 7px 16px;
-}
-
-.Settings {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
-  transition: none !important;
-}
-.Settings span {
-  display: block;
-  width: 17px;
-  height: 2px;
-  background-color: #a5a8aa;
-}
-.Settings span:nth-child(1) {
-  margin-bottom: 3px;
-}
-.Settings span:nth-child(3) {
-  margin-top: 3px;
 }
 
 .Chat {

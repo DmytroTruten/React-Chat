@@ -4,19 +4,14 @@
   padding: 0px 44px;
   margin: 0px 7px;
   background-color: #181818;
-  color: #fff;
   border: 1px solid #2f2f2f;
   border-radius: 22px;
-  font-size: 16px;
   font-weight: 400;
   transition: border-color 0.2s ease-in-out;
   background-image: url("../../assets/search-icon.svg");
   background-repeat: no-repeat;
   background-position: 10px;
   background-size: 24px;
-}
-.SearchInput:hover {
-  border-color: #707579;
 }
 .SearchInput::-moz-placeholder {
   font-weight: 400;
@@ -40,9 +35,27 @@
 }
 .SearchInput:focus {
   background-color: #181818;
-  border: 2px solid #61dbfb;
   box-shadow: none;
   caret-color: #999694;
-  color: #fff;
-  font-weight: 300;
+}
+
+.Settings {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: none !important;
+}
+.Settings span {
+  display: block;
+  width: 17px;
+  height: 2px;
+  background-color: #a5a8aa;
+}
+.Settings span:nth-child(1) {
+  margin-bottom: 3px;
+}
+.Settings span:nth-child(3) {
+  margin-top: 3px;
 }/*# sourceMappingURL=Search.css.map */

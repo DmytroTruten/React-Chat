@@ -17,20 +17,14 @@
   padding: 8px 16px 8px 0px;
   border: none;
   border-radius: 0;
-  font-size: 14px;
-  font-weight: 300;
-  color: #fff;
+  font-weight: 400;
 
   &::placeholder {
     font-weight: 400;
   }
 
   &:focus {
-    background-color: $dark-mode-background-color;
     box-shadow: none;
-    caret-color: #fff;
-    color: #fff;
-    font-weight: 300;
   }
 }
 

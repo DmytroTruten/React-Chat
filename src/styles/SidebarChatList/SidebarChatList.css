@@ -75,48 +75,6 @@
   right: 0;
 }
 
-.SidebarMenu {
-  transition: visibility 0.2s linear;
-  padding: 5px 0px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-}
-.SidebarMenu.closed {
-  visibility: hidden;
-  min-width: 260px;
-  position: absolute;
-  left: 16px;
-  background-color: #2f2f2f;
-  transform-origin: 0% 0%;
-}
-.SidebarMenu.opened {
-  visibility: visible;
-  min-width: 260px;
-  position: absolute;
-  left: 16px;
-  background-color: #2f2f2f;
-  transform-origin: 0% 0%;
-}
-.SidebarMenu > * {
-  cursor: pointer;
-}
-
-.SidebarMenuOption {
-  padding: 4px 6px 4px 12px;
-  margin: 0px 5px;
-  border-radius: 0.3125rem;
-}
-.SidebarMenuOption img {
-  width: 20px;
-  height: 20px;
-  margin-right: 20px;
-}
-
-.SidebarMenuOptionText {
-  font-weight: 500;
-  font-size: 14px;
-}
-
 .UserAvatarContainer {
   cursor: pointer;
   height: 100%;

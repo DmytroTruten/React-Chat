@@ -10,11 +10,11 @@
 .Home.light .SidebarSettings,
 .Home.light .SidebarMenu,
 .Home.light .InputButtonsContainer,
-.Home.light .MessageContainer {
+.Home.light .MessageContainer, .Home.light .ImageContainer.WithCaption {
   background-color: #fff;
 }
 .Home.light .InputButtonsContainer::before,
-.Home.light .MessageContainer::before {
+.Home.light .MessageContainer::before, .Home.light .ImageContainer.WithCaption::before {
   color: #fff;
 }
 .Home.light .SidebarChatLastMsg,
@@ -148,6 +148,90 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.SidebarMenu {
+  transition: visibility 0.2s linear, background-color 0.2s ease-in-out;
+  padding: 5px 0px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+.SidebarMenu.closed {
+  visibility: hidden;
+  min-width: 260px;
+  position: absolute;
+  left: 16px;
+  background-color: #2f2f2f;
+  transform-origin: 0% 0%;
+}
+.SidebarMenu.opened {
+  visibility: visible;
+  min-width: 260px;
+  position: absolute;
+  left: 16px;
+  background-color: #2f2f2f;
+  transform-origin: 0% 0%;
+}
+.SidebarMenu > * {
+  cursor: pointer;
+}
+
+.SidebarMenuOption {
+  padding: 4px 6px 4px 12px;
+  margin: 0px 5px;
+  border-radius: 0.3125rem;
+}
+.SidebarMenuOption img {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.SidebarMenuOptionText {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.SidebarSettings {
+  height: 100%;
+  max-width: 420px;
+  width: 100%;
+  position: absolute;
+  overflow-x: hidden;
+  transition: right 0.3s ease-in-out;
+  z-index: 2;
+}
+.SidebarSettings.closed {
+  right: -100%;
+}
+.SidebarSettings.opened {
+  right: 0;
+}
+.SidebarSettings .SidebarSettingsHeader {
+  height: 56px;
+  padding: 0px 16px;
+  position: relative;
+}
+.SidebarSettings .SidebarSettingsHeader .SidebarSettingsHeaderButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: none !important;
+}
+.SidebarSettings .SidebarSettingsHeader .SidebarSettingsHeaderButton img {
+  width: 24px;
+}
+.SidebarSettings .SidebarSettingsHeader .SettingsText {
+  padding-left: 24px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.SidebarSettings .ImagePicker {
+  display: none;
 }
 
 .Chat {

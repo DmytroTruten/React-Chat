@@ -13,8 +13,6 @@
     .SidebarSettings,
     .SidebarMenu,
     .InputButtonsContainer,
-    .SendButton,
-    .AttachButton,
     .MessageContainer {
       background-color: $light-mode-background-color;
     }
@@ -53,7 +51,7 @@
       background-color: $light-mode-background-color;
       border-color: rgb(223, 225, 229);
     }
-    .SidebarMenuOption {
+    .SidebarMenuOption, .AttachButton, .Settings {
       &:hover {
         background-color: rgb(240, 240, 240);
       }
@@ -101,12 +99,17 @@
         background-color: #353c43;
       }
     }
-  }
-  .DarkModeSwitchToggle {
-    background-color: $main-lightblue;
-    &::before {
-      border: 2px solid $main-lightblue;
-      background-color: rgb(33, 33, 33);
+    .DarkModeSwitchToggle {
+      background-color: $main-lightblue;
+      &::before {
+        border: 2px solid $main-lightblue;
+        background-color: rgb(33, 33, 33);
+      } 
+    }
+    .AttachButton, .Settings {
+      &:hover {
+        background-color: #2b2b2b;
+      }
     }
   }
 }
@@ -276,9 +279,7 @@
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
-  &:hover {
-    background-color: #2b2b2b;
-  }
+  transition: none !important;
   span {
     display: block;
     width: 17px;

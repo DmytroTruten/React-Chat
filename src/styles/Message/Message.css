@@ -27,6 +27,7 @@
   width: 20px;
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 0px 0px;
+  transition: color 0.2s ease-in-out;
 }
 .MessageContainer.other {
   border-radius: 15px 15px 15px 0px;
@@ -42,6 +43,7 @@
   width: 20px;
   border-radius: 0px 0px 15px 0px;
   box-shadow: 10px 0px 0px;
+  transition: color 0.2s ease-in-out;
 }
 
 .ImageContainer {
@@ -86,6 +88,7 @@
   width: 20px;
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 0px 0px;
+  transition: color 0.2s ease-in-out;
 }
 .ImageContainer.WithCaption.other {
   border-radius: 15px 15px 15px 0px;
@@ -101,6 +104,7 @@
   width: 20px;
   border-radius: 0px 0px 15px 0px;
   box-shadow: 10px 0px 0px;
+  transition: color 0.2s ease-in-out;
 }
 .ImageContainer.WithCaption .MessageImage {
   border-radius: 15px 15px 0px 0px;

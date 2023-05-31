@@ -26,6 +26,7 @@
       width: 20px;
       border-radius: 0px 0px 0px 15px;
       box-shadow: -10px 0px 0px;
+      transition: color .2s ease-in-out;
     }
   }
   &.other {
@@ -41,6 +42,7 @@
       width: 20px;
       border-radius: 0px 0px 15px 0px;
       box-shadow: 10px 0px 0px;
+      transition: color .2s ease-in-out;
     }
   }
 }
@@ -86,6 +88,7 @@
         width: 20px;
         border-radius: 0px 0px 0px 15px;
         box-shadow: -10px 0px 0px;
+        transition: color .2s ease-in-out;
       }
     }
     &.other {
@@ -101,6 +104,7 @@
         width: 20px;
         border-radius: 0px 0px 15px 0px;
         box-shadow: 10px 0px 0px;
+        transition: color .2s ease-in-out;
       }
     }
     .MessageImage {

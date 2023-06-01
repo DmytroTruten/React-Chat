@@ -97,6 +97,7 @@ const SidebarSettings = () => {
           <Button
             className="LogoutButton d-flex align-items-center"
             onClick={() => {
+              storeDispatch(setSidebarSettingsState())
               signOut(auth);
             }}
           >

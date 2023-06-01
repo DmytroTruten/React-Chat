@@ -11,32 +11,6 @@
   font-weight: 500;
 }
 
-.LogoutButtonContainer {
-  padding: 5px 0px;
-  position: absolute;
-  z-index: 1;
-  transition: visibility 0.2s linear;
-
-  &.closed {
-    width: 40%;
-    top: 100%;
-    right: 20px;
-    background-color: #4a494a;
-    border-radius: 10px;
-    transform-origin: top right;
-    visibility: hidden;
-  }
-  &.opened {
-    width: 40%;
-    top: 100%;
-    right: 20px;
-    visibility: visible;
-    background-color: #4a494a;
-    border-radius: 10px;
-    transform-origin: top right;
-  }
-}
-
 .LogoutButton {
   width: 100%;
   padding: 4px 12px;
@@ -71,7 +45,17 @@
   margin-right: 12px;
 }
 
-.SidebarHeader {
-  height: 56px;
-  padding: 7px 16px;
+.UserAvatarContainer {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  .UserAvatar {
+    min-width: 100%;
+    max-width: 54px;
+    height: 240px;
+    border-radius: 0;
+    object-fit: cover;
+  }
 }

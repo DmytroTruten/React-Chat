@@ -54,8 +54,10 @@
 
 .UserAvatar {
   width: 100%;
+  max-width: 54px;
   height: 100%;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .DarkModeSwitch {
@@ -87,19 +89,6 @@
   }
 }
 
-.UserAvatarContainer {
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-
-  .UserAvatar {
-    min-width: 100%;
-    height: 240px;
-    border-radius: 0;
-    object-fit: cover;
-  }
-}
 
 @keyframes show-menu {
   0% {

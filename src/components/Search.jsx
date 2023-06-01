@@ -80,41 +80,44 @@ const Search = () => {
   };
 
   return (
-    <div className="SidebarHeader d-flex">
-      <div
-        className="Settings d-flex flex-column justify-content-center align-items-center"
-        onClick={() => {storeDispatch(setSidebarMenuState())}}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div className="d-flex flex-column w-100">
-        <Form.Control
-          className="SearchInput"
-          type="text"
-          placeholder="Search"
-          onChange={(e) => {
-            setUsername(e.target.value);
+    <div className="SidebarHeader d-flex flex-column">
+      <div className="SearchInputContainer d-flex">
+        <div
+          className="SidebarMenuButton d-flex flex-column justify-content-center align-items-center"
+          onClick={() => {
+            storeDispatch(setSidebarMenuState());
           }}
-          onKeyDown={handleKeyDown}
-          value={username}
-        />
-        {error && <p>User not found...</p>}
-        {user && (
-          <div className="SidebarChat d-flex" onClick={handleUserChatSelect}>
-            <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
-              <img className="UserAvatar" src={user.photoURL} alt="" />
-            </div>
-            <div className="SidebarChatInfo d-flex flex-column w-100">
-              <div className="SidebarChatUsernameContainer d-flex justify-content-between">
-                <p className="SidebarChatUsername">{user.displayName}</p>
-              </div>
-              <p className="SidebarChatLastMsg">Last Message Example</p>
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="d-flex flex-column w-100">
+          <Form.Control
+            className="SearchInput"
+            type="text"
+            placeholder="Search"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+            onKeyDown={handleKeyDown}
+            value={username}
+          />
+          {error && <p>User not found...</p>}
+        </div>
+      </div>
+      {user && (
+        <div className="SidebarChat d-flex" onClick={handleUserChatSelect}>
+          <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
+            <img className="UserAvatar" src={user.photoURL} alt="" />
+          </div>
+          <div className="SidebarChatInfo d-flex flex-column w-100">
+            <div className="SidebarChatUsernameContainer d-flex justify-content-between">
+              <p className="SidebarChatUsername">{user.displayName}</p>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

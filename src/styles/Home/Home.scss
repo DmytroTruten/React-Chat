@@ -31,8 +31,7 @@
     .SidebarMenuOptionText,
     .NavbarUsername,
     .Message,
-    .SettingsText,
-    .SidebarSettingsDisplayName {
+    .SettingsText {
       color: #000;
     }
     .SidebarChat {
@@ -55,7 +54,7 @@
     }
     .SidebarMenuOption,
     .AttachButton,
-    .Settings,
+    .SidebarMenuButton,
     .SidebarSettingsHeaderButton {
       &:hover {
         background-color: #f0f0f0;
@@ -127,7 +126,7 @@
       }
     }
     .AttachButton,
-    .Settings,
+    .SidebarMenuButton,
     .SidebarSettingsHeaderButton {
       &:hover {
         background-color: #2b2b2b;
@@ -158,10 +157,8 @@
 }
 
 .Sidebar {
-  width: 30%;
   height: 100%;
-  min-width: 260px;
-  max-width: 420px;
+  min-width: 424px;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
@@ -177,7 +174,8 @@
   &.closed {
     visibility: hidden;
     min-width: 260px;
-    position: absolute;
+    position: fixed;
+    top: 54px;
     left: 16px;
     background-color: #2f2f2f;
     transform-origin: 0% 0%;
@@ -185,7 +183,8 @@
   &.opened {
     visibility: visible;
     min-width: 260px;
-    position: absolute;
+    position: fixed;
+    top: 54px;
     left: 16px;
     background-color: #2f2f2f;
     transform-origin: 0% 0%;
@@ -213,7 +212,6 @@
 
 .SidebarSettings {
   height: 100%;
-  max-width: 420px;
   width: 100%;
   position: absolute;
   overflow-x: hidden;
@@ -247,6 +245,32 @@
       padding-left: 24px;
       font-size: 20px;
       font-weight: 500;
+    }
+  }
+
+  .LogoutButtonContainer {
+    padding: 5px 0px;
+    position: absolute;
+    z-index: 1;
+    transition: visibility 0.2s linear;
+  
+    &.closed {
+      width: 40%;
+      top: 100%;
+      right: 20px;
+      background-color: #4a494a;
+      border-radius: 10px;
+      transform-origin: top right;
+      visibility: hidden;
+    }
+    &.opened {
+      width: 40%;
+      top: 100%;
+      right: 20px;
+      visibility: visible;
+      background-color: #4a494a;
+      border-radius: 10px;
+      transform-origin: top right;
     }
   }
 

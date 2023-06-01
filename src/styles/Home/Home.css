@@ -26,8 +26,7 @@
 .Home.light .SidebarMenuOptionText,
 .Home.light .NavbarUsername,
 .Home.light .Message,
-.Home.light .SettingsText,
-.Home.light .SidebarSettingsDisplayName {
+.Home.light .SettingsText {
   color: #000;
 }
 .Home.light .SidebarChat:hover {
@@ -48,7 +47,7 @@
 }
 .Home.light .SidebarMenuOption:hover,
 .Home.light .AttachButton:hover,
-.Home.light .Settings:hover,
+.Home.light .SidebarMenuButton:hover,
 .Home.light .SidebarSettingsHeaderButton:hover {
   background-color: #f0f0f0;
 }
@@ -108,7 +107,7 @@
   background-color: rgb(33, 33, 33);
 }
 .Home.dark .AttachButton:hover,
-.Home.dark .Settings:hover,
+.Home.dark .SidebarMenuButton:hover,
 .Home.dark .SidebarSettingsHeaderButton:hover {
   background-color: #2b2b2b;
 }
@@ -136,10 +135,8 @@
 }
 
 .Sidebar {
-  width: 30%;
   height: 100%;
-  min-width: 260px;
-  max-width: 420px;
+  min-width: 424px;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
@@ -159,7 +156,8 @@
 .SidebarMenu.closed {
   visibility: hidden;
   min-width: 260px;
-  position: absolute;
+  position: fixed;
+  top: 54px;
   left: 16px;
   background-color: #2f2f2f;
   transform-origin: 0% 0%;
@@ -167,7 +165,8 @@
 .SidebarMenu.opened {
   visibility: visible;
   min-width: 260px;
-  position: absolute;
+  position: fixed;
+  top: 54px;
   left: 16px;
   background-color: #2f2f2f;
   transform-origin: 0% 0%;
@@ -194,7 +193,6 @@
 
 .SidebarSettings {
   height: 100%;
-  max-width: 420px;
   width: 100%;
   position: absolute;
   overflow-x: hidden;
@@ -229,6 +227,30 @@
   padding-left: 24px;
   font-size: 20px;
   font-weight: 500;
+}
+.SidebarSettings .LogoutButtonContainer {
+  padding: 5px 0px;
+  position: absolute;
+  z-index: 1;
+  transition: visibility 0.2s linear;
+}
+.SidebarSettings .LogoutButtonContainer.closed {
+  width: 40%;
+  top: 100%;
+  right: 20px;
+  background-color: #4a494a;
+  border-radius: 10px;
+  transform-origin: top right;
+  visibility: hidden;
+}
+.SidebarSettings .LogoutButtonContainer.opened {
+  width: 40%;
+  top: 100%;
+  right: 20px;
+  visibility: visible;
+  background-color: #4a494a;
+  border-radius: 10px;
+  transform-origin: top right;
 }
 .SidebarSettings .ImagePicker {
   display: none;

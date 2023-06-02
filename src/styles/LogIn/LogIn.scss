@@ -5,7 +5,7 @@
 }
 
 .LogInForm {
-  background-color: $secondary-background-color;
+  background-color: transparent;
   border-radius: 20px;
 
   .LogInSubheader {
@@ -22,5 +22,15 @@
     &:focus {
       box-shadow: none;
     }
+  }
+}
+
+.SignUpLink {
+  margin-left: 8px;
+}
+
+@media (max-width: 576px) {
+  .SignUpLink {
+    margin-left: 0px;
   }
 }

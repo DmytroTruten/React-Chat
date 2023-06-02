@@ -3,7 +3,7 @@
 }
 
 .SignUpForm {
-  background-color: #212121;
+  background-color: transparent;
   border-radius: 20px;
 }
 .SignUpForm .SignUpSubheader {
@@ -26,4 +26,14 @@
 
 .ErrorMsg {
   color: red;
+}
+
+.LogInLink {
+  margin-left: 8px;
+}
+
+@media (max-width: 576px) {
+  .LogInLink {
+    margin-left: 0px;
+  }
 }/*# sourceMappingURL=SignUp.css.map */

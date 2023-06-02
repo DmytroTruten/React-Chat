@@ -50,7 +50,7 @@ const SignUp = () => {
   return (
     <div className="SignUpContainer row justify-content-center align-items-center h-100 mx-0 my-0">
       <Form
-        className="SignUpForm col-4 d-flex flex-column align-items-center py-5"
+        className="SignUpForm col-12 col-sm-6 d-flex flex-column align-items-center px-0"
         onSubmit={handleSubmit}
       >
         <h1 className="SignUpHeader">React Chat</h1>
@@ -76,9 +76,9 @@ const SignUp = () => {
         <Button className="my-3" type="submit">
           Sign up
         </Button>
-        <div className="d-flex justify-content-center w-100">
-          <p className="mb-0 me-2">You already have an account? </p>
-          <Link to="/React-Chat">Log in</Link>
+        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center w-100">
+          <p className="mb-0">You already have an account? </p>
+          <Link className="LogInLink" to="/React-Chat">Log in</Link>
         </div>
       </Form>
     </div>

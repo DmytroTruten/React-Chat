@@ -18,7 +18,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/React-Chat/" element={<LogIn />} />
+        <Route path="/React-Chat" element={<LogIn />} />
         <Route path="/React-Chat/SignUp" element={<SignUp />} />
         <Route
           path="/React-Chat/Home"

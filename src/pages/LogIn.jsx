@@ -25,7 +25,7 @@ const LogIn = () => {
   return (
     <div className="LogInContainer row justify-content-center align-items-center h-100 mx-0 my-0">
       <Form
-        className="LogInForm col-4 d-flex flex-column align-items-center py-5"
+        className="LogInForm col-12 col-sm-6 d-flex flex-column align-items-center px-0"
         onSubmit={handleSubmit}
       >
         <h1 className="LogInHeader">React Chat</h1>
@@ -46,9 +46,9 @@ const LogIn = () => {
         <Button className="my-3" type="submit">
           Sign In
         </Button>
-        <div className="d-flex justify-content-center w-100">
-          <p className="mb-0 me-2">You don't have an account? </p>
-          <Link to="/React-Chat/SignUp">Sign Up</Link>
+        <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center w-100">
+          <p className="mb-0">You don't have an account?</p>
+          <Link className="SignUpLink" to="/React-Chat/SignUp">Sign Up</Link>
         </div>
       </Form>
     </div>

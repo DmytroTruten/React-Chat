@@ -3,7 +3,7 @@
 }
 
 .LogInForm {
-  background-color: #212121;
+  background-color: transparent;
   border-radius: 20px;
 }
 .LogInForm .LogInSubheader {
@@ -18,4 +18,14 @@
 }
 .LogInForm .LogInControl:focus, .LogInForm .LogInPasswordControl:focus {
   box-shadow: none;
+}
+
+.SignUpLink {
+  margin-left: 8px;
+}
+
+@media (max-width: 576px) {
+  .SignUpLink {
+    margin-left: 0px;
+  }
 }/*# sourceMappingURL=LogIn.css.map */

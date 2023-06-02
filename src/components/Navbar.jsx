@@ -7,9 +7,9 @@ const Navbar = () => {
   const {data} = useContext(ChatContext)
 
   return(
-    <div className='Navbar d-flex flex-column'>
+    <div className='Navbar d-flex'>
+      <img className="UserAvatar" src={data.user?.photoURL} alt="" />
       <p className='NavbarUsername'>{data.user?.displayName}</p>
-      {/* <p className='NavbarUserLastSeen'>online</p> */}
     </div>
   )
 }

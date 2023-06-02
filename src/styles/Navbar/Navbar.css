@@ -1,15 +1,15 @@
 .Navbar {
   min-height: 56px;
   background-color: #212121;
-  padding: 8px 16px;
+  padding: 7px 16px;
   border-left: 1px solid #242a2f;
+}
+.Navbar .UserAvatar {
+  max-width: 42px;
+  max-height: 42px;
 }
 
 .NavbarUsername {
   font-weight: 700;
-}
-
-.NavbarUsername, .NavbarUserLastSeen {
-  font-size: 14px;
-  line-height: 20px;
+  padding-left: 18px;
 }/*# sourceMappingURL=Navbar.css.map */

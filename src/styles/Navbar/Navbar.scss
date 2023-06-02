@@ -2,16 +2,17 @@
 
 .Navbar {
   min-height: 56px;
-  background-color: $secondary-background-color;
-  padding: 8px 16px;
+  background-color: $dark-mode-background-color;
+  padding: 7px 16px;
   border-left: 1px solid #242a2f;
+
+  .UserAvatar {
+    max-width: 42px;
+    max-height: 42px;
+  }
 }
 
 .NavbarUsername {
   font-weight: 700;
-}
-
-.NavbarUsername, .NavbarUserLastSeen {
-  font-size: 14px;
-  line-height: 20px;
+  padding-left: 18px;
 }

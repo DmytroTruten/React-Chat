@@ -95,13 +95,8 @@ const Input = () => {
   return (
     <div className="InputContainer d-flex justify-content-center align-items-center">
       <div className="InputElementsWrapper d-flex justify-content-center align-items-center">
-        <div className="InputButtonsContainer EmojiContainer d-flex justify-content-center align-items-center">
-          <label className="AttachButton d-flex justify-content-center align-items-center">
-            <img className="AttachIcon" src={emojiIcon} alt="attach" />
-          </label>
-        </div>
         <Form.Control
-          className="Input ps-1"
+          className="Input"
           type="text"
           placeholder="Message"
           ref={inputRef}

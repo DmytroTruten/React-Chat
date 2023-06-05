@@ -6,6 +6,7 @@ import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 import moment from "moment";
 import settingsIcon from "../assets/settings-icon.svg";
+import savedIcon from "../assets/saved-icon.svg";
 import moonIcon from "../assets/moon-icon.svg";
 import "../styles/SidebarChatList/SidebarChatList.css";
 import {
@@ -75,6 +76,10 @@ const SidebarChatList = () => {
   return (
     <div className="SidebarChatList" ref={sidebarChatListRef}>
       <div className={`SidebarMenu ${sidebarMenuState}`} ref={sidebarMenuRef}>
+        <div className="SidebarMenuOption d-flex align-items-center">
+          <img className="SidebarMenuOptionIcon" src={savedIcon} alt="" />
+          <p className="SidebarMenuOptionText">Saved Messages</p>
+        </div>
         <div
           className="SidebarMenuOption d-flex align-items-center"
           onClick={() => {

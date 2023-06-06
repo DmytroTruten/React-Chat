@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import Form from "react-bootstrap/Form";
 import "../styles/Input/Input.css";
 import attachIcon from "../assets/attach-icon.svg";
-import emojiIcon from "../assets/emoji-icon.svg";
 import sendIcon from "../assets/send-icon.svg";
 import { arrayUnion, doc, Timestamp, updateDoc } from "firebase/firestore";
 import { db, storage } from "../firebase";
@@ -10,7 +9,6 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useRef } from "react";
 
 const Input = () => {
   const [text, setText] = useState("");

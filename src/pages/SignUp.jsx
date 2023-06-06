@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db, storage } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/SignUp/SignUp.css";
+import { v4 } from "uuid";
 
 const SignUp = () => {
   const [error, setError] = useState(false);
@@ -34,11 +35,16 @@ const SignUp = () => {
           password,
           photoURL: downloadURL,
         });
-        
+
         await updateProfile(response.user, {
           displayName,
           photoURL: downloadURL,
         });
+        const savedMessagesID = response.user.uid + v4();
+        await setDoc(doc(db, "chats", savedMessagesID), {
+          messages: [],
+        });
+        await setDoc(doc(db, "usersChats", savedMessagesID), {});
       });
       navigate("/React-Chat/Home");
     } catch (error) {
@@ -78,7 +84,9 @@ const SignUp = () => {
         </Button>
         <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center w-100">
           <p className="mb-0">You already have an account? </p>
-          <Link className="LogInLink" to="/React-Chat">Log in</Link>
+          <Link className="LogInLink" to="/React-Chat">
+            Log in
+          </Link>
         </div>
       </Form>
     </div>

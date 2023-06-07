@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 import { auth, db, storage } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -45,6 +45,16 @@ const SignUp = () => {
           messages: [],
         });
         await setDoc(doc(db, "usersChats", savedMessagesID), {});
+
+        await updateDoc(doc(db, "usersChats", response.user.uid), {
+          [savedMessagesID + ".userInfo"]: {
+            uid: savedMessagesID,
+            photoURL:
+              "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
+            displayName: "Saved Messages"
+          },
+          [savedMessagesID + ".date"]: Timestamp.now(),
+        });
       });
       navigate("/React-Chat/Home");
     } catch (error) {

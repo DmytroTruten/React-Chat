@@ -44,7 +44,7 @@ const LogIn = () => {
           {error && <p className="ErrorMsg">Something went wrong...</p>}
         </Form.Group>
         <Button className="my-3" type="submit">
-          Sign In
+          Log In
         </Button>
         <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center w-100">
           <p className="mb-0">You don't have an account?</p>

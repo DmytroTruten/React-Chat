@@ -121,17 +121,17 @@ const SidebarChatList = () => {
             <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
               <img
                 className="UserAvatar"
-                src={chat[1].userInfo.photoURL}
+                src={chat[1].userInfo?.photoURL}
                 alt=""
               />
             </div>
             <div className="SidebarChatInfo d-flex flex-column w-100">
               <div className="SidebarChatUsernameContainer d-flex justify-content-between">
                 <p className="SidebarChatUsername">
-                  {chat[1].userInfo.displayName}
+                  {chat[1].userInfo?.displayName}
                 </p>
                 <p className="SidebarChatTime">
-                  {moment.unix(chat[1]?.date?.seconds).format("HH:mm")}
+                  {moment.unix(chat[1].date?.seconds).format("HH:mm")}
                 </p>
                 {console.log(chat[1])}
               </div>

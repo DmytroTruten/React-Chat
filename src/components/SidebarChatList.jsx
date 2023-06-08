@@ -1,4 +1,4 @@
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthContext } from "../context/AuthContext";
@@ -45,7 +45,22 @@ const SidebarChatList = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
-  const handleSelect = (userInfo, index) => {
+  const handleSelect = async (userInfo, index) => {
+    if(userInfo.displayName === 'Saved Messages') {
+      const combinedID = currentUser.uid > userInfo.uid
+      ? currentUser.uid + userInfo.uid
+      : userInfo.uid + currentUser.uid;
+
+      await updateDoc(doc(db, "usersChats", currentUser.uid), {
+        [combinedID + ".userInfo"]: {
+          uid: userInfo.uid,
+          photoURL:
+            "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
+          displayName: "Saved Messages"
+        },
+        [combinedID + ".date"]: Timestamp.now(),
+      });
+    }
     storeDispatch(setSidebarChatState());
     dispatch({ type: "CHANGE_USER", payload: userInfo });
     setSelectedChatIndex(index);

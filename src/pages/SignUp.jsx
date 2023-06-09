@@ -40,7 +40,7 @@ const SignUp = () => {
           displayName,
           photoURL: downloadURL,
         });
-        const savedMessagesID = v4();
+        const savedMessagesID = "SavedMessagesID" + v4();
         await setDoc(doc(db, "chats", savedMessagesID), {
           messages: [],
         });

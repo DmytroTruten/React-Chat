@@ -51,6 +51,7 @@ const Input = () => {
       });
     } else {
       const lastMessage = text === "" ? "Image" : text;
+      console.log(`chatID: ${data.chatID}`);
 
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
         [data.chatID + ".lastImageURL"]: {

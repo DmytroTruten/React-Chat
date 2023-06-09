@@ -46,24 +46,32 @@ const SidebarChatList = () => {
   }, [currentUser.uid]);
 
   const handleSelect = async (userInfo, index) => {
-    if(userInfo.displayName === 'Saved Messages') {
-      const combinedID = currentUser.uid > userInfo.uid
-      ? currentUser.uid + userInfo.uid
-      : userInfo.uid + currentUser.uid;
+    if (userInfo.displayName === "Saved Messages") {
+      const combinedID =
+        currentUser.uid > userInfo.uid
+          ? currentUser.uid + userInfo.uid
+          : userInfo.uid + currentUser.uid;
+      console.log(`combinedID: ${combinedID}`);
 
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
-        [combinedID + ".userInfo"]: {
+        [userInfo.uid + ".userInfo"]: {
           uid: userInfo.uid,
           photoURL:
             "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
-          displayName: "Saved Messages"
+          displayName: "Saved Messages",
         },
-        [combinedID + ".date"]: Timestamp.now(),
+        [userInfo.uid + ".date"]: Timestamp.now(),
       });
+      console.log(
+        `userInfoUid: ${userInfo.uid}\n currentUserUid: ${currentUser.uid}`
+      );
     }
     storeDispatch(setSidebarChatState());
     dispatch({ type: "CHANGE_USER", payload: userInfo });
     setSelectedChatIndex(index);
+    console.log(
+      `userInfoUid: ${userInfo.uid}\n currentUserUid: ${currentUser.uid}`
+    );
   };
 
   useEffect(() => {

@@ -17,6 +17,7 @@ import {
   setSidebarMenuState,
   setSidebarSettingsState,
 } from "../features/sidebar/sidebarSlice.js";
+import { v4 } from "uuid";
 
 const SidebarChatList = () => {
   const [chats, setChats] = useState([]);
@@ -45,35 +46,6 @@ const SidebarChatList = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
-  const handleSelect = async (userInfo, index) => {
-    if (userInfo.displayName === "Saved Messages") {
-      const combinedID =
-        currentUser.uid > userInfo.uid
-          ? currentUser.uid + userInfo.uid
-          : userInfo.uid + currentUser.uid;
-      console.log(`combinedID: ${combinedID}`);
-
-      await updateDoc(doc(db, "usersChats", currentUser.uid), {
-        [userInfo.uid + ".userInfo"]: {
-          uid: userInfo.uid,
-          photoURL:
-            "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
-          displayName: "Saved Messages",
-        },
-        [userInfo.uid + ".date"]: Timestamp.now(),
-      });
-      console.log(
-        `userInfoUid: ${userInfo.uid}\n currentUserUid: ${currentUser.uid}`
-      );
-    }
-    storeDispatch(setSidebarChatState());
-    dispatch({ type: "CHANGE_USER", payload: userInfo });
-    setSelectedChatIndex(index);
-    console.log(
-      `userInfoUid: ${userInfo.uid}\n currentUserUid: ${currentUser.uid}`
-    );
-  };
-
   useEffect(() => {
     if (sidebarMenuRef.current) {
       sidebarMenuRef.current.style.animation =
@@ -96,10 +68,42 @@ const SidebarChatList = () => {
     }
   }, [sidebarChatListRef.current]);
 
+  const handleSelect = (userInfo, index) => {
+    storeDispatch(setSidebarChatState());
+    dispatch({ type: "CHANGE_USER", payload: userInfo });
+    setSelectedChatIndex(index);
+    console.log(
+      `userInfoUid: ${userInfo.uid}\n currentUserUid: ${currentUser.uid}`
+    );
+  };
+
+  const createSavedMessagesChat = async () => {
+    const savedMessagesChatID = v4();
+    const combinedID =
+      currentUser.uid > savedMessagesChatID
+        ? currentUser.uid + savedMessagesChatID
+        : savedMessagesChatID + currentUser.uid;
+    await updateDoc(doc(db, "usersChats", currentUser.uid), {
+      [combinedID + ".userInfo"]: {
+        uid: savedMessagesChatID,
+        photoURL:
+          "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
+        displayName: "Saved Messages",
+      },
+      [combinedID + ".date"]: Timestamp.now(),
+    });
+  };
+
   return (
     <div className="SidebarChatList" ref={sidebarChatListRef}>
       <div className={`SidebarMenu ${sidebarMenuState}`} ref={sidebarMenuRef}>
-        <div className="SidebarMenuOption d-flex align-items-center">
+        <div
+          className="SidebarMenuOption d-flex align-items-center"
+          onClick={() => {
+            storeDispatch(setSidebarMenuState());
+            createSavedMessagesChat();
+          }}
+        >
           <img className="SidebarMenuOptionIcon" src={savedIcon} alt="" />
           <p className="SidebarMenuOptionText">Saved Messages</p>
         </div>

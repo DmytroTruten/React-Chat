@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc, Timestamp, updateDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { auth, db, storage } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/SignUp/SignUp.css";
-import { v4 } from "uuid";
 
 const SignUp = () => {
   const [error, setError] = useState(false);
@@ -25,7 +24,12 @@ const SignUp = () => {
         email,
         password
       );
+
       await setDoc(doc(db, "usersChats", response.user.uid), {});
+
+      await setDoc(doc(db, "chats", response.user.uid), {
+        messages: [],
+      });
 
       getDownloadURL(storageRef).then(async (downloadURL) => {
         await setDoc(doc(db, "users", response.user.uid), {
@@ -39,20 +43,6 @@ const SignUp = () => {
         await updateProfile(response.user, {
           displayName,
           photoURL: downloadURL,
-        });
-        const savedMessagesID = "SavedMessagesID" + v4();
-        await setDoc(doc(db, "chats", savedMessagesID), {
-          messages: [],
-        });
-
-        await updateDoc(doc(db, "usersChats", response.user.uid), {
-          [savedMessagesID + ".userInfo"]: {
-            uid: savedMessagesID,
-            photoURL:
-              "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
-            displayName: "Saved Messages"
-          },
-          [savedMessagesID + ".date"]: Timestamp.now(),
         });
       });
       navigate("/React-Chat/Home");

@@ -1,4 +1,11 @@
-import { doc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  onSnapshot,
+  setDoc,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthContext } from "../context/AuthContext";
@@ -72,13 +79,11 @@ const SidebarChatList = () => {
     storeDispatch(setSidebarChatState());
     dispatch({ type: "CHANGE_USER", payload: userInfo });
     setSelectedChatIndex(index);
-    console.log(
-      `userInfoUid: ${userInfo.uid}\n currentUserUid: ${currentUser.uid}`
-    );
   };
 
   const createSavedMessagesChat = async () => {
     const savedMessagesChatID = v4();
+    const chatsDocSnap = await getDoc(doc(db, "chats", currentUser.uid));
     const combinedID =
       currentUser.uid > savedMessagesChatID
         ? currentUser.uid + savedMessagesChatID
@@ -92,6 +97,11 @@ const SidebarChatList = () => {
       },
       [combinedID + ".date"]: Timestamp.now(),
     });
+    if (!chatsDocSnap.exists()) {
+      await setDoc(doc(db, "chats", combinedID), {
+        messages: [],
+      });
+    }
   };
 
   return (

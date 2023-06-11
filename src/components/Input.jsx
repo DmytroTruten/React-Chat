@@ -62,16 +62,17 @@ const Input = () => {
         },
         [data.chatID + ".date"]: Timestamp.now(),
       });
-
-      await updateDoc(doc(db, "usersChats", data.user.uid), {
-        [data.chatID + ".lastImageURL"]: {
-          downloadURL: null,
-        },
-        [data.chatID + ".lastMessage"]: {
-          lastMessage,
-        },
-        [data.chatID + ".date"]: Timestamp.now(),
-      });
+      if (!data.user.displayName === "Saved Messages") {
+        await updateDoc(doc(db, "usersChats", data.user.uid), {
+          [data.chatID + ".lastImageURL"]: {
+            downloadURL: null,
+          },
+          [data.chatID + ".lastMessage"]: {
+            lastMessage,
+          },
+          [data.chatID + ".date"]: Timestamp.now(),
+        });
+      }
 
       await updateDoc(doc(db, "chats", data.chatID), {
         messages: arrayUnion({

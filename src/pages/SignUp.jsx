@@ -27,10 +27,6 @@ const SignUp = () => {
 
       await setDoc(doc(db, "usersChats", response.user.uid), {});
 
-      await setDoc(doc(db, "chats", response.user.uid), {
-        messages: [],
-      });
-
       getDownloadURL(storageRef).then(async (downloadURL) => {
         await setDoc(doc(db, "users", response.user.uid), {
           uid: response.user.uid,

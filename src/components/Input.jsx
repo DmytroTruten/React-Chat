@@ -19,8 +19,9 @@ const Input = () => {
 
   const handleSend = async () => {
     inputRef.current.value = "";
-
     const storageRef = ref(storage, "chatsImages/" + v4());
+    const lastMessage = text === "" ? "Image" : text;
+
     if (image) {
       uploadBytes(storageRef, image).then((snapshot) => {
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
@@ -41,18 +42,21 @@ const Input = () => {
             [data.chatID + ".lastImageURL"]: {
               downloadURL,
             },
+            [data.chatID + ".lastMessage"]: {
+              lastMessage,
+            },
           });
           await updateDoc(doc(db, "usersChats", data.user.uid), {
             [data.chatID + ".lastImageURL"]: {
               downloadURL,
             },
+            [data.chatID + ".lastMessage"]: {
+              lastMessage,
+            },
           });
         });
       });
     } else {
-      const lastMessage = text === "" ? "Image" : text;
-      console.log(`chatID: ${data.chatID}`);
-
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
         [data.chatID + ".lastImageURL"]: {
           downloadURL: null,

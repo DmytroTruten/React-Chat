@@ -10,16 +10,23 @@
 .Home.light .SidebarSettings,
 .Home.light .SidebarMenu,
 .Home.light .InputButtonsContainer,
-.Home.light .MessageContainer, .Home.light .ImageContainer.WithCaption {
+.Home.light .MessageContainer,
+.Home.light .ImageContainer.WithCaption {
   background-color: #fff;
 }
 .Home.light .InputButtonsContainer::before,
-.Home.light .MessageContainer::before, .Home.light .ImageContainer.WithCaption::before {
+.Home.light .MessageContainer::before,
+.Home.light .ImageContainer.WithCaption::before {
   color: #fff;
 }
 .Home.light .SidebarChatLastMsg,
-.Home.light .SidebarChatTime,
-.Home.light .MessageTime {
+.Home.light .SidebarChatTime {
+  color: rgb(112, 117, 121);
+}
+.Home.light .MessageContainer .MessageTime {
+  color: rgb(112, 117, 121);
+}
+.Home.light .ImageContainer.WithCaption .MessageTime {
   color: rgb(112, 117, 121);
 }
 .Home.light .SidebarChatUsername,

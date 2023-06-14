@@ -92,7 +92,7 @@ const SidebarChatList = () => {
       [combinedID + ".userInfo"]: {
         uid: savedMessagesChatID,
         photoURL:
-          "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fsaved-icon.svg?alt=media&token=70145a71-2e21-45cd-9123-ec3eed28fedd",
+          "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fwhite-bookmark-icon.svg?alt=media&token=4bed4cd2-4413-4d6f-8e7a-8ec702034bac",
         displayName: "Saved Messages",
       },
       [combinedID + ".date"]: Timestamp.now(),
@@ -155,9 +155,9 @@ const SidebarChatList = () => {
             onClick={() => handleSelect(chat[1].userInfo, index)}
             ref={(el) => (chatRefs.current[index] = el)}
           >
-            <div className="SidebarChatImgContainer d-flex justify-content-center align-items-center">
+            <div className={`SidebarChatImgContainer ${chat[1].userInfo?.displayName === "Saved Messages" ? "SavedMessagesChatImgContainer" : ""} d-flex justify-content-center align-items-center`}>
               <img
-                className="UserAvatar"
+                className={`UserAvatar ${chat[1].userInfo?.displayName === "Saved Messages" ? "SavedMessagesImg" : ""}`}
                 src={chat[1].userInfo?.photoURL}
                 alt=""
               />

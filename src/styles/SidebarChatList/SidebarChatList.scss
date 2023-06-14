@@ -34,6 +34,13 @@
   min-width: 54px;
   margin-right: 12px;
   border-radius: 50%;
+  &.SavedMessagesChatImgContainer {
+    background: linear-gradient( #61dbfb, #1d92af);
+  }
+  .SavedMessagesImg {
+    max-width: 40px;
+    max-height: 40px;
+  }
 }
 
 .SidebarChatUsername {
@@ -74,7 +81,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      transition: right 0.2s ease-in-out, background-color .2s ease-in-out;
+      transition: right 0.2s ease-in-out, background-color 0.2s ease-in-out;
     }
     &.light {
       &::before {
@@ -88,7 +95,6 @@
     }
   }
 }
-
 
 @keyframes show-menu {
   0% {

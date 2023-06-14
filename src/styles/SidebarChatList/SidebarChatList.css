@@ -27,6 +27,13 @@
   margin-right: 12px;
   border-radius: 50%;
 }
+.SidebarChatImgContainer.SavedMessagesChatImgContainer {
+  background: linear-gradient(#61dbfb, #1d92af);
+}
+.SidebarChatImgContainer .SavedMessagesImg {
+  max-width: 40px;
+  max-height: 40px;
+}
 
 .SidebarChatUsername {
   font-size: 16px;

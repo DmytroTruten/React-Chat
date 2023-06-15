@@ -84,19 +84,25 @@ const SidebarChatList = () => {
   const createSavedMessagesChat = async () => {
     const savedMessagesChatID = v4();
     const chatsDocSnap = await getDoc(doc(db, "chats", currentUser.uid));
+    const savedMessagesDocSnap = await getDoc(
+      doc(db, "usersChats", currentUser.uid)
+    );
     const combinedID =
       currentUser.uid > savedMessagesChatID
         ? currentUser.uid + savedMessagesChatID
         : savedMessagesChatID + currentUser.uid;
-    await updateDoc(doc(db, "usersChats", currentUser.uid), {
-      [combinedID + ".userInfo"]: {
-        uid: savedMessagesChatID,
-        photoURL:
-          "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fwhite-bookmark-icon.svg?alt=media&token=4bed4cd2-4413-4d6f-8e7a-8ec702034bac",
-        displayName: "Saved Messages",
-      },
-      [combinedID + ".date"]: Timestamp.now(),
-    });
+    if (Object.entries(savedMessagesDocSnap.data()).length === 0) {
+      console.log(Object.keys(savedMessagesDocSnap.data()));
+      await updateDoc(doc(db, "usersChats", currentUser.uid), {
+        [combinedID + ".userInfo"]: {
+          uid: savedMessagesChatID,
+          photoURL:
+            "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fwhite-bookmark-icon.svg?alt=media&token=4bed4cd2-4413-4d6f-8e7a-8ec702034bac",
+          displayName: "Saved Messages",
+        },
+        [combinedID + ".date"]: Timestamp.now(),
+      });
+    }
     if (!chatsDocSnap.exists()) {
       await setDoc(doc(db, "chats", combinedID), {
         messages: [],
@@ -155,9 +161,19 @@ const SidebarChatList = () => {
             onClick={() => handleSelect(chat[1].userInfo, index)}
             ref={(el) => (chatRefs.current[index] = el)}
           >
-            <div className={`SidebarChatImgContainer ${chat[1].userInfo?.displayName === "Saved Messages" ? "SavedMessagesChatImgContainer" : ""} d-flex justify-content-center align-items-center`}>
+            <div
+              className={`SidebarChatImgContainer ${
+                chat[1].userInfo?.displayName === "Saved Messages"
+                  ? "SavedMessagesChatImgContainer"
+                  : ""
+              } d-flex justify-content-center align-items-center`}
+            >
               <img
-                className={`UserAvatar ${chat[1].userInfo?.displayName === "Saved Messages" ? "SavedMessagesImg" : ""}`}
+                className={`UserAvatar ${
+                  chat[1].userInfo?.displayName === "Saved Messages"
+                    ? "SavedMessagesImg"
+                    : ""
+                }`}
                 src={chat[1].userInfo?.photoURL}
                 alt=""
               />

@@ -100,7 +100,6 @@ const SidebarChatList = () => {
             "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fwhite-bookmark-icon.svg?alt=media&token=4bed4cd2-4413-4d6f-8e7a-8ec702034bac",
           displayName: "Saved Messages",
         },
-        [combinedID + ".date"]: Timestamp.now(),
       });
     }
     if (!chatsDocSnap.exists()) {
@@ -184,7 +183,8 @@ const SidebarChatList = () => {
                   {chat[1].userInfo?.displayName}
                 </p>
                 <p className="SidebarChatTime">
-                  {moment.unix(chat[1].date?.seconds).format("HH:mm")}
+                  {chat[1].date?.seconds &&
+                    moment.unix(chat[1].date?.seconds).format("HH:mm")}
                 </p>
                 {console.log(chat[1])}
               </div>

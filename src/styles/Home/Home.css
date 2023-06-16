@@ -135,10 +135,6 @@
   max-height: 100vh;
   position: relative;
   touch-action: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .Sidebar {

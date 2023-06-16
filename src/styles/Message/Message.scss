@@ -123,6 +123,10 @@
   }
 }
 
+.MessageTime {
+  user-select: none;
+}
+
 .Message {
   margin: 3px 0px;
   overflow-wrap: anywhere;

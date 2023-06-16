@@ -122,6 +122,13 @@
   align-self: end;
 }
 
+.MessageTime {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .Message {
   margin: 3px 0px;
   overflow-wrap: anywhere;

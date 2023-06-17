@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 .Home * {
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 .Home.light .Sidebar,
 .Home.light .SidebarSettings,
@@ -81,6 +81,9 @@
 }
 .Home.light .SearchInput:focus {
   border: 2px solid #3390ec;
+}
+.Home.light .Navbar .UserAvatar {
+  filter: brightness(0%) saturate(100%);
 }
 .Home.dark .Sidebar,
 .Home.dark .SidebarSettings,

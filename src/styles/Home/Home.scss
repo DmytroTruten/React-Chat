@@ -6,7 +6,7 @@
   overflow: hidden;
   & * {
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
-      border-color 0.2s ease-in-out;
+      border-color 0.2s ease-in-out, filter .2s ease-in-out;
   }
   &.light {
     .Sidebar,
@@ -96,6 +96,11 @@
       }
       &:focus {
         border: 2px solid #3390ec;
+      }
+    }
+    .Navbar {
+      .UserAvatar {
+        filter: brightness(0%) saturate(100%);
       }
     }
   }

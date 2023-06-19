@@ -1,11 +1,4 @@
-import {
-  doc,
-  getDoc,
-  onSnapshot,
-  setDoc,
-  Timestamp,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthContext } from "../context/AuthContext";
@@ -163,16 +156,12 @@ const SidebarChatList = () => {
             <div
               className={`SidebarChatImgContainer ${
                 chat[1].userInfo?.displayName === "Saved Messages"
-                  ? "SavedMessagesChatImgContainer"
+                  ? "SavedMessagesImgContainer"
                   : ""
               } d-flex justify-content-center align-items-center`}
             >
               <img
-                className={`UserAvatar ${
-                  chat[1].userInfo?.displayName === "Saved Messages"
-                    ? "SavedMessagesImg"
-                    : ""
-                }`}
+                className="UserAvatar"
                 src={chat[1].userInfo?.photoURL}
                 alt=""
               />

@@ -7,8 +7,19 @@
   border-left: 1px solid #242a2f;
 
   .UserAvatar {
-    max-width: 42px;
-    max-height: 42px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .SavedMessagesImgContainer {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient( #61dbfb, #1d92af);
+    .UserAvatar {
+      max-width: 32px;
+      max-height: 32px;
+    }
   }
 }
 

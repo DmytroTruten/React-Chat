@@ -8,15 +8,15 @@ const Navbar = () => {
 
   return (
     <div className="Navbar d-flex">
-      <img
-        className={`UserAvatar ${
+      <div
+        className={`NavbarUserAvatarContainer ${
           data.user?.displayName === "Saved Messages"
-            ? "SavedMessagesUserAvatar"
+            ? "SavedMessagesImgContainer"
             : ""
-        }`}
-        src={data.user?.photoURL}
-        alt=""
-      />
+        } d-flex justify-content-center align-items-center`}
+      >
+        <img className="UserAvatar" src={data.user?.photoURL} alt="" />
+      </div>
       <p className="NavbarUsername">{data.user?.displayName}</p>
     </div>
   );

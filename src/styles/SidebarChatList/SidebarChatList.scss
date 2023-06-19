@@ -34,12 +34,12 @@
   min-width: 54px;
   margin-right: 12px;
   border-radius: 50%;
-  &.SavedMessagesChatImgContainer {
-    background: linear-gradient( #61dbfb, #1d92af);
-  }
-  .SavedMessagesImg {
-    max-width: 40px;
-    max-height: 40px;
+  &.SavedMessagesImgContainer {
+    background: linear-gradient(#61dbfb, #1d92af);
+    .UserAvatar {
+      max-width: 40px;
+      max-height: 40px;
+    }
   }
 }
 

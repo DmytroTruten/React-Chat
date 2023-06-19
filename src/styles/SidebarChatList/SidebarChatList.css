@@ -27,10 +27,10 @@
   margin-right: 12px;
   border-radius: 50%;
 }
-.SidebarChatImgContainer.SavedMessagesChatImgContainer {
+.SidebarChatImgContainer.SavedMessagesImgContainer {
   background: linear-gradient(#61dbfb, #1d92af);
 }
-.SidebarChatImgContainer .SavedMessagesImg {
+.SidebarChatImgContainer.SavedMessagesImgContainer .UserAvatar {
   max-width: 40px;
   max-height: 40px;
 }

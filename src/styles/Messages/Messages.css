@@ -2,7 +2,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1 0 0;
-  padding-bottom: 5px;
+  padding: 5px 0px;
 }
 .Messages:hover::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);

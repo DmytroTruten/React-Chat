@@ -17,47 +17,54 @@ const Input = () => {
   const { data } = useContext(ChatContext);
   const inputRef = useRef(null);
 
-  const handleSend = async () => {
-    inputRef.current.value = "";
-    const storageRef = ref(storage, "chatsImages/" + v4());
-    const lastMessage = text === "" ? "Image" : text;
+  const sendImage = async (storageRef, lastMessage) => {
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        await updateDoc(doc(db, "chats", data.chatID), {
+          messages: arrayUnion({
+            id: v4(),
+            text,
+            senderID: currentUser.uid,
+            date: Timestamp.now(),
+            image: downloadURL,
+          }),
+        });
+      });
+    });
+    uploadBytes(storageRef, image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        await updateDoc(doc(db, "usersChats", currentUser.uid), {
+          [data.chatID + ".lastImageURL"]: {
+            downloadURL,
+          },
+          [data.chatID + ".lastMessage"]: {
+            lastMessage,
+          },
+        });
+        await updateDoc(doc(db, "usersChats", data.user.uid), {
+          [data.chatID + ".lastImageURL"]: {
+            downloadURL,
+          },
+          [data.chatID + ".lastMessage"]: {
+            lastMessage,
+          },
+        });
+      });
+    });
+  };
 
-    if (image) {
-      uploadBytes(storageRef, image).then((snapshot) => {
-        getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-          await updateDoc(doc(db, "chats", data.chatID), {
-            messages: arrayUnion({
-              id: v4(),
-              text,
-              senderID: currentUser.uid,
-              date: Timestamp.now(),
-              image: downloadURL,
-            }),
-          });
-        });
-      });
-      uploadBytes(storageRef, image).then((snapshot) => {
-        getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-          await updateDoc(doc(db, "usersChats", currentUser.uid), {
-            [data.chatID + ".lastImageURL"]: {
-              downloadURL,
-            },
-            [data.chatID + ".lastMessage"]: {
-              lastMessage,
-            },
-          });
-          await updateDoc(doc(db, "usersChats", data.user.uid), {
-            [data.chatID + ".lastImageURL"]: {
-              downloadURL,
-            },
-            [data.chatID + ".lastMessage"]: {
-              lastMessage,
-            },
-          });
-        });
-      });
-    } else {
-      await updateDoc(doc(db, "usersChats", currentUser.uid), {
+  const sendText = async (lastMessage) => {
+    await updateDoc(doc(db, "usersChats", currentUser.uid), {
+      [data.chatID + ".lastImageURL"]: {
+        downloadURL: null,
+      },
+      [data.chatID + ".lastMessage"]: {
+        lastMessage,
+      },
+      [data.chatID + ".date"]: Timestamp.now(),
+    });
+    if (!data.user.displayName === "Saved Messages") {
+      await updateDoc(doc(db, "usersChats", data.user.uid), {
         [data.chatID + ".lastImageURL"]: {
           downloadURL: null,
         },
@@ -66,26 +73,27 @@ const Input = () => {
         },
         [data.chatID + ".date"]: Timestamp.now(),
       });
-      if (!data.user.displayName === "Saved Messages") {
-        await updateDoc(doc(db, "usersChats", data.user.uid), {
-          [data.chatID + ".lastImageURL"]: {
-            downloadURL: null,
-          },
-          [data.chatID + ".lastMessage"]: {
-            lastMessage,
-          },
-          [data.chatID + ".date"]: Timestamp.now(),
-        });
-      }
+    }
 
-      await updateDoc(doc(db, "chats", data.chatID), {
-        messages: arrayUnion({
-          id: v4(),
-          text,
-          senderID: currentUser.uid,
-          date: Timestamp.now(),
-        }),
-      });
+    await updateDoc(doc(db, "chats", data.chatID), {
+      messages: arrayUnion({
+        id: v4(),
+        text,
+        senderID: currentUser.uid,
+        date: Timestamp.now(),
+      }),
+    });
+  };
+
+  const handleSend = () => {
+    inputRef.current.value = "";
+    const storageRef = ref(storage, "chatsImages/" + v4());
+    const lastMessage = text === "" ? "Image" : text;
+
+    if (image) {
+      sendImage(storageRef, lastMessage);
+    } else {
+      sendText(lastMessage);
     }
 
     setText("");
@@ -93,6 +101,9 @@ const Input = () => {
   };
 
   const handleKeyDown = (e) => {
+    if (!image && text === "") {
+      return;
+    }
     e.code === "Enter" && handleSend();
   };
 

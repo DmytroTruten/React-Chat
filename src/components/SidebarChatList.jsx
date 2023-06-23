@@ -95,6 +95,15 @@ const SidebarChatList = () => {
         },
       });
     }
+    handleSelect(
+      {
+        uid: savedMessagesChatID,
+        photoURL:
+          "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fwhite-bookmark-icon.svg?alt=media&token=4bed4cd2-4413-4d6f-8e7a-8ec702034bac",
+        displayName: "Saved Messages",
+      },
+      0
+    );
     if (!chatsDocSnap.exists()) {
       await setDoc(doc(db, "chats", combinedID), {
         messages: [],

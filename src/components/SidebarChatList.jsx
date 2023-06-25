@@ -21,8 +21,8 @@ import { v4 } from "uuid";
 
 const SidebarChatList = () => {
   const [chats, setChats] = useState([]);
+  const [savedMessagesChatID, setSavedMessagesChatID] = useState("");
   const [selectedChatIndex, setSelectedChatIndex] = useState(null);
-  const [chatID, setChatID] = useState("");
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
   const sidebarMenuRef = useRef(null);
@@ -76,22 +76,27 @@ const SidebarChatList = () => {
   };
 
   const createSavedMessagesChat = async () => {
-    const savedMessagesChatID = v4();
-    const combinedID =
-      currentUser.uid > savedMessagesChatID
-        ? currentUser.uid + savedMessagesChatID
-        : savedMessagesChatID + currentUser.uid;
-    if (chatID === "") {
-      setChatID(combinedID);
+    if (savedMessagesChatID === "") {
+      const newChatID = v4();
+      setSavedMessagesChatID(newChatID);
+      await createChat(newChatID);
     }
-    const chatsDocSnap = await getDoc(doc(db, "chats", chatID));
+  };
+
+  const createChat = async (chatID) => {
+    const chatsDocSnap = await getDoc(doc(db, "chats", currentUser.uid));
     const savedMessagesDocSnap = await getDoc(
       doc(db, "usersChats", currentUser.uid)
     );
+    const combinedID =
+      currentUser.uid > chatID
+        ? currentUser.uid + chatID
+        : chatID + currentUser.uid;
     if (Object.entries(savedMessagesDocSnap.data()).length === 0) {
+      console.log(`savedMessagesChatID: ${chatID}`);
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
         [combinedID + ".userInfo"]: {
-          uid: savedMessagesChatID,
+          uid: chatID,
           photoURL:
             "https://firebasestorage.googleapis.com/v0/b/react-chat-84633.appspot.com/o/images%2Fwhite-bookmark-icon.svg?alt=media&token=4bed4cd2-4413-4d6f-8e7a-8ec702034bac",
           displayName: "Saved Messages",
@@ -99,7 +104,7 @@ const SidebarChatList = () => {
       });
     }
     if (!chatsDocSnap.exists()) {
-      await setDoc(doc(db, "chats", chatID), {
+      await setDoc(doc(db, "chats", combinedID), {
         messages: [],
       });
     }

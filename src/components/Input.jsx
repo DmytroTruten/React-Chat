@@ -74,7 +74,7 @@ const Input = () => {
         [data.chatID + ".date"]: Timestamp.now(),
       });
     }
-
+    console.log(`data.chatID: ${data.chatID}`);
     await updateDoc(doc(db, "chats", data.chatID), {
       messages: arrayUnion({
         id: v4(),

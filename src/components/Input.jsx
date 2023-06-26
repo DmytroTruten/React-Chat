@@ -17,6 +17,7 @@ const Input = () => {
   const { data } = useContext(ChatContext);
   const inputRef = useRef(null);
 
+  // Function sends user image to the firestore database, updates "chats" doc on combined users ID
   const sendImage = async (storageRef, lastMessage) => {
     uploadBytes(storageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (downloadURL) => {
@@ -31,6 +32,7 @@ const Input = () => {
         });
       });
     });
+    // Updating last sent image/message for every user in SidebarChatList component
     uploadBytes(storageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (downloadURL) => {
         await updateDoc(doc(db, "usersChats", currentUser.uid), {
@@ -52,8 +54,8 @@ const Input = () => {
       });
     });
   };
-
   const sendText = async (lastMessage) => {
+    // Update last sent message for current user in SidebarChatList component
     await updateDoc(doc(db, "usersChats", currentUser.uid), {
       [data.chatID + ".lastImageURL"]: {
         downloadURL: null,
@@ -63,6 +65,7 @@ const Input = () => {
       },
       [data.chatID + ".date"]: Timestamp.now(),
     });
+    // If selected chat is not "Saved Messages" - update last sent message for other user
     if (!data.user.displayName === "Saved Messages") {
       await updateDoc(doc(db, "usersChats", data.user.uid), {
         [data.chatID + ".lastImageURL"]: {
@@ -74,7 +77,7 @@ const Input = () => {
         [data.chatID + ".date"]: Timestamp.now(),
       });
     }
-    console.log(`data.chatID: ${data.chatID}`);
+    // Add current sent message to the array of messages in "Messages" component
     await updateDoc(doc(db, "chats", data.chatID), {
       messages: arrayUnion({
         id: v4(),
@@ -87,7 +90,9 @@ const Input = () => {
 
   const handleSend = () => {
     inputRef.current.value = "";
+    // Reference to the image that will be sent
     const storageRef = ref(storage, "chatsImages/" + v4());
+    // If user sends message without text, last message in "SidebarChatList" component will be "Image" with mini img icon next to it
     const lastMessage = text === "" ? "Image" : text;
 
     if (image) {

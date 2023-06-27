@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../mixins";
 
 .MessageContainer {
   max-width: 70%;
@@ -17,16 +18,7 @@
     border-radius: 12px 12px 0px 12px;
     right: 25.5%;
     &::before {
-      content: "";
-      background-color: transparent;
-      position: absolute;
-      right: -20px;
-      bottom: 0px;
-      height: 10px;
-      width: 20px;
-      border-radius: 0px 0px 0px 15px;
-      box-shadow: -10px 0px 0px;
-      transition: color .2s ease-in-out;
+      @include message-curve(current)
     }
   }
   &.other {
@@ -34,15 +26,7 @@
     left: 20%;
     &::before {
       content: "";
-      background-color: transparent;
-      position: absolute;
-      left: -20px;
-      bottom: 0px;
-      height: 10px;
-      width: 20px;
-      border-radius: 0px 0px 15px 0px;
-      box-shadow: 10px 0px 0px;
-      transition: color .2s ease-in-out;
+      @include message-curve(other)
     }
   }
 }
@@ -79,32 +63,14 @@
       border-radius: 15px 15px 0px 15px;
       right: 25.5%;
       &::before {
-        content: "";
-        background-color: transparent;
-        position: absolute;
-        right: -20px;
-        bottom: 0px;
-        height: 10px;
-        width: 20px;
-        border-radius: 0px 0px 0px 15px;
-        box-shadow: -10px 0px 0px;
-        transition: color .2s ease-in-out;
+        @include message-curve(current)
       }
     }
     &.other {
       border-radius: 15px 15px 15px 0px;
       left: 20%;
       &::before {
-        content: "";
-        background-color: transparent;
-        position: absolute;
-        left: -20px;
-        bottom: 0px;
-        height: 10px;
-        width: 20px;
-        border-radius: 0px 0px 15px 0px;
-        box-shadow: 10px 0px 0px;
-        transition: color .2s ease-in-out;
+        @include message-curve(other)
       }
     }
     .MessageImage {

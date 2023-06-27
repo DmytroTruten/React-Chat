@@ -21,13 +21,13 @@
   content: "";
   background-color: transparent;
   position: absolute;
-  right: -20px;
   bottom: 0px;
   height: 10px;
   width: 20px;
+  transition: color 0.2s ease-in-out;
+  right: -20px;
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 0px 0px;
-  transition: color 0.2s ease-in-out;
 }
 .MessageContainer.other {
   border-radius: 15px 15px 15px 0px;
@@ -35,15 +35,16 @@
 }
 .MessageContainer.other::before {
   content: "";
+  content: "";
   background-color: transparent;
   position: absolute;
-  left: -20px;
   bottom: 0px;
   height: 10px;
   width: 20px;
+  transition: color 0.2s ease-in-out;
+  left: -20px;
   border-radius: 0px 0px 15px 0px;
   box-shadow: 10px 0px 0px;
-  transition: color 0.2s ease-in-out;
 }
 
 .ImageContainer {
@@ -82,13 +83,13 @@
   content: "";
   background-color: transparent;
   position: absolute;
-  right: -20px;
   bottom: 0px;
   height: 10px;
   width: 20px;
+  transition: color 0.2s ease-in-out;
+  right: -20px;
   border-radius: 0px 0px 0px 15px;
   box-shadow: -10px 0px 0px;
-  transition: color 0.2s ease-in-out;
 }
 .ImageContainer.WithCaption.other {
   border-radius: 15px 15px 15px 0px;
@@ -98,13 +99,13 @@
   content: "";
   background-color: transparent;
   position: absolute;
-  left: -20px;
   bottom: 0px;
   height: 10px;
   width: 20px;
+  transition: color 0.2s ease-in-out;
+  left: -20px;
   border-radius: 0px 0px 15px 0px;
   box-shadow: 10px 0px 0px;
-  transition: color 0.2s ease-in-out;
 }
 .ImageContainer.WithCaption .MessageImage {
   border-radius: 15px 15px 0px 0px;

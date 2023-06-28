@@ -157,22 +157,22 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 .SidebarMenu.closed {
-  visibility: hidden;
   min-width: 260px;
   position: fixed;
   top: 54px;
   left: 16px;
   background-color: #2f2f2f;
   transform-origin: 0% 0%;
+  visibility: hidden;
 }
 .SidebarMenu.opened {
-  visibility: visible;
   min-width: 260px;
   position: fixed;
   top: 54px;
   left: 16px;
   background-color: #2f2f2f;
   transform-origin: 0% 0%;
+  visibility: visible;
 }
 .SidebarMenu > * {
   cursor: pointer;
@@ -250,10 +250,10 @@
   width: 40%;
   top: 100%;
   right: 20px;
-  visibility: visible;
   background-color: #4a494a;
   border-radius: 10px;
   transform-origin: top right;
+  visibility: visible;
 }
 .SidebarSettings .ImagePicker {
   display: none;

@@ -27,6 +27,14 @@
   }
 }
 
+@mixin visibility($visibility) {
+  @if $visibility == hidden {
+    visibility: hidden;
+  } @else if $visibility == visible {
+    visibility: visible;
+  }
+}
+
 @mixin logout-button($visibility) {
   width: 40%;
   top: 100%;
@@ -34,11 +42,7 @@
   background-color: #4a494a;
   border-radius: 10px;
   transform-origin: top right;
-  @if $visibility == hidden {
-    visibility: hidden;
-  } @else if $visibility == visible {
-    visibility: visible;
-  }
+  @include visibility($visibility)
 }
 
 @mixin sidebar-menu($visibility) {
@@ -48,9 +52,5 @@
   left: 16px;
   background-color: #2f2f2f;
   transform-origin: 0% 0%;
-  @if $visibility == hidden {
-    visibility: hidden;
-  } @else if $visibility == visible {
-    visibility: visible;
-  }
+  @include visibility($visibility)
 }

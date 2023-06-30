@@ -69,28 +69,29 @@
 .DarkModeSwitch {
   width: 37px;
   height: 20px;
-  .DarkModeSwitchToggle {
-    width: 31px;
-    height: 14px;
-    border-radius: 20px;
-    position: relative;
+}
+
+.DarkModeSwitchToggle {
+  width: 31px;
+  height: 14px;
+  border-radius: 20px;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: right 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+  &.light {
     &::before {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      transition: right 0.2s ease-in-out, background-color 0.2s ease-in-out;
+      right: 40%;
     }
-    &.light {
-      &::before {
-        right: 40%;
-      }
-    }
-    &.dark {
-      &::before {
-        right: 0;
-      }
+  }
+  &.dark {
+    &::before {
+      right: 0;
     }
   }
 }

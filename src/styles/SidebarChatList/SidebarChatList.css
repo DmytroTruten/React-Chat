@@ -63,13 +63,14 @@
   width: 37px;
   height: 20px;
 }
-.DarkModeSwitch .DarkModeSwitchToggle {
+
+.DarkModeSwitchToggle {
   width: 31px;
   height: 14px;
   border-radius: 20px;
   position: relative;
 }
-.DarkModeSwitch .DarkModeSwitchToggle::before {
+.DarkModeSwitchToggle::before {
   content: "";
   position: absolute;
   width: 20px;
@@ -77,10 +78,10 @@
   border-radius: 50%;
   transition: right 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
-.DarkModeSwitch .DarkModeSwitchToggle.light::before {
+.DarkModeSwitchToggle.light::before {
   right: 40%;
 }
-.DarkModeSwitch .DarkModeSwitchToggle.dark::before {
+.DarkModeSwitchToggle.dark::before {
   right: 0;
 }
 

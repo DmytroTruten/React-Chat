@@ -49,7 +49,7 @@
   cursor: pointer;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  position: relative;
 }
 .UserAvatarContainer .UserAvatar {
   min-width: 100%;
@@ -58,4 +58,27 @@
   border-radius: 0;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.ImagePicker {
+  display: none;
+}
+
+.ChangeAvatarButton {
+  position: absolute;
+  right: 20px;
+  bottom: calc(0% - 27px);
+  height: 54px;
+  min-width: 54px;
+  border-radius: 50%;
+  background: linear-gradient(#61dbfb, #1d92af);
+  z-index: 10;
+}
+.ChangeAvatarButton .ChangeAvatarIcon {
+  max-width: 25px;
+  max-height: 25px;
+}
+.ChangeAvatarButton:hover {
+  background: linear-gradient(#55c2dd, #197b94);
+  cursor: pointer;
 }/*# sourceMappingURL=SidebarSettings.css.map */

@@ -18,6 +18,7 @@ import uploadIcon from "../assets/upload-icon.svg";
 import leftArrowIcon from "../assets/left-arrow-icon.svg";
 import pencilIcon from "../assets/pencil-icon.svg";
 import kebabMenuIcon from "../assets/kebab-menu-icon.svg";
+import addPhotoIcon from "../assets/add-photo-icon.svg";
 import "../styles/SidebarSettings/SidebarSettings.css";
 
 const SidebarSettings = () => {
@@ -86,7 +87,9 @@ const SidebarSettings = () => {
         </Button>
         <Button
           className="SidebarSettingsHeaderButton  d-flex justify-content-center align-items-center ms-2"
-          onClick={() => {storeDispatch(setKebabMenuState())}}
+          onClick={() => {
+            storeDispatch(setKebabMenuState());
+          }}
         >
           <img src={kebabMenuIcon} alt="" />
         </Button>
@@ -97,7 +100,7 @@ const SidebarSettings = () => {
           <Button
             className="LogoutButton d-flex align-items-center"
             onClick={() => {
-              storeDispatch(setSidebarSettingsState())
+              storeDispatch(setSidebarSettingsState());
               signOut(auth);
             }}
           >
@@ -115,14 +118,18 @@ const SidebarSettings = () => {
           onChange={handleInputFile}
         />
         <div className="SidebarSettingsUserInfo">
-          <label className="w-100" htmlFor="file">
-            <div className="UserAvatarContainer">
-              <img className="UserAvatar" src={currentUser.photoURL} alt="" />
-            </div>
-            <p className="SidebarSettingsDisplayName">
-              {currentUser.displayName}
-            </p>
-          </label>
+          <div className="UserAvatarContainer">
+            <label
+              className="ChangeAvatarButton d-flex justify-content-center align-items-center"
+              htmlFor="file"
+            >
+              <img className="ChangeAvatarIcon" src={addPhotoIcon} alt="" />
+            </label>
+            <img className="UserAvatar" src={currentUser.photoURL} alt="" />
+          </div>
+          <p className="SidebarSettingsDisplayName">
+            {currentUser.displayName}
+          </p>
           {error && <p className="ErrorMsg">Something went wrong...</p>}
         </div>
         <div className="d-flex flex-column">

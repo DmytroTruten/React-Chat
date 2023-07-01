@@ -255,9 +255,6 @@
   transform-origin: top right;
   visibility: visible;
 }
-.SidebarSettings .ImagePicker {
-  display: none;
-}
 
 .Chat {
   flex: 1 0 0;

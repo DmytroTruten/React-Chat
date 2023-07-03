@@ -3,7 +3,12 @@ import Form from "react-bootstrap/Form";
 import "../styles/Input/Input.css";
 import attachIcon from "../assets/attach-icon.svg";
 import sendIcon from "../assets/send-icon.svg";
-import { arrayUnion, doc, Timestamp, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
@@ -17,10 +22,11 @@ const Input = () => {
   const { data } = useContext(ChatContext);
   const inputRef = useRef(null);
 
-  // Function sends user image to the firestore database, updates "chats" doc on combined users ID
   const sendImage = async (storageRef, lastMessage) => {
+    // Upload image to storage and get its download URL
     uploadBytes(storageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        // Update the "messages" array in the "chats" document with the new image message
         await updateDoc(doc(db, "chats", data.chatID), {
           messages: arrayUnion({
             id: v4(),
@@ -32,9 +38,11 @@ const Input = () => {
         });
       });
     });
+
     // Updating last sent image/message for every user in SidebarChatList component
     uploadBytes(storageRef, image).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        // Update the "usersChats" document for the current user
         await updateDoc(doc(db, "usersChats", currentUser.uid), {
           [data.chatID + ".lastImageURL"]: {
             downloadURL,
@@ -43,6 +51,7 @@ const Input = () => {
             lastMessage,
           },
         });
+        // Update the "usersChats" document for the other user
         await updateDoc(doc(db, "usersChats", data.user.uid), {
           [data.chatID + ".lastImageURL"]: {
             downloadURL,
@@ -54,8 +63,9 @@ const Input = () => {
       });
     });
   };
+
   const sendText = async (lastMessage) => {
-    // Update last sent message for current user in SidebarChatList component
+    // Update last sent message for the current user in SidebarChatList component
     await updateDoc(doc(db, "usersChats", currentUser.uid), {
       [data.chatID + ".lastImageURL"]: {
         downloadURL: null,
@@ -65,8 +75,9 @@ const Input = () => {
       },
       [data.chatID + ".date"]: Timestamp.now(),
     });
-    // If selected chat is not "Saved Messages" - update last sent message for other user
-    if (!data.user.displayName === "Saved Messages") {
+
+    // If the selected chat is not "Saved Messages," update last sent message for the other user
+    if (data.user.displayName !== "Saved Messages") {
       await updateDoc(doc(db, "usersChats", data.user.uid), {
         [data.chatID + ".lastImageURL"]: {
           downloadURL: null,
@@ -77,7 +88,8 @@ const Input = () => {
         [data.chatID + ".date"]: Timestamp.now(),
       });
     }
-    // Add current sent message to the array of messages in "Messages" component
+
+    // Add the current sent message to the array of messages in the "chats" document
     await updateDoc(doc(db, "chats", data.chatID), {
       messages: arrayUnion({
         id: v4(),
@@ -90,9 +102,7 @@ const Input = () => {
 
   const handleSend = () => {
     inputRef.current.value = "";
-    // Reference to the image that will be sent
     const storageRef = ref(storage, "chatsImages/" + v4());
-    // If user sends message without text, last message in "SidebarChatList" component will be "Image" with mini img icon next to it
     const lastMessage = text === "" ? "Image" : text;
 
     if (image) {

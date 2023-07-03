@@ -36,16 +36,9 @@ const sidebarSlice = createSlice({
 
 export const selectSidebarSettingsState = (state) =>
   state.sidebar.sidebarSettingsState;
-
-export const selectSidebarMenuState = (state) =>
-  state.sidebar.sidebarMenuState;
-
-export const selectSidebarChatState = (state) =>
-  state.sidebar.sidebarChatState;
-
-export const selectKebabMenuState = (state) =>
-  state.sidebar.kebabMenuState;
-
+export const selectSidebarMenuState = (state) => state.sidebar.sidebarMenuState;
+export const selectSidebarChatState = (state) => state.sidebar.sidebarChatState;
+export const selectKebabMenuState = (state) => state.sidebar.kebabMenuState;
 export const selectDarkModeSwitchState = (state) =>
   state.sidebar.darkModeSwitchState;
 

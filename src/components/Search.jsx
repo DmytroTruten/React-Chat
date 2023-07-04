@@ -18,14 +18,14 @@ import { setSidebarMenuState } from "../features/sidebar/sidebarSlice";
 import "../styles/Search/Search.css";
 
 const Search = () => {
-  const [username, setUsername] = useState("");
-  const [user, setUser] = useState(null);
-  const [error, setError] = useState(false);
-  const { currentUser } = useContext(AuthContext);
-  const storeDispatch = useDispatch();
+  const [username, setUsername] = useState(""); // State to store the search query
+  const [user, setUser] = useState(null); // State to store the user data
+  const [error, setError] = useState(false); // State to indicate if an error occurred
+  const { currentUser } = useContext(AuthContext); // Accessing current user from AuthContext
+  const storeDispatch = useDispatch(); // Dispatch function from Redux store
 
   const handleKeyDown = (e) => {
-    e.code == "Enter" && handleUserSearch();
+    e.code == "Enter" && handleUserSearch(); // Perform user search on Enter key press
   };
 
   const handleUserSearch = async () => {
@@ -37,10 +37,10 @@ const Search = () => {
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        setUser(doc.data());
+        setUser(doc.data()); // Set the found user data
       });
     } catch (error) {
-      setError(true);
+      setError(true); // Set error state if user is not found
     }
   };
 
@@ -98,7 +98,7 @@ const Search = () => {
             type="text"
             placeholder="Search"
             onChange={(e) => {
-              setUsername(e.target.value);
+              setUsername(e.target.value); // Update the search query on input change
             }}
             onKeyDown={handleKeyDown}
             value={username}
@@ -121,4 +121,5 @@ const Search = () => {
     </div>
   );
 };
+
 export default Search;

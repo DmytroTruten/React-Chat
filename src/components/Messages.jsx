@@ -8,24 +8,23 @@ import { db } from "../firebase";
 import { selectSidebarChatState } from "../features/sidebar/sidebarSlice.js";
 
 const Messages = () => {
-  const [messages, setMessages] = useState([]);
-  const { data } = useContext(ChatContext);
-  const sidebarChatState = useSelector(selectSidebarChatState);
+  const [messages, setMessages] = useState([]); // State to store messages
+  const { data } = useContext(ChatContext); // Chat context
+  const sidebarChatState = useSelector(selectSidebarChatState); // Sidebar chat state
 
   useEffect(() => {
+    // Effect triggered when chat ID changes
     const unsub = onSnapshot(doc(db, "chats", data.chatID), (doc) => {
-      doc.exists() && setMessages(doc.data().messages);
+      doc.exists() && setMessages(doc.data().messages); // Get and set messages from the database
     });
 
     return () => {
-      unsub();
+      unsub(); // Unsubscribe from document snapshot
     };
   }, [data.chatID]);
 
   return (
-    <div
-      className={`Messages d-flex flex-column`}
-    >
+    <div className={`Messages d-flex flex-column`}>
       {sidebarChatState === "closed" && (
         <div className="IntroTextContainer align-self-center my-auto">
           <p className="IntroText text-center ">
@@ -35,7 +34,7 @@ const Messages = () => {
       )}
       {sidebarChatState === "opened" &&
         messages?.map((message) => (
-          <Message message={message} key={message.id} />
+          <Message message={message} key={message.id} /> // Render each message
         ))}
     </div>
   );

@@ -1,9 +1,10 @@
-import { doc, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
 import React, { useState, useEffect, useContext, useRef } from "react";
+import { doc, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
+import { v4 } from "uuid";
 import moment from "moment";
 import settingsIcon from "../assets/settings-icon.svg";
 import savedIcon from "../assets/saved-icon.svg";
@@ -17,37 +18,40 @@ import {
   setSidebarMenuState,
   setSidebarSettingsState,
 } from "../features/sidebar/sidebarSlice.js";
-import { v4 } from "uuid";
 
 const SidebarChatList = () => {
-  const [chats, setChats] = useState([]);
-  const [savedMessagesChatID, setSavedMessagesChatID] = useState("");
-  const [selectedChatIndex, setSelectedChatIndex] = useState(null);
-  const { currentUser } = useContext(AuthContext);
-  const { dispatch } = useContext(ChatContext);
-  const sidebarMenuRef = useRef(null);
-  const sidebarChatListRef = useRef(null);
-  const chatRefs = useRef([]);
-  const sidebarMenuState = useSelector(selectSidebarMenuState);
-  const darkModeSwitchState = useSelector(selectDarkModeSwitchState);
-  const storeDispatch = useDispatch();
+  const [chats, setChats] = useState([]); // State to store the chat data
+  const [savedMessagesChatID, setSavedMessagesChatID] = useState(""); // State to store the ID of the saved messages chat
+  const [selectedChatIndex, setSelectedChatIndex] = useState(null); // State to store the index of the selected chat
+  const { currentUser } = useContext(AuthContext); // Accessing current user from AuthContext
+  const { dispatch } = useContext(ChatContext); // Accessing dispatch function from ChatContext
+  const sidebarMenuRef = useRef(null); // Ref for the sidebar menu container
+  const sidebarChatListRef = useRef(null); // Ref for the sidebar chat list container
+  const chatRefs = useRef([]); // Ref for individual chat containers
+  const sidebarMenuState = useSelector(selectSidebarMenuState); // Selecting sidebar menu state from Redux store
+  const darkModeSwitchState = useSelector(selectDarkModeSwitchState); // Selecting dark mode switch state from Redux store
+  const storeDispatch = useDispatch(); // Dispatch function from Redux store
 
   useEffect(() => {
     const getChats = () => {
+      // Function to fetch chat data from the database
       const unsub = onSnapshot(
         doc(db, "usersChats", currentUser.uid),
         (doc) => {
-          setChats(doc.data());
+          setChats(doc.data()); // Update the chat data in state
         }
       );
       return () => {
         unsub();
       };
     };
+
+    // Fetch chat data only if the current user ID is available
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
   useEffect(() => {
+    // Animate the sidebar menu based on the sidebar menu state
     if (sidebarMenuRef.current) {
       sidebarMenuRef.current.style.animation =
         "show-menu .2s ease-in-out forwards";
@@ -59,6 +63,7 @@ const SidebarChatList = () => {
   }, [sidebarMenuState]);
 
   useEffect(() => {
+    // Adjust the padding of the sidebar chat list based on its content height
     if (sidebarChatListRef.current) {
       const { scrollHeight, clientHeight } = sidebarChatListRef.current;
       if (scrollHeight > clientHeight) {
@@ -70,20 +75,23 @@ const SidebarChatList = () => {
   }, [sidebarChatListRef.current]);
 
   const handleSelect = (userInfo, index) => {
-    storeDispatch(setSidebarChatState());
-    dispatch({ type: "CHANGE_USER", payload: userInfo });
-    setSelectedChatIndex(index);
+    // Handle the selection of a chat
+    storeDispatch(setSidebarChatState()); // Update the sidebar chat state in Redux store
+    dispatch({ type: "CHANGE_USER", payload: userInfo }); // Dispatch the selected user information to ChatContext
+    setSelectedChatIndex(index); // Update the selected chat index state
   };
 
   const createSavedMessagesChat = async () => {
+    // Create a chat for saved messages if it doesn't exist
     if (savedMessagesChatID === "") {
-      const newChatID = v4();
-      setSavedMessagesChatID(newChatID);
-      await createChat(newChatID);
+      const newChatID = v4(); // Generate a unique chat ID using UUID
+      setSavedMessagesChatID(newChatID); // Update the saved messages chat ID state
+      await createChat(newChatID); // Create the chat in the database
     }
   };
 
   const createChat = async (chatID) => {
+    // Create a new chat in the database
     const chatsDocSnap = await getDoc(doc(db, "chats", currentUser.uid));
     const savedMessagesDocSnap = await getDoc(
       doc(db, "usersChats", currentUser.uid)
@@ -92,6 +100,8 @@ const SidebarChatList = () => {
       currentUser.uid > chatID
         ? currentUser.uid + chatID
         : chatID + currentUser.uid;
+
+    // Check if the saved messages chat doesn't exist and create it
     if (Object.entries(savedMessagesDocSnap.data()).length === 0) {
       console.log(`savedMessagesChatID: ${chatID}`);
       await updateDoc(doc(db, "usersChats", currentUser.uid), {
@@ -103,6 +113,8 @@ const SidebarChatList = () => {
         },
       });
     }
+
+    // Check if the chat doesn't exist in the chats collection and create it
     if (!chatsDocSnap.exists()) {
       await setDoc(doc(db, "chats", combinedID), {
         messages: [],
@@ -113,6 +125,7 @@ const SidebarChatList = () => {
   return (
     <div className="SidebarChatList" ref={sidebarChatListRef}>
       <div className={`SidebarMenu ${sidebarMenuState}`} ref={sidebarMenuRef}>
+        {/* Option to access saved messages */}
         <div
           className="SidebarMenuOption d-flex align-items-center"
           onClick={() => {
@@ -123,6 +136,7 @@ const SidebarChatList = () => {
           <img className="SidebarMenuOptionIcon" src={savedIcon} alt="" />
           <p className="SidebarMenuOptionText">Saved Messages</p>
         </div>
+        {/* Option to access settings */}
         <div
           className="SidebarMenuOption d-flex align-items-center"
           onClick={() => {
@@ -133,6 +147,7 @@ const SidebarChatList = () => {
           <img className="SidebarMenuOptionIcon" src={settingsIcon} alt="" />
           <p className="SidebarMenuOptionText">Settings</p>
         </div>
+        {/* Option to toggle dark mode */}
         <div
           className="SidebarMenuOption d-flex align-items-center justify-content-between"
           onClick={() => {
@@ -150,6 +165,7 @@ const SidebarChatList = () => {
           </div>
         </div>
       </div>
+      {/* Display the list of chats */}
       {Object.entries(chats)
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat, index) => (

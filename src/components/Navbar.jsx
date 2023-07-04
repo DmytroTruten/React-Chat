@@ -4,7 +4,7 @@ import { ChatContext } from "../context/ChatContext";
 import "../styles/Navbar/Navbar.css";
 
 const Navbar = () => {
-  const { data } = useContext(ChatContext);
+  const { data } = useContext(ChatContext); // Accessing data from ChatContext
 
   return (
     <div className="Navbar d-flex">

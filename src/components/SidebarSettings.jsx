@@ -22,18 +22,20 @@ import addPhotoIcon from "../assets/add-photo-icon.svg";
 import "../styles/SidebarSettings/SidebarSettings.css";
 
 const SidebarSettings = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [error, setError] = useState(false);
-  const logoutButtonContainerRef = useRef(null);
-  const { currentUser } = useContext(AuthContext);
-  const sidebarSettingsState = useSelector(selectSidebarSettingsState);
-  const kebabMenuState = useSelector(selectKebabMenuState);
-  const storeDispatch = useDispatch();
+  const [selectedFile, setSelectedFile] = useState(null); // State for the selected file
+  const [error, setError] = useState(false); // State for error handling
+  const logoutButtonContainerRef = useRef(null); // Ref to the logout button container
+  const { currentUser } = useContext(AuthContext); // Access the current user from the AuthContext
+  const sidebarSettingsState = useSelector(selectSidebarSettingsState); // Retrieve sidebar settings state from Redux store
+  const kebabMenuState = useSelector(selectKebabMenuState); // Retrieve kebab menu state from Redux store
+  const storeDispatch = useDispatch(); // Dispatch actions to the Redux store
 
+  // Event handler for selecting a file
   const handleInputFile = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
+  // Event handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const file = e.target[0].files[0];
@@ -41,16 +43,20 @@ const SidebarSettings = () => {
     const photoRef = doc(db, "users", currentUser.uid);
 
     try {
+      // Upload the file to Firebase Storage
       uploadBytes(storageRef, file).then((snapshot) => {
+        // Get the download URL of the uploaded file
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+          // Update the photoURL field in the user document in Firestore
           await updateDoc(photoRef, {
             photoURL: downloadURL,
           });
+          // Update the user's profile in Firebase Auth
           await updateProfile(currentUser, {
             photoURL: downloadURL,
           });
           console.log("Image uploaded");
-          window.location.reload();
+          window.location.reload(); // Reload the page
         });
       });
     } catch (error) {
@@ -59,6 +65,7 @@ const SidebarSettings = () => {
     }
   };
 
+  // Effect hook to handle the animation of the logout button container
   useEffect(() => {
     if (logoutButtonContainerRef.current) {
       logoutButtonContainerRef.current.style.animation =

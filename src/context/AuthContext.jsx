@@ -8,16 +8,20 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
+    // Subscribe to authentication state changes
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       console.log(user);
     });
 
+    // Clean up the subscription on unmount
     return () => {
-      unsub();
+      unsubscribe();
     };
   }, []);
+
   return (
+    // Provide the current user value to the components in the context
     <AuthContext.Provider value={{ currentUser }}>
       {children}
     </AuthContext.Provider>

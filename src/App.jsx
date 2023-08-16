@@ -13,7 +13,7 @@ function App() {
   const ProtectedRoute = ({ children }) => {
     // If there is no logged-in user, redirect to "/React-Chat"
     if (!currentUser) {
-      return <Navigate to={"/React-Chat"} />;
+      return <Navigate to={"/"} />;
     }
     // If there is a logged-in user, render the component
     return children;
@@ -24,14 +24,14 @@ function App() {
       <Routes>
         {/* Define routes for different paths */}
         {/* The path "/React-Chat" maps to the LogIn component */}
-        <Route path="/React-Chat" element={<LogIn />} />
+        <Route path="/" element={<LogIn />} />
         {/* The path "/React-Chat/SignUp" maps to the SignUp component */}
-        <Route path="/React-Chat/SignUp" element={<SignUp />} />
+        <Route path="/SignUp" element={<SignUp />} />
         {/* The path "/React-Chat/Home" maps to the Home component */}
         {/* Wrap the Home component with the ProtectedRoute component */}
         {/* This ensures that only logged-in users can access the Home component */}
         <Route
-          path="/React-Chat/Home"
+          path="/Home"
           element={
             <ProtectedRoute>
               <Home />

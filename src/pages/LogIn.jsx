@@ -16,7 +16,7 @@ const LogIn = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/React-Chat/Home");
+      navigate("/Home");
     } catch (error) {
       setError(true);
       console.log(error);
@@ -48,7 +48,7 @@ const LogIn = () => {
         </Button>
         <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center w-100">
           <p className="mb-0">You don't have an account?</p>
-          <Link className="SignUpLink" to="/React-Chat/SignUp">Sign Up</Link>
+          <Link className="SignUpLink" to="/SignUp">Sign Up</Link>
         </div>
       </Form>
     </div>

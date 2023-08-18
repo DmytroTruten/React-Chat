@@ -37,3 +37,7 @@ const firebaseConfig = {
 };
 
 export default firebaseConfig;
+```
+
+## Contributing
+If you wish to contribute to this project, please create a pull request in this repository. I am open to enhancements and new features!

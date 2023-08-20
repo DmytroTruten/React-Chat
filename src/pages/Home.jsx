@@ -15,6 +15,7 @@ import {
   selectDarkModeSwitchState,
   setKebabMenuState,
 } from "../features/sidebar/sidebarSlice.js";
+import { Col, Container, Row } from "react-bootstrap";
 
 const Home = () => {
   const sidebarRef = useRef(null);
@@ -52,33 +53,35 @@ const Home = () => {
   };
 
   return (
-    <div
-      className={`Home h-100 mx-0 my-0 ${darkModeSwitchState}`}
+    <Container
+      fluid
+      className={`ChatContainer d-flex mx-0 px-0 ${darkModeSwitchState}`}
+      ref={chatContainerRef}
+      onMouseMove={handleMouseMove}
     >
-      <div
-        className="ChatContainer d-flex flex-column px-0"
-        ref={chatContainerRef}
-        onMouseMove={handleMouseMove}
-      >
-        <div className="d-flex h-100">
-          <div className="Sidebar d-flex flex-column" ref={sidebarRef}>
+      <Row className="ChatRow">
+        <Col xs={6} className="px-0">
+          <Container
+            className="Sidebar d-flex flex-column mx-0 px-0"
+            ref={sidebarRef}
+          >
             <Search />
             <SidebarChatList />
             <SidebarSettings />
-          </div>
-          <div className="Chat d-flex flex-column justify-content-center">
-            {sidebarChatState === "closed" && <Messages />}
-            {sidebarChatState === "opened" && (
-              <Fragment>
-                <Navbar />
-                <Messages />
-                <Input />
-              </Fragment>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+          </Container>
+        </Col>
+        <Col xs={6} className="MessagesContainer px-0">
+          {sidebarChatState === "closed" && <Messages />}
+          {sidebarChatState === "opened" && (
+            <>
+              <Navbar />
+              <Messages />
+              <Input />
+            </>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

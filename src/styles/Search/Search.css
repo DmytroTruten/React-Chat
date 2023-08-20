@@ -19,13 +19,6 @@
   transition: color 0.2s ease-in-out;
   font-family: "Roboto";
 }
-.SearchInput:-ms-input-placeholder {
-  font-weight: 400;
-  color: #909192;
-  -ms-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-  font-family: "Roboto";
-}
 .SearchInput::placeholder {
   font-weight: 400;
   color: #909192;

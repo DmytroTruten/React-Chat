@@ -19,9 +19,6 @@
 .Input::-moz-placeholder {
   font-weight: 400;
 }
-.Input:-ms-input-placeholder {
-  font-weight: 400;
-}
 .Input::placeholder {
   font-weight: 400;
 }
@@ -60,10 +57,8 @@
 }
 
 .AttachButton {
-  max-width: -webkit-min-content;
   max-width: -moz-min-content;
   max-width: min-content;
-  max-height: -webkit-min-content;
   max-height: -moz-min-content;
   max-height: min-content;
   cursor: pointer;
@@ -75,10 +70,8 @@
 }
 
 .SendButton {
-  max-width: -webkit-min-content;
   max-width: -moz-min-content;
   max-width: min-content;
-  max-height: -webkit-min-content;
   max-height: -moz-min-content;
   max-height: min-content;
   cursor: pointer;

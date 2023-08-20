@@ -1,153 +1,131 @@
-.Home {
+.ChatContainer {
   min-height: 100vh;
-  max-height: 100vh;
-  overflow: hidden;
+  overflow-x: scroll;
 }
-.Home * {
+.ChatContainer * {
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
-.Home.light .Sidebar,
-.Home.light .SidebarSettings,
-.Home.light .SidebarMenu,
-.Home.light .InputButtonsContainer,
-.Home.light .MessageContainer,
-.Home.light .ImageContainer.WithCaption {
+.ChatContainer.light .Sidebar,
+.ChatContainer.light .SidebarSettings,
+.ChatContainer.light .SidebarMenu,
+.ChatContainer.light .InputButtonsContainer,
+.ChatContainer.light .MessageContainer,
+.ChatContainer.light .ImageContainer.WithCaption {
   background-color: #fff;
 }
-.Home.light .InputButtonsContainer::before,
-.Home.light .MessageContainer::before,
-.Home.light .ImageContainer.WithCaption::before {
+.ChatContainer.light .InputButtonsContainer::before,
+.ChatContainer.light .MessageContainer::before,
+.ChatContainer.light .ImageContainer.WithCaption::before {
   color: #fff;
 }
-.Home.light .SidebarChatLastMsg,
-.Home.light .SidebarChatTime {
+.ChatContainer.light .SidebarChatLastMsg,
+.ChatContainer.light .SidebarChatTime {
   color: rgb(112, 117, 121);
 }
-.Home.light .MessageContainer .MessageTime {
+.ChatContainer.light .MessageContainer .MessageTime {
   color: rgb(112, 117, 121);
 }
-.Home.light .ImageContainer.WithCaption .MessageTime {
+.ChatContainer.light .ImageContainer.WithCaption .MessageTime {
   color: rgb(112, 117, 121);
 }
-.Home.light .SidebarChatUsername,
-.Home.light .SidebarMenuOptionText,
-.Home.light .NavbarUsername,
-.Home.light .Message,
-.Home.light .SettingsText {
+.ChatContainer.light .SidebarChatUsername,
+.ChatContainer.light .SidebarMenuOptionText,
+.ChatContainer.light .NavbarUsername,
+.ChatContainer.light .Message,
+.ChatContainer.light .SettingsText {
   color: #000;
 }
-.Home.light .SidebarChat:hover {
+.ChatContainer.light .SidebarChat:hover {
   background-color: #f0f0f0;
 }
-.Home.light .SidebarChat.selected {
+.ChatContainer.light .SidebarChat.selected {
   background-color: #3390ec;
 }
-.Home.light .SidebarChat.selected .SidebarChatLastMsg,
-.Home.light .SidebarChat.selected .SidebarChatTime,
-.Home.light .SidebarChat.selected .SidebarChatUsername {
+.ChatContainer.light .SidebarChat.selected .SidebarChatLastMsg,
+.ChatContainer.light .SidebarChat.selected .SidebarChatTime,
+.ChatContainer.light .SidebarChat.selected .SidebarChatUsername {
   color: #fff;
 }
-.Home.light .SearchInput,
-.Home.light .Navbar {
+.ChatContainer.light .SearchInput,
+.ChatContainer.light .Navbar {
   background-color: #fff;
   border-color: rgb(223, 225, 229);
 }
-.Home.light .SidebarMenuOption:hover,
-.Home.light .AttachButton:hover,
-.Home.light .SidebarMenuButton:hover,
-.Home.light .SidebarSettingsHeaderButton:hover {
+.ChatContainer.light .SidebarMenuOption:hover,
+.ChatContainer.light .AttachButton:hover,
+.ChatContainer.light .SidebarMenuButton:hover,
+.ChatContainer.light .SidebarSettingsHeaderButton:hover {
   background-color: #f0f0f0;
 }
-.Home.light .SidebarMenuOptionIcon {
+.ChatContainer.light .SidebarMenuOptionIcon {
   filter: brightness(0) saturate(100%);
 }
-.Home.light .DarkModeSwitchToggle {
+.ChatContainer.light .DarkModeSwitchToggle {
   background-color: rgb(196, 201, 204);
 }
-.Home.light .DarkModeSwitchToggle::before {
+.ChatContainer.light .DarkModeSwitchToggle::before {
   border: 2px solid rgb(196, 201, 204);
   background-color: #fff;
 }
-.Home.light .Input,
-.Home.light .SearchInput {
+.ChatContainer.light .Input,
+.ChatContainer.light .SearchInput {
   color: #000;
 }
-.Home.light .Input:focus,
-.Home.light .SearchInput:focus {
+.ChatContainer.light .Input:focus,
+.ChatContainer.light .SearchInput:focus {
   caret-color: #000;
 }
-.Home.light .SearchInput:hover {
+.ChatContainer.light .SearchInput:hover {
   border-color: #c2c2c2;
 }
-.Home.light .SearchInput:focus {
+.ChatContainer.light .SearchInput:focus {
   border: 2px solid #3390ec;
 }
-.Home.dark .Sidebar,
-.Home.dark .SidebarSettings,
-.Home.dark .Input,
-.Home.dark .MessageContainer {
+.ChatContainer.dark .Sidebar,
+.ChatContainer.dark .SidebarSettings,
+.ChatContainer.dark .Input,
+.ChatContainer.dark .MessageContainer {
   background-color: #212121;
 }
-.Home.dark .InputButtonsContainer::before,
-.Home.dark .MessageContainer::before {
+.ChatContainer.dark .InputButtonsContainer::before,
+.ChatContainer.dark .MessageContainer::before {
   color: #212121;
 }
-.Home.dark .SidebarChat:hover {
+.ChatContainer.dark .SidebarChat:hover {
   background-color: #353c43;
 }
-.Home.dark .SidebarChat.selected {
+.ChatContainer.dark .SidebarChat.selected {
   background-color: #3e9eb6;
 }
-.Home.dark .SidebarChat.selected .SidebarChatUsername,
-.Home.dark .SidebarChat.selected .SidebarChatTime,
-.Home.dark .SidebarChat.selected .SidebarChatLastMsg {
+.ChatContainer.dark .SidebarChat.selected .SidebarChatUsername,
+.ChatContainer.dark .SidebarChat.selected .SidebarChatTime,
+.ChatContainer.dark .SidebarChat.selected .SidebarChatLastMsg {
   color: #212121;
 }
-.Home.dark .SidebarMenuOption:hover {
+.ChatContainer.dark .SidebarMenuOption:hover {
   background-color: #353c43;
 }
-.Home.dark .DarkModeSwitchToggle {
+.ChatContainer.dark .DarkModeSwitchToggle {
   background-color: #61dbfb;
 }
-.Home.dark .DarkModeSwitchToggle::before {
+.ChatContainer.dark .DarkModeSwitchToggle::before {
   border: 2px solid #61dbfb;
   background-color: rgb(33, 33, 33);
 }
-.Home.dark .AttachButton:hover,
-.Home.dark .SidebarMenuButton:hover,
-.Home.dark .SidebarSettingsHeaderButton:hover {
+.ChatContainer.dark .AttachButton:hover,
+.ChatContainer.dark .SidebarMenuButton:hover,
+.ChatContainer.dark .SidebarSettingsHeaderButton:hover {
   background-color: #2b2b2b;
 }
-.Home.dark .Input,
-.Home.dark .SearchInput {
+.ChatContainer.dark .Input,
+.ChatContainer.dark .SearchInput {
   color: #fff;
 }
-.Home.dark .SearchInput:hover {
+.ChatContainer.dark .SearchInput:hover {
   border-color: #707579;
 }
-.Home.dark .SearchInput:focus {
+.ChatContainer.dark .SearchInput:focus {
   border: 2px solid #61dbfb;
-}
-
-.ChatContainer {
-  height: 100%;
-  width: 100%;
-  max-height: 100vh;
-  position: relative;
-  touch-action: none;
-}
-
-.Sidebar {
-  height: 100%;
-  min-width: 424px;
-  position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-  touch-action: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .SidebarMenu {
@@ -256,19 +234,27 @@
   visibility: visible;
 }
 
-.Chat {
-  flex: 1 0 0;
-  position: relative;
+.ChatRow {
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
-.Chat::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("../../assets/chat-background.jpg");
-  background-size: cover;
-  z-index: -1;
-  filter: brightness(40%);
+.ChatRow .Sidebar {
+  min-height: 100%;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.ChatRow .MessagesContainer {
+  overflow-y: hidden;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 0px) and (max-width: 576px) {
+  .Sidebar {
+    width: 100vw;
+  }
 }/*# sourceMappingURL=Home.css.map */

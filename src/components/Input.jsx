@@ -3,12 +3,7 @@ import Form from "react-bootstrap/Form";
 import "../styles/Input/Input.css";
 import attachIcon from "../assets/attach-icon.svg";
 import sendIcon from "../assets/send-icon.svg";
-import {
-  arrayUnion,
-  doc,
-  Timestamp,
-  updateDoc,
-} from "firebase/firestore";
+import { arrayUnion, doc, Timestamp, updateDoc } from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
@@ -148,13 +143,12 @@ const Input = () => {
           </label>
         </div>
       </div>
-      <div className="InputButtonsContainer SendContainer d-flex justify-content-center align-items-center">
-        <div
-          className="SendButton d-flex justify-content-center align-items-center"
-          onClick={handleSend}
-        >
-          <img className="SendIcon" src={sendIcon} alt="" />
-        </div>
+
+      <div
+        className="SendButton d-flex justify-content-center align-items-center"
+        onClick={handleSend}
+      >
+        <img className="SendIcon" src={sendIcon} alt="" />
       </div>
     </div>
   );

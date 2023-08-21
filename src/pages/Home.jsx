@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, Fragment } from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "../components/Search";
 import SidebarChatList from "../components/SidebarChatList";
 import SidebarSettings from "../components/SidebarSettings";
+import Input from "../components/Input";
 import Navbar from "../components/Navbar";
 import Messages from "../components/Messages";
-import Input from "../components/Input";
 import "../styles/Home/Home.css";
 import {
   setSidebarMenuState,
@@ -53,35 +53,32 @@ const Home = () => {
   };
 
   return (
-    <Container
-      fluid
+    <Row
       className={`ChatContainer d-flex mx-0 px-0 ${darkModeSwitchState}`}
       ref={chatContainerRef}
       onMouseMove={handleMouseMove}
     >
-      <Row className="ChatRow">
-        <Col xs={6} className="px-0">
-          <Container
-            className="Sidebar d-flex flex-column mx-0 px-0"
-            ref={sidebarRef}
-          >
-            <Search />
-            <SidebarChatList />
-            <SidebarSettings />
-          </Container>
-        </Col>
-        <Col xs={6} className="MessagesContainer px-0">
-          {sidebarChatState === "closed" && <Messages />}
-          {sidebarChatState === "opened" && (
-            <>
-              <Navbar />
-              <Messages />
-              <Input />
-            </>
-          )}
-        </Col>
-      </Row>
-    </Container>
+      <Col className="px-0">
+        <Container
+          className="Sidebar d-flex flex-column mx-0 px-0"
+          ref={sidebarRef}
+        >
+          <Search />
+          <SidebarChatList />
+          <SidebarSettings />
+        </Container>
+      </Col>
+      <Col className="MessagesContainer px-0">
+        {sidebarChatState === "opened" && (
+          <>
+            <Navbar />
+            <Messages />
+            <Input />
+          </>
+        )}
+        {sidebarChatState === "closed" && <Messages />}
+      </Col>
+    </Row>
   );
 };
 

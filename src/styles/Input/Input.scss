@@ -2,13 +2,13 @@
 @import "../mixins";
 
 .InputContainer {
-  min-height: 55px;
+  height: 54px;
+  padding: 0px 8px 8px;
   position: relative;
-  margin: 0px 0px 20px;
 }
 
 .InputElementsWrapper {
-  width: 55%;
+  width: 100%;
   height: 100%;
 }
 
@@ -44,10 +44,6 @@
       @include message-curve(current)
     }
   }
-  &.SendContainer {
-    border-radius: 50%;
-    margin-left: 8px;
-  }
 }
 
 .AttachButton {
@@ -56,7 +52,11 @@
 }
 
 .SendButton {
-  @include input-button;
+  min-width: 46px;
+  height: 46px;
+  background-color: #3390ec;;
+  border-radius: 50%;
+  margin-left: 8px;
 }
 
 .AttachIcon {
@@ -64,5 +64,5 @@
 }
 
 .SendIcon {
-  width: 35px;
+  width: 26px;
 }

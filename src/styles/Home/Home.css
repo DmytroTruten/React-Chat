@@ -1,5 +1,6 @@
 .ChatContainer {
   min-height: 100vh;
+  flex-wrap: nowrap;
   overflow-x: scroll;
 }
 .ChatContainer * {
@@ -234,23 +235,24 @@
   visibility: visible;
 }
 
-.ChatRow {
-  flex-wrap: nowrap;
-  overflow-x: auto;
-}
-.ChatRow .Sidebar {
+.Sidebar {
   min-height: 100%;
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  touch-action: none;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
-.ChatRow .MessagesContainer {
+
+.MessagesContainer {
+  min-width: 100vw;
   overflow-y: hidden;
-  flex: 0 0 auto;
+}
+
+.InnerMessagesContainer {
+  overflow-y: scroll;
+  max-height: 100vh;
 }
 
 @media (min-width: 0px) and (max-width: 576px) {

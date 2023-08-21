@@ -6,6 +6,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
 import { selectSidebarChatState } from "../features/sidebar/sidebarSlice.js";
+import { Container } from "react-bootstrap";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]); // State to store messages
@@ -24,7 +25,7 @@ const Messages = () => {
   }, [data.chatID]);
 
   return (
-    <div className="Messages d-flex flex-column">
+    <Container className="Messages d-flex flex-column mx-0 px-0">
       {sidebarChatState === "closed" && (
         <div className="IntroTextContainer align-self-center my-auto">
           <p className="IntroText text-center ">
@@ -36,7 +37,7 @@ const Messages = () => {
         messages?.map((message) => (
           <Message message={message} key={message.id} /> // Render each message
         ))}
-    </div>
+    </Container>
   );
 };
 

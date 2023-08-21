@@ -3,6 +3,7 @@
 
 .ChatContainer {
   min-height: 100vh;
+  flex-wrap: nowrap;
   overflow-x: scroll;
   & * {
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
@@ -245,23 +246,22 @@
   }
 }
 
-.ChatRow {
-  flex-wrap: nowrap;
-  overflow-x: auto;
+.Sidebar {
+  min-height: 100%;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
+}
 
-  .Sidebar {
-    min-height: 100%;
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    touch-action: none;
-    user-select: none;
-  }
+.MessagesContainer {
+  min-width: 100vw;
+  overflow-y: hidden;
+}
 
-  .MessagesContainer {
-    overflow-y: hidden;
-    flex: 0 0 auto;
-  }
+.InnerMessagesContainer {
+  overflow-y: scroll;
+  max-height: 100vh;
 }
 
 @media (min-width: 0px) and (max-width: 576px) {

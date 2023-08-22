@@ -74,7 +74,7 @@ const SidebarChatList = () => {
     }
   }, [sidebarChatListRef.current]);
 
-  const handleSelect = (userInfo, index) => {
+  const handleSelect = async (userInfo, index) => {
     // Handle the selection of a chat
     storeDispatch(setSidebarChatState()); // Update the sidebar chat state in Redux store
     dispatch({ type: "CHANGE_USER", payload: userInfo }); // Dispatch the selected user information to ChatContext

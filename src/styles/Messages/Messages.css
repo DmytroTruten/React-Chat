@@ -1,6 +1,7 @@
 .Messages {
   height: calc(100vh - 111px);
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 5px 0px;
 }
 .Messages::before {

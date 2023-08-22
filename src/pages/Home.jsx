@@ -4,7 +4,7 @@ import Search from "../components/Search";
 import SidebarChatList from "../components/SidebarChatList";
 import SidebarSettings from "../components/SidebarSettings";
 import Input from "../components/Input";
-import Navbar from "../components/Navbar";
+import NavBar from "../components/Navbar";
 import Messages from "../components/Messages";
 import "../styles/Home/Home.css";
 import {
@@ -71,7 +71,7 @@ const Home = () => {
       <Col className="MessagesContainer px-0">
         {sidebarChatState === "opened" && (
           <>
-            <Navbar />
+            <NavBar />
             <Messages />
             <Input />
           </>

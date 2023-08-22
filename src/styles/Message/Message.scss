@@ -16,14 +16,14 @@
   }
   &.current {
     border-radius: 12px 12px 0px 12px;
-    right: 25.5%;
+    right: 2%;
     &::before {
       @include message-curve(current)
     }
   }
   &.other {
     border-radius: 15px 15px 15px 0px;
-    left: 20%;
+    left: 2%;
     &::before {
       content: "";
       @include message-curve(other)
@@ -40,10 +40,10 @@
   &.WithoutCaption {
     border-radius: 15px;
     &.current {
-      right: 25.5%;
+      right: 2%;
     }
     &.other {
-      left: 20%;
+      left: 2%;
     }
     .MessageTime {
       height: min-content;
@@ -61,14 +61,14 @@
   &.WithCaption {
     &.current {
       border-radius: 15px 15px 0px 15px;
-      right: 25.5%;
+      right: 2%;
       &::before {
         @include message-curve(current)
       }
     }
     &.other {
       border-radius: 15px 15px 15px 0px;
-      left: 20%;
+      left: 2%;
       &::before {
         @include message-curve(other)
       }

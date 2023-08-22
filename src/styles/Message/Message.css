@@ -14,7 +14,7 @@
 }
 .MessageContainer.current {
   border-radius: 12px 12px 0px 12px;
-  right: 25.5%;
+  right: 2%;
 }
 .MessageContainer.current::before {
   content: "";
@@ -30,7 +30,7 @@
 }
 .MessageContainer.other {
   border-radius: 15px 15px 15px 0px;
-  left: 20%;
+  left: 2%;
 }
 .MessageContainer.other::before {
   content: "";
@@ -56,10 +56,10 @@
   border-radius: 15px;
 }
 .ImageContainer.WithoutCaption.current {
-  right: 25.5%;
+  right: 2%;
 }
 .ImageContainer.WithoutCaption.other {
-  left: 20%;
+  left: 2%;
 }
 .ImageContainer.WithoutCaption .MessageTime {
   height: -moz-min-content;
@@ -75,7 +75,7 @@
 }
 .ImageContainer.WithCaption.current {
   border-radius: 15px 15px 0px 15px;
-  right: 25.5%;
+  right: 2%;
 }
 .ImageContainer.WithCaption.current::before {
   content: "";
@@ -91,7 +91,7 @@
 }
 .ImageContainer.WithCaption.other {
   border-radius: 15px 15px 15px 0px;
-  left: 20%;
+  left: 2%;
 }
 .ImageContainer.WithCaption.other::before {
   content: "";

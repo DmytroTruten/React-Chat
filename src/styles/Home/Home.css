@@ -115,7 +115,7 @@
 }
 .ChatContainer.dark .AttachButton:hover,
 .ChatContainer.dark .SidebarMenuButton:hover,
-.ChatContainer.dark .SidebarSettingsHeaderButton:hover {
+.ChatContainer.dark .SidebarSettingsHeaderButton:hover, .ChatContainer.dark .NavbarBackButton:hover {
   background-color: #2b2b2b;
 }
 .ChatContainer.dark .Input,

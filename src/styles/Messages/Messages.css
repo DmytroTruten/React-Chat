@@ -4,18 +4,6 @@
   overflow-x: hidden;
   padding: 5px 0px;
 }
-.Messages::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("../../assets/chat-background.jpg");
-  background-size: cover;
-  z-index: -1;
-  filter: brightness(40%);
-}
 .Messages:hover::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
 }

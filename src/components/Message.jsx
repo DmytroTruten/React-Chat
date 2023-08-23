@@ -11,11 +11,6 @@ const Message = ({ message }) => {
   // Creating a reference to the message container element
   const messageRef = useRef(null);
 
-  useEffect(() => {
-    // Automatically scroll to the latest message when it changes
-    messageRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [message]);
-
   return (
     <Fragment>
       <div

@@ -12,11 +12,12 @@
     color: #8c8c8c;
   }
 
-  .LogInControl, .LogInPasswordControl {
+  .LogInControl,
+  .LogInPasswordControl {
     background-color: transparent;
     color: #fff;
     border: none;
-    border-radius: 0;  
+    border-radius: 0;
     border-bottom: 1px solid $main-lightblue;
 
     &:focus {
@@ -29,8 +30,25 @@
   margin-left: 8px;
 }
 
+.ReactLogo {
+  animation: rotate 15s infinite linear;
+}
+
 @media (max-width: 576px) {
   .SignUpLink {
     margin-left: 0px;
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }

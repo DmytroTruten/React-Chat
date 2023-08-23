@@ -6,7 +6,9 @@ import { auth, db, storage } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import reactIcon from "../assets/react-icon.svg";
 import "../styles/SignUp/SignUp.css";
+import { Image } from "react-bootstrap";
 
 const SignUp = () => {
   const [error, setError] = useState(false);
@@ -54,6 +56,7 @@ const SignUp = () => {
         className="SignUpForm col-12 col-sm-6 d-flex flex-column align-items-center px-0"
         onSubmit={handleSubmit}
       >
+        <Image className="ReactLogo" src={reactIcon} />
         <h1 className="SignUpHeader">React Chat</h1>
         <h5 className="SignUpSubheader">Sign Up</h5>
         <Form.Group>

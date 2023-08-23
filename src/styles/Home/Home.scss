@@ -270,7 +270,6 @@
 
 .MessagesContainer {
   min-width: 100vw;
-  overflow-y: hidden;
 }
 
 @media (min-width: 0px) and (max-width: 575px) {
@@ -279,8 +278,20 @@
   }
 }
 
-@media (min-width: 576px){
-  .Sidebar {
-    width: 100vw;
+@media (min-width: 576px) and (max-width: 767px) {
+  .SidebarContainer {
+    max-width: 40%;
+  }
+  .MessagesContainer {
+    min-width: initial;
+  }
+}
+
+@media (min-width: 768px)  {
+  .SidebarContainer {
+    max-width: 30%;
+  }
+  .MessagesContainer {
+    min-width: initial;
   }
 }

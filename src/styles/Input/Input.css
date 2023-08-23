@@ -1,7 +1,7 @@
 .InputContainer {
   height: 54px;
+  width: clamp(0px, 100%, 600px);
   padding: 5px 8px 8px;
-  position: relative;
   background-color: transparent;
 }
 
@@ -30,7 +30,7 @@
 .InputButtonsContainer {
   height: 100%;
   width: 55px;
-  padding: 0px 10px;
+  padding: 0px 15px;
   background-color: #212121;
 }
 .InputButtonsContainer.EmojiContainer {
@@ -76,8 +76,25 @@
 
 .AttachIcon {
   width: 26px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .SendIcon {
   width: 26px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+@media (min-width: 768px) {
+  .InputContainer {
+    height: 78px;
+    padding: 5px 13px 20px;
+  }
+  .SendButton {
+    min-width: 54px;
+    height: 54px;
+  }
 }/*# sourceMappingURL=Input.css.map */

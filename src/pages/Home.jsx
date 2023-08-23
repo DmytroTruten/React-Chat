@@ -58,7 +58,7 @@ const Home = () => {
       ref={chatContainerRef}
       onMouseMove={handleMouseMove}
     >
-      <Col className="px-0">
+      <Col className="SidebarContainer px-0">
         <Container
           className="Sidebar d-flex flex-column mx-0 px-0"
           ref={sidebarRef}

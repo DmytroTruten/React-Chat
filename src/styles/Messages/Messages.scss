@@ -2,13 +2,14 @@
 
 .Messages {
   height: calc(100vh - 111px);
+  width: clamp(0px, 100%, 600px);
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 5px 0px;
+  padding: 5px 0px 0px;
 
   &:hover {
     &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(255, 255, 255, 0.3);
     }
   }
 
@@ -31,4 +32,10 @@
 
 .IntroText {
   color: $main-lightblue;
+}
+
+@media (min-width: 768px) {
+  .Messages {
+    height: calc(100vh - 135px);
+  }
 }

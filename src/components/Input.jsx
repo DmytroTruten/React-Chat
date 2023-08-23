@@ -9,6 +9,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { Container } from "react-bootstrap";
 
 const Input = () => {
   const [text, setText] = useState("");
@@ -118,7 +119,7 @@ const Input = () => {
   };
 
   return (
-    <div className="InputContainer d-flex justify-content-center align-items-center">
+    <Container className="InputContainer d-flex justify-content-center align-items-center">
       <div className="InputElementsWrapper d-flex justify-content-center align-items-center">
         <Form.Control
           className="Input"
@@ -150,7 +151,7 @@ const Input = () => {
       >
         <img className="SendIcon" src={sendIcon} alt="" />
       </div>
-    </div>
+    </Container>
   );
 };
 

@@ -25,7 +25,7 @@ const Messages = () => {
   }, [data.chatID]);
 
   return (
-    <Container className="Messages d-flex flex-column mx-0 px-0">
+    <Container className="Messages d-flex flex-column">
       {sidebarChatState === "closed" && (
         <div className="IntroTextContainer align-self-center my-auto">
           <p className="IntroText text-center ">
